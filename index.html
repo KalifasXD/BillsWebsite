@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vasileios Dounavis | Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <script src="script.js"></script>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <!-- Logo and Name -->
+    <a href="#home" class="logo">
+      <img src="ColorfulProfile.jpg" alt="Vasileios Dounavis" class="avatar">
+      <span class="name">Vasileios Dounavis</span>
+    </a>
+
+    <!-- Menu Icon (Hamburger) for Mobile -->
+    <div class="menu-icon">&#9776;</div>
+
+    <!-- Navbar Links -->
+    <ul>
+      <li><a href="#home" class="nav-link active">Home</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#experience" class="nav-link">Experience</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+
+    <input type="checkbox" class="checkbox" id="darkModeToggle">
+    <label for="darkModeToggle" class="checkbox-label">
+      <i class="fas fa-moon"></i>
+      <i class="fas fa-sun"></i>
+      <span class="ball"></span>
+    </label>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <h1>HI, I AM VASILEIOS DOUNAVIS</h1>
+    <p>A motivated and adaptable software developer. Interested in Computer Security along with Website building. Background with C, C#, C++, Java and my personal favorite Python</p>
+    <a class="arrow quick-links" href="#about" >
+      <span></span>
+      <span></span>
+      <span></span>
+    </a>
+  </section>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <h2>About Me</h2>
+    <p>I am a driven software engineer passionate about crafting impactful solutions...</p>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section id="experience" class="hero">
+    <h1>Experience</h1>
+    <div class="portfolio-grid">
+      <div class="project-card" onclick="showProjectPopup('project1')">
+        <img src="ColorfulProfile.jpg" style="width: 128px; height: 128px;" alt="Project 1">
+        <h3>Project Title</h3>
+        <p>Short description...</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills-list">
+      <div class="skill-bar">
+        <h3>JavaScript</h3>
+        <div class="bar"><span style="width: 90%;"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+<section class="hero contact" id="contact">
+  <h2>Contact Me</h2>
+  <form class="contact-form">
+    <div class="form-group">
+      <label for="name">Your Name</label>
+      <input type="text" name="name" id="name" placeholder="Your Name" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Your Email</label>
+      <input type="email" name="email" id="email" placeholder="Your Email" required>
+    </div>
+    <div class="form-group">
+      <label for="message">Your Message</label>
+      <textarea name="message" id="message" placeholder="Your Message" required></textarea>
+    </div>
+    <button type="submit" class="submit-btn">Send Message</button>
+  </form>
+</section>
+
+<footer class="footer">
+  <div class="footer-container">
+    <!-- About Section -->
+    <div class="footer-section about">
+      <h2>About Me</h2>
+      <p>A motivated and adaptable software developer. Interested in Computer Security along with Website building. Background with C, C#, C++, Java and my personal favorite Python</p>
+    </div>
+
+    <!-- Navigation Links -->
+    <div class="footer-section links">
+      <h2>Quick Links</h2>
+      <ul>
+        <li><a href="#home" class="quick-links">Home</a></li>
+        <li><a href="#about" class="quick-links">About</a></li>
+        <li><a href="#experience" class="quick-links">Experience</a></li>
+        <li><a href="#contact" class="quick-links">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="footer-section contact-info">
+      <h2>Contact Info</h2>
+      <p>Email: vasilis944@gmail.com</p>
+      <p>Location: Trier, Germany</p>
+    </div>
+
+    <!-- Social Media Links -->
+    <div class="footer-section social">
+      <h2>Connect with me</h2>
+      <ul>
+        <li><a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a></li>
+        <li><a href="https://Youtube.com" target="_blank"><i class="fab fa-youtube fa-2x"></i></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Footer Bottom -->
+  <div class="footer-bottom">
+    <p>&copy; 2024 VASILEIOS DOUNAVIS - All Rights Reserved</p>
+  </div>
+</footer>
+
+  
+</body>
+
+</html>
