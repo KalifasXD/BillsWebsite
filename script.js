@@ -9,6 +9,77 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
   
+// Initialize ScrollMagic Controller
+const controller = new ScrollMagic.Controller();
+
+// Get elements
+const slides = document.querySelectorAll('.slide');
+const navButtons = document.querySelectorAll('.nav-btn');
+const totalSlides = slides.length;
+let currentSlideIndex = 0;
+
+// Function to change slide based on index
+function changeSlide(index) {
+    if (index >= 0 && index < totalSlides) {
+        // Hide all slides and show the current one
+        slides.forEach(slide => slide.classList.remove('active'));
+        slides[index].classList.add('active');
+        currentSlideIndex = index;
+
+        // Update active state of navigation buttons
+        navButtons.forEach((button, i) => {
+            button.classList.toggle('active', i === currentSlideIndex);
+        });
+    }
+}
+
+// Create ScrollMagic Scenes
+function createScenes() {
+    // Scene for pinning the #experience section
+    const pinScene = new ScrollMagic.Scene({
+        triggerElement: "#experience",
+        triggerHook: 0,
+        duration: "100%", // Adjust as needed
+    })
+    .setPin("#experience")
+    .on("enter leave", (e) => {
+        console.log(`Pin state: ${e.type === "enter" ? "Activated" : "Deactivated"}`);
+    })
+    .addTo(controller);
+
+    // Scene for controlling slide transition based on scroll
+    const slideScene = new ScrollMagic.Scene({
+        triggerElement: "#experience",
+        triggerHook: 0,
+        duration: "100%",
+    })
+    .on("progress", (e) => {
+        // Calculate the slide index based on the progress, snapping to the nearest integer
+        const progress = e.progress * (totalSlides - 1);
+        const nextSlideIndex = Math.ceil(progress); // Snap to nearest integer
+        
+        if (nextSlideIndex !== currentSlideIndex) {
+            changeSlide(nextSlideIndex); // Change slide only if the index changes
+        }
+    })
+    .addTo(controller);
+
+    // Save scenes for resizing updates
+    return { pinScene, slideScene };
+}
+
+// Initialize scenes and save for resizing
+let scenes = createScenes();
+
+// Navigation Buttons for Direct Slide Change
+navButtons.forEach((button, index) => {
+    button.addEventListener('click', () => {
+        changeSlide(index);
+    });
+});
+
+
+
   // Hamburger Menu Toggle for Mobile
   const menuIcon = document.querySelector(".menu-icon");
   const menu = document.querySelector(".navbar ul");

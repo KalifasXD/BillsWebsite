@@ -7,7 +7,7 @@
   <title>Vasileios Dounavis | Portfolio</title>
   <link rel="stylesheet" href="styles.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <script src="script.js"></script>
 </head>
@@ -44,7 +44,8 @@
   <!-- Hero Section -->
   <section id="home" class="hero">
     <h1>HI, I AM VASILEIOS DOUNAVIS</h1>
-    <p>A motivated and adaptable software developer. Interested in Computer Security along with Website building. Background with C, C#, C++, Java and my personal favorite Python</p>
+    <p>An aspiring Software Engineer with a passion for coding, focusing on both Frontend and Backend web development, as well as CyberSecurity, which I explored in my thesis. 
+      I'm always excited to apply my expertise to Desktop or Mobile Apps, Websites, and Video Games, always driven by my love for programming.</p>
     <a class="arrow quick-links" href="#about" >
       <span></span>
       <span></span>
@@ -54,21 +55,68 @@
 
   <!-- About Section -->
   <section class="about" id="about">
-    <h2>About Me</h2>
-    <p>I am a driven software engineer passionate about crafting impactful solutions...</p>
+    <h2>Who Am I?</h2>
+    <p>My name is <strong>Vasileios</strong>, though most people call me <strong>Bill</strong>. I am a <strong>23-year-old software engineer</strong> with a keen interest in <strong>cybersecurity</strong> and <strong>web development</strong>. My passion for coding goes beyond just one area; I enjoy building both the <strong>frontend</strong>—the user experience—and the <strong>backend</strong>—the functionality—of websites. My fascination with cybersecurity also inspired my <strong>thesis</strong>, where I explored this field in depth.
+      <br><br>
+      Programming is a true passion of mine, and I invest myself fully in every project, whether it's an <strong>application</strong>, <strong>website</strong>, or <strong>video game</strong>. My love for video games sparked my curiosity about how they're created, leading me to start using <strong>Unreal Engine 4-5</strong> and <strong>Unity3D</strong> about four years ago. This experience even brought me into a <strong>partnership with Epic Games</strong>, the renowned creator of Fortnite.
+      <br><br>
+      Outside of my professional pursuits, I enjoy staying active by <strong>working out</strong>, <strong>spending time with friends</strong>, and, of course, <strong>playing video games</strong>. 
+      <br><br>
+      Lastly, I was honored to <strong>serve my country</strong> starting in <strong>November 2023</strong> and was <strong>discharged in August 2024</strong>. This experience taught me a great deal, rounding out my personal and professional development.
+      
+      </p>
   </section>
 
   <!-- Portfolio Section -->
-  <section id="experience" class="hero">
-    <h1>Experience</h1>
-    <div class="portfolio-grid">
-      <div class="project-card" onclick="showProjectPopup('project1')">
-        <img src="ColorfulProfile.jpg" style="width: 128px; height: 128px;" alt="Project 1">
-        <h3>Project Title</h3>
-        <p>Short description...</p>
+  <div class="timeline" id="experience">
+    <div class="timeline-container">
+      <h1>Experience</h1>
+      <div class="slides">
+          <div class="slide active">
+              <div class="content">
+                  <h1>UE4 Marketplace Content Creator</h1>
+                  <p class="short-desc">April 2021 to July 2022</p>
+                  <p class="long-desc">Epic Games contracted me in May 2021 and December 2022 to be a sponsored content creator for the Unreal Engine 4 Marketplace. This partnership with a leading industry player has provided me with a unique platform to showcase my expertise and share high-quality assets and resources with the Unreal Engine community. It’s been an enriching experience working closely with Epic Games to create valuable content that empowers developers worldwide to bring ideas to life using Unreal Engine.</p>
+              </div>
+          </div>
+          <div class="slide">
+              <div class="content">
+                  <h1>Serene Beach</h1>
+                  <p class="short-desc">Crystal-clear waters and white sand.</p>
+                  <p class="long-desc">This beach is an oasis of tranquility, featuring clear blue water and pristine white sand. Ideal for relaxation and sunset views.</p>
+              </div>
+          </div>
+          <div class="slide">
+              <div class="content">
+                  <h1>Lush Forest</h1>
+                  <p class="short-desc">Greenery as far as the eye can see.</p>
+                  <p class="long-desc">Step into a vibrant forest filled with diverse flora and fauna. Step into a vibrant forest filled withStep into a vibrant forest filled withStep into a vibrant forest filled withA true paradise for nature lovers and adventure seekers.</p>
+              </div>
+          </div>
+          <div class="slide">
+              <div class="content">
+                  <h1>Desert Dunes</h1>
+                  <p class="short-desc">Golden sands under the sun.</p>
+                  <p class="long-desc">Explore the endless sand dunes that stretch under a brilliant sun. A unique landscape offering unforgettable experiences.</p>
+              </div>
+          </div>
+          <div class="slide">
+              <div class="content">
+                  <h1>Cityscape at Night</h1>
+                  <p class="short-desc">A bustling city illuminated by lights.</p>
+                  <p class="long-desc">Experience the lively ambiance of a city at night. The skyline sparkles with lights, highlighting the beauty of urban life.</p>
+              </div>
+          </div>
+      </div>
+      <div class="navigation">
+          <button class="nav-btn active" data-slide="0">UE4 Marketplace Content Creator</button>
+          <button class="nav-btn" data-slide="1">Beach</button>
+          <button class="nav-btn" data-slide="2">Forest</button>
+          <button class="nav-btn" data-slide="3">Desert</button>
+          <button class="nav-btn" data-slide="4">City</button>
       </div>
     </div>
-  </section>
+  </div>
 
   <!-- Skills Section -->
   <section id="skills">
