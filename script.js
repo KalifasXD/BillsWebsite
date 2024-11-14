@@ -101,7 +101,7 @@ navButtons.forEach((button, index) => {
   });
   
   // Smooth Scroll for Navbar Links and Quick Links (both handled in one loop)
-  document.querySelectorAll(".nav-link, .quick-links").forEach(link => {
+  document.querySelectorAll(".nav-link, .quick-links, .hamburger-menu").forEach(link => {
     link.addEventListener("click", function (e) {
       e.preventDefault();
       document.querySelector(this.getAttribute("href")).scrollIntoView({
@@ -124,4 +124,16 @@ navButtons.forEach((button, index) => {
       }
     });
   });
+
+  // Select hamburger and navigation menu
+  const hamburger = document.querySelector('.hamburger-menu');
+  const navigation = document.querySelector('.navigation');
+
+  // Toggle navigation visibility on click
+  hamburger.addEventListener('click', () => {
+    navigation.classList.toggle('active');
+  });
 });
+
+
+

@@ -1,6 +1,6 @@
 /* Importing Google Font (Poppins) */
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -338,11 +338,11 @@ a {
 }
 
 .timeline {
-  height: 100vh; /* Full screen height */
+  height: 100vh;
   display: flex;
-  justify-content: center; /* Center content horizontally */
-  flex-direction: column; /* Stack items vertically */
-  align-items: center; /* Center content vertically */
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -381,12 +381,12 @@ a {
 
 .timeline h1 {
   font-size: 3.5em;
-  color: var(--Soft-Black); /* Dark navy color */
+  color: var(--Soft-Black);
   font-weight: bold;
   opacity: 0;
   transform: translateY(50px);
   animation: fadeInUp 1s forwards 0.3s;
-  margin: 0; /* Remove default margin */
+  margin: 0;
   margin-top: 10px;
 }
 
@@ -398,40 +398,38 @@ a {
   border-radius: 2px;
   width: 100%;
   height: 3px;
-  background-color: var(--Active-Gold);  /* Hex color for the line */
+  background-color: var(--Active-Gold);
   background: linear-gradient(to right, 
-    #b35e2c00 0%,        /* Transparent on the left */
-    var(--Active-Gold) 10%,       /* Fully opaque */
-    var(--Active-Gold) 90%,       /* Fully opaque */
+    #b35e2c00 0%,        
+    var(--Active-Gold) 10%,       
+    var(--Active-Gold) 90%,       
     #b35e2c00 100%);
 }
 
 .timeline .timeline-container .slides .slide .content h1::after {
-  height: 0px; /* We do not want any lines under the content title */
+  height: 0px;
 }
 
-/* Optional: Ensure there's a little gap between heading and the next content */
 .timeline p {
   font-size: 1.5em;
   width: 50%;
-  color: var(--Soft-Black); /* Soft light gray */
+  color: var(--Soft-Black);
   opacity: 0;
   transform: translateY(30px);
   animation: fadeInUp 1s forwards 0.5s;
-  margin-top: 10px; /* Small space between the heading and paragraph */
+  margin-top: 10px;
 }
 
-/* Slides container */
 .slides {
   width: 90vw;
-  height: 100vh; /* Full screen height */
+  height: 100vh;
   position: relative;
   top: -150px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* Center slides vertically within the container */
-  align-items: center; /* Center horizontally */
-  margin-top: 30px; /* Space below the heading */
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 30px;
 }
 
 .content {
@@ -442,10 +440,9 @@ a {
   align-items: center;
 }
 
-/* Individual slide */
 .slide {
   width: 100%;
-  height: 100%; /* Full height */
+  height: 100%;
   display: none;
   justify-content: center;
   align-items: center;
@@ -463,26 +460,26 @@ a {
   transform: translateX(0);
 }
 
-/* Navigation container, fixed on the right side */
+/* Main Navigation Container */
 .navigation {
-  position: absolute; /* Fixed position on the screen */
-  top: 50%; /* Center vertically */
-  right: 0; /* Align to the right edge */
-  transform: translateY(-50%); /* Adjust to middle of the screen */
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 10px;
   z-index: 1;
-  height: 100vh; /* Full height of the viewport */
-  pointer-events: auto; /* Allow interaction */
+  height: 100vh;
+  pointer-events: auto;
 }
 
 .navigation::before {
   content: '';
   position: absolute;
-  left: -30px; /* Space between line and buttons */
+  left: -30px;
   top: 0;
   height: 100%;
   width: 2px;
@@ -492,6 +489,7 @@ a {
 .nav-btn {
   background: none;
   color: var(--Hover-Gold);
+  font-family:'Lora', serif !important;
   margin: 8px;
   max-width: 200px;
   width: 200px;
@@ -508,35 +506,132 @@ a {
 }
 
 .nav-btn.active {
-  color: var(--Active-Gold) !important; /* Brighter gold for the bullet */
+  color: var(--Active-Gold) !important;
 }
 
 .nav-btn.active::before {
   content: "•";
-  color: var(--Active-Gold); /* Brighter gold for the bullet */
+  color: var(--Active-Gold);
   position: absolute;
   top: 0px;
   left: -54.5px;
   font-size: 2.5rem;
-  transition: top 0.3s; /* Smooth transition for bullet movement */
+  transition: top 0.3s;
 }
 
-
-
+/* Responsive Styles */
 @media (max-width: 768px) {
-  .timeline {
-      flex-direction: column;
+  .timeline h1 {
+    font-size: 2.5em;
+    margin-bottom: 5px; /* Reduce space after heading */
   }
 
+  .content {
+    margin-top: 5px; /* Reduce space above content */
+  }
+
+  .timeline p {
+    font-size: 1.1em;
+    width: 80%;
+  }
+
+  .slides {
+    width: 80vw;
+  }
+
+  /* Horizontal navigation at the top for mobile */
   .navigation {
-      flex-direction: row;
-      margin-top: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  }
+
+  .navigation::before {
+    content: none; /* Hide vertical line */
   }
 
   .nav-btn {
-      padding: 8px;
-      font-size: 0.8rem;
+    font-size: 1.1rem;
+    width: auto;
+    padding: 8px 12px;
   }
+}
+
+@media (max-width: 576px) {
+  .timeline h1 {
+    font-size: 2em;
+  }
+
+  .timeline p {
+    font-size: 1em;
+    width: 90%;
+  }
+
+  .slides {
+    width: 90vw;
+  }
+
+  .nav-btn {
+    font-size: 1rem;
+    padding: 5px 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  .timeline h1 {
+    font-size: 1.8em;
+  }
+
+  .timeline p {
+    font-size: 0.9em;
+    width: 95%;
+  }
+
+  .slides {
+    width: 90vw;
+  }
+
+  .nav-btn {
+    font-size: 0.9rem;
+    padding: 5px 8px;
+  }
+}
+
+.hamburger-menu {
+  color: var(--Active-Gold); /* Ensure contrast with background */
+  font-size: 1.8em; /* Adjust icon size if needed */
+  cursor: pointer;
+  z-index: 10;
+  display: none; /* Only show on mobile */
+}
+
+/* Display hamburger only on smaller screens */
+@media (max-width: 768px) {
+  .hamburger-menu {
+    display: block; /* Show hamburger icon */
+  }
+}
+
+/* Mobile Navigation Overlay */
+.navigation.active {
+  display: flex !important;
+  position: fixed; /* Fixed to viewport */
+  top: 50%;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it’s above other content */
 }
 
 /* Section Styling */
@@ -1009,116 +1104,5 @@ body.dark-mode .checkbox-label .ball{
   .contact button.submit-btn {
     font-size: 0.9em;
     padding: 8px 16px;
-  }
-}
-
-
-@media (max-width: 1200px) {
-  .timeline h1 {
-    font-size: 3em;
-  }
-
-  .timeline p {
-    font-size: 1.3em;
-    width: 60%;
-  }
-
-  .slides {
-    width: 80vw;
-  }
-
-  .navigation {
-    top: 50%;
-    right: 10px;
-  }
-
-  .nav-btn {
-    font-size: 1.3rem;
-  }
-}
-
-@media (max-width: 992px) {
-  .timeline h1 {
-    font-size: 2.8em;
-  }
-
-  .timeline p {
-    font-size: 1.2em;
-    width: 70%;
-  }
-
-  .slides {
-    width: 75vw;
-  }
-
-  .nav-btn {
-    font-size: 1.2rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .timeline h1 {
-    font-size: 2.5em;
-  }
-
-  .timeline p {
-    font-size: 1.1em;
-    width: 80%;
-  }
-
-  .slides {
-    width: 70vw;
-  }
-
-  .nav-btn {
-    font-size: 1.1rem;
-  }
-}
-
-@media (max-width: 576px) {
-  .timeline h1 {
-    font-size: 2em;
-  }
-
-  .timeline p {
-    font-size: 1em;
-    width: 90%;
-  }
-
-  .slides {
-    width: 90vw;
-  }
-
-  .nav-btn {
-    font-size: 1rem;
-    width: 150px;
-  }
-
-  .navigation {
-    right: 5px;
-  }
-}
-
-@media (max-width: 400px) {
-  .timeline h1 {
-    font-size: 1.8em;
-  }
-
-  .timeline p {
-    font-size: 0.9em;
-    width: 95%;
-  }
-
-  .slides {
-    width: 90vw;
-  }
-
-  .nav-btn {
-    font-size: 1rem;
-    width: 140px;
-  }
-
-  .navigation {
-    right: 0px;
   }
 }
