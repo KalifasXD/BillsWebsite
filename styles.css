@@ -1,11 +1,16 @@
 /* Importing Google Font (Poppins) */
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   --Hover-Gold: #947642;
+  --Light-Mode-Hover: #111;
+  --Dark-Mode-Hover-Gold: #e3f1f4;
+  --Light-Mode-Active-Menu-Timeline: #a82424;
   --Active-Gold: #dfad57;
   --Soft-Black: #111;
   --Soft-White: #fff;
@@ -326,6 +331,7 @@ a {
 
 .about p {
   text-align: justify;
+  font-size: 22px;
 }
 
 .about h2::after {
@@ -498,17 +504,17 @@ a {
 
 .nav-btn {
   background: none;
-  color: var(--Hover-Gold);
-  font-family:'Lora', serif !important;
+  color: var(--Light-Mode-Hover);
+  font-family:'Barlow', serif !important;
   margin: 8px;
   max-width: 200px;
   width: 200px;
   text-align: center;
   word-wrap: break-word;
-  font-weight: 800;
-  padding: 10px 15px;
   border: none;
-  border-radius: 5px;
+  font-weight: 400;
+  line-height: 25px;
+  padding: 10px 15px;
   cursor: pointer;
   font-size: 1.5rem;
   position: relative;
@@ -516,16 +522,18 @@ a {
 }
 
 .nav-btn.active {
-  color: var(--Active-Gold) !important;
+  color: var(--Soft-Black);
+  font-weight: 600;
+  font-family: 'Source Sans 3', serif !important;
 }
 
 .nav-btn::before {
   content: "•";
-  color: var(--Active-Gold);
+  color: var(--Soft-Black);
   position: absolute;
   top: 0px;
   transform: scale(0);
-  left: -53px;
+  left: -52px;
   font-size: 2rem;
   transition: transform 0.25s;
 }
@@ -866,8 +874,8 @@ body.dark-mode .timeline :is(h1, p, a) {
   color: var(--Soft-White);
 }
 
-body.dark-mode .project-card {
-  background-color: var(--Soft-Black); /* Dark project cards */
+body.dark-mode .nav-btn {
+  color: var(--Dark-Mode-Hover-Gold);
 }
 
 body.dark-mode .skills-list .bar span {
