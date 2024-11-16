@@ -669,8 +669,24 @@ p {
   margin-bottom: 30px;
 }
 
-#skills h2 {
+#skills > h2:first-of-type {
   text-align: center;
+}
+
+/* Add a line after the heading */
+#skills > h2:first-of-type:after {
+  content: '';
+  display: block;
+  margin: 10px auto;
+  border-radius: 2px;
+  width: 7%;
+  height: 3px;
+  background-color: var(--Active-Gold);  /* Hex color for the line */
+  background: linear-gradient(to right, 
+    #b35e2c00 0%,        /* Transparent on the left */
+    var(--Active-Gold) 10%,       /* Fully opaque */
+    var(--Active-Gold) 90%,       /* Fully opaque */
+    #b35e2c00 100%);
 }
 
 .skills-container {
