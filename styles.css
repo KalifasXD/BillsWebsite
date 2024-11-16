@@ -684,7 +684,7 @@ p {
 
 .skill {
   padding: 20px;
-  width: 100%;
+  width: 100%; /* Adjusts width for all screen sizes */
   height: auto;
   display: flex;
   justify-content: center;
@@ -696,9 +696,9 @@ p {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  align-items:flex-start;
-  width: 100%;
-  height: 100%;
+  align-items: flex-start;
+  width: 100%; /* Ensures full width on smaller screens */
+  height: auto;
   margin: 10px;
 }
 
@@ -707,6 +707,8 @@ p {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap; /* Allows images to wrap on smaller screens */
+  gap: 5px; /* Adds consistent spacing between circles */
 }
 
 .skill h2 {
@@ -717,7 +719,7 @@ p {
 }
 
 .skill-images-container div {
-  width: 20px; /* Adjust size for better visibility */
+  width: 20px; /* Circle size */
   height: 20px;
   border-radius: 50%; /* Makes the element circular */
   background-color: var(--Soft-White); /* Light gray background */
@@ -731,8 +733,55 @@ p {
 
 .skill-images-container div.filled {
   background-color: var(--Soft-Black);
-  
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  /* Adjust the skills container for smaller devices */
+  .skills-container {
+    flex-direction: column; /* Stack columns vertically */
+    align-items: center; /* Center-align on small screens */
+  }
+
+  .skills-column {
+    align-items: center; /* Center-align skills in each column */
+    width: 90%; /* Reduce width for better spacing */
+  }
+
+  .skill h2 {
+    font-size: 1.2rem; /* Smaller heading font */
+  }
+
+  .skill-images-container {
+    flex-wrap: wrap; /* Allow images to wrap */
+    justify-content: center; /* Center images on small screens */
+  }
+
+  .skill-images-container div {
+    width: 15px; /* Reduce circle size for small screens */
+    height: 15px;
+    margin: 3px; /* Reduce spacing between circles */
+  }
+}
+
+@media (max-width: 480px) {
+  /* Further adjustments for extra-small screens */
+  .skills-container {
+    padding: 10px;
+  }
+
+  .skill h2 {
+    font-size: 1rem; /* Smaller heading font */
+    padding: 5px 0;
+  }
+
+  .skill-images-container div {
+    width: 12px; /* Smaller circles for very small screens */
+    height: 12px;
+    margin: 2px;
+  }
+}
+
 
 /* Contact Section */
 .contact {
