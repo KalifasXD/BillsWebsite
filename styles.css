@@ -24,7 +24,6 @@ body {
   font-family: 'Rubik', sans-serif;
   background-color: #f4f4f4;  /* Light background color */
   color: #333;  /* Dark text for contrast */
-  overflow-x: hidden;
 }
 
 .extra-padding {
@@ -350,7 +349,7 @@ a {
 }
 
 .timeline {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -388,7 +387,7 @@ a {
   justify-content: center;
   align-items: center;
   position: relative;
-  padding-top: 300px;
+  padding-top: 0;
 }
 
 .timeline h1 {
@@ -669,26 +668,69 @@ p {
   margin-bottom: 30px;
 }
 
-.skills-list {
+#skills h2 {
+  text-align: center;
+}
+
+.skills-container {
   display: flex;
-  gap: 30px;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;  
+  height: auto;
 }
 
-.skill-bar {
-  width: 200px;
+.skill {
+  padding: 20px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
-.bar {
-  background-color: var(--Soft-Black);
-  height: 8px;
-  border-radius: 4px;
-}
-
-.bar span {
-  display: block;
+.skills-column {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items:flex-start;
+  width: 100%;
   height: 100%;
-  background-color: var(--Active-Gold);
-  border-radius: 4px;
+  margin: 10px;
+}
+
+.skill-images-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.skill h2 {
+  text-align: center;
+  font-size: 1.4rem;
+  margin: 0;
+  padding: 10px 0;
+}
+
+.skill-images-container div {
+  width: 20px; /* Adjust size for better visibility */
+  height: 20px;
+  border-radius: 50%; /* Makes the element circular */
+  background-color: var(--Soft-White); /* Light gray background */
+  margin: 0 5px; /* Space between circles */
+  position: relative;
+  
+  /* Outer glow effect */
+  box-shadow: 0 0 4px var(--Soft-Black);
+  transition: box-shadow 0.3s ease; /* Smooth transition for glow effect */
+}
+
+.skill-images-container div.filled {
+  background-color: var(--Soft-Black);
+  
 }
 
 /* Contact Section */
@@ -878,8 +920,13 @@ body.dark-mode .nav-btn {
   color: var(--Dark-Mode-Hover-Gold);
 }
 
-body.dark-mode .skills-list .bar span {
-  background-color: #888; /* Dark skill bar fill */
+body.dark-mode .skill-images-container div  {
+  background-color: var(--Soft-Black); /* Dark skill bar fill */
+  box-shadow: 0 0 4px var(--Soft-White);
+}
+
+body.dark-mode .skill-images-container div.filled  {
+  background-color: var(--Soft-White); /* Dark skill bar fill */
 }
 
 body.dark-mode .contact-form input,
