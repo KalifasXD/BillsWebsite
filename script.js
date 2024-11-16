@@ -35,10 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if(i < currentScore)
         circle.classList.add("filled");
       skill.getElementsByClassName('skill-images-container')[0].appendChild(circle);
-      
-
     }
-    
   });
 
   // Initialize ScrollMagic Scene

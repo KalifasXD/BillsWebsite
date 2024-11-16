@@ -24,6 +24,7 @@ body {
   font-family: 'Rubik', sans-serif;
   background-color: #f4f4f4;  /* Light background color */
   color: #333;  /* Dark text for contrast */
+  overflow-x: hidden;
 }
 
 .extra-padding {
