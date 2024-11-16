@@ -1020,8 +1020,36 @@ body.dark-mode .skill-images-container div  {
   box-shadow: 0 0 4px var(--Soft-White);
 }
 
+/* Animation keyframes for charging effect */
+@keyframes charge-animation-dark-mode {
+  from {
+    background-color: var(--Soft-Black);
+    box-shadow: 0 0 4px var(--Soft-Black);
+  }
+  to {
+    background-color: var(--Soft-White);
+    box-shadow: 0 0 6px var(--Soft-White);
+  }
+}
+
+@keyframes pulse-darkmode {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 6px var(--Soft-White);
+  }
+  50% {
+    transform: scale(1.2);
+    box-shadow: 0 0 12px var(--Soft-White);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 6px var(--Soft-White);
+  }
+}
+
 body.dark-mode .skill-images-container div.filled  {
   background-color: var(--Soft-White); /* Dark skill bar fill */
+  animation: charge-animation-dark-mode 1s ease forwards, pulse-darkmode 1.5s ease;
 }
 
 body.dark-mode .contact-form input,
