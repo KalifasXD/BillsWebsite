@@ -26,17 +26,39 @@ document.addEventListener("DOMContentLoaded", () => {
       }
   };
 
+  const observerOptions = {
+    root: null, // Observe viewport
+    threshold: 0.1, // Trigger when 10% of the element is visible
+  };
 
-  skills.forEach(skill => {
-    const totalScore = parseInt(skill.getAttribute('score'));
-    const currentScore = parseInt(skill.getAttribute('current-score'));
-    for(let i = 0; i < totalScore; i++){
-      const circle = document.createElement('div');
-      if(i < currentScore)
-        circle.classList.add("filled");
-      skill.getElementsByClassName('skill-images-container')[0].appendChild(circle);
-    }
-  });
+  const skillObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const skill = entry.target;
+        const currentScore = parseInt(skill.getAttribute('current-score'));
+        const container = skill.querySelector('.skill-images-container');
+
+        // Add circles dynamically and animate them
+        for (let i = 0; i < 10; i++) {
+          const circle = document.createElement('div');
+          container.appendChild(circle);
+
+          if (i < currentScore) {
+            setTimeout(() => {
+              circle.classList.add('filled');
+            }, i * 200); // Delay each circle by 200ms
+          }
+        }
+
+        // Stop observing once the animation is triggered
+        skillObserver.unobserve(skill);
+      }
+    });
+  }, observerOptions);
+
+  // Observe each skill element
+  skills.forEach(skill => skillObserver.observe(skill));
+
 
   // Initialize ScrollMagic Scene
   const initScrollMagic = () => {

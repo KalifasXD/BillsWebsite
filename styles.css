@@ -731,8 +731,53 @@ p {
   transition: box-shadow 0.3s ease; /* Smooth transition for glow effect */
 }
 
+/* Add delay to each circle for charging effect */
+.skill-images-container div:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.skill-images-container div:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.skill-images-container div:nth-child(3) {
+  animation-delay: 0.6s;
+}
+.skill-images-container div:nth-child(4) {
+  animation-delay: 0.8s;
+}
+.skill-images-container div:nth-child(5) {
+  animation-delay: 1s;
+}
+
+/* Animation keyframes for charging effect */
+@keyframes charge-animation {
+  from {
+    background-color: var(--Soft-White);
+    box-shadow: 0 0 4px var(--Soft-White);
+  }
+  to {
+    background-color: var(--Soft-Black);
+    box-shadow: 0 0 6px var(--Soft-Black);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 6px var(--Soft-Black);
+  }
+  50% {
+    transform: scale(1.2);
+    box-shadow: 0 0 12px var(--Soft-Black);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 6px var(--Soft-Black);
+  }
+}
+
 .skill-images-container div.filled {
   background-color: var(--Soft-Black);
+  animation: charge-animation 1s ease forwards, pulse 1.5s ease;
 }
 
 /* Responsive Design */
