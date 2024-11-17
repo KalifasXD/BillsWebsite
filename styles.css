@@ -1284,7 +1284,7 @@ body.dark-mode .checkbox-label .ball{
 
   /* Contact form adjustments */
   .contact-form {
-    width: 90%; /* Full width on mobile */
+    width: 90% !important; /* Full width on mobile */
   }
   .contact h2 {
     font-size: 2em; /* Smaller heading */
