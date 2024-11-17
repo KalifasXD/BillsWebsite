@@ -324,14 +324,33 @@ a {
   justify-content: center;
 }
 
+.about-container {
+  margin: 0 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-container img {
+  width: 22%;
+  height: 22%;
+  border-radius: 20%;
+  box-shadow: 0 0 30px 10px var(--Soft-Black),
+              0 0 50px 20px var(--Soft-Black) inset;
+}
+
 .about h2 {
   text-align: center;
   margin: 10px auto;
 }
 
 .about p {
-  text-align: justify;
-  font-size: 22px;
+  font-size: 18px;
+  text-align: justify; /* Align text to the right */
+  margin-left: auto; /* Push the paragraph to the right */
+  width: 100%; /* Allow the paragraph to extend fully */
 }
 
 .about h2::after {
@@ -347,6 +366,28 @@ a {
     var(--Active-Gold) 10%,       /* Fully opaque */
     var(--Active-Gold) 90%,       /* Fully opaque */
     #b35e2c00 100%);
+}
+
+@media (max-width: 760px) {
+  /* Further adjustments for extra-small screens */
+  .about-container {
+    flex-direction: column;
+  }
+
+  .about h2::after {
+    margin: 15px 0 25px 0;
+  }
+
+  .about-container img {
+    width: 75%;
+    height: 75%;
+    margin: 0;
+  }
+
+  .about-container p {
+    margin: 0;
+  }
+
 }
 
 .timeline {
@@ -413,8 +454,8 @@ a {
   background-color: var(--Active-Gold);
   background: linear-gradient(to right, 
     #b35e2c00 0%,        
-    var(--Dark-Beige) 10%,       
-    var(--Dark-Beige) 90%,       
+    var(--Active-Gold) 10%,       
+    var(--Active-Gold) 90%,       
     #b35e2c00 100%);
 }
 
@@ -531,7 +572,7 @@ a {
   content: "•";
   color: var(--Soft-Black);
   position: absolute;
-  top: 0px;
+  top: 8px;
   transform: scale(0);
   left: -52px;
   font-size: 2rem;
@@ -792,7 +833,7 @@ p {
 }
 
 .skill-images-container div.filled {
-  background-color: var(--Soft-Black);
+  background-color: var(--Light-Mode-Active-Menu-Timeline);
   animation: charge-animation 1s ease forwards, pulse 1.5s ease;
 }
 
@@ -1029,6 +1070,11 @@ body.dark-mode .timeline :is(h1, p, a) {
 
 body.dark-mode .nav-btn {
   color: var(--Dark-Mode-Hover-Gold);
+}
+
+body.dark-mode .about-container img {
+  box-shadow: 0 0 30px 10px var(--Soft-White),
+              0 0 50px 20px var(--Soft-White) inset;
 }
 
 body.dark-mode .skill-images-container div  {

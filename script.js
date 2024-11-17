@@ -131,8 +131,8 @@ document.addEventListener("DOMContentLoaded", () => {
       document.querySelectorAll("section").forEach((section) => {
           const sectionTop = section.offsetTop;
           const sectionBottom = sectionTop + section.offsetHeight;
-
           const activeLink = document.querySelector(`.navbar a[href="#${section.id}"]`);
+
           if (activeLink) {
               activeLink.classList.toggle("active", scrollPos >= sectionTop && scrollPos < sectionBottom);
           }
