@@ -887,7 +887,7 @@ p {
   }
 
   .skills-column > h2:first-of-type {
-    font-size: 1.2rem; /* Smaller font size for mobile */
+    font-size: 1.4rem; /* Smaller font size for mobile */
     padding: 5px;
     margin: 10px 0;
   }
