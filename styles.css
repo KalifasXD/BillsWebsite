@@ -29,7 +29,7 @@ body {
 }
 
 .extra-padding {
-  padding: 100px 50px;
+  padding: 100px 0px;
 }
 
 /* Scrollbar Styling */
@@ -736,7 +736,7 @@ p {
   flex-direction: row;
   align-items: flex-start;
   justify-content: center;
-  width: 100%;  
+  width: 100vw;  
   height: auto;
 }
 
