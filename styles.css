@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Faculty+Glyphic&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 * {
   margin: 0;
@@ -749,6 +750,23 @@ p {
   align-items: center;
 }
 
+.skills-column > h2:first-of-type {
+  text-align: center !important;
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 1) inset;
+  border:1px solid var(--Active-Gold);
+  width: 100%;
+  height: auto;
+  padding: 15px 0;
+  font-weight: 300;
+  font-family: "Faculty Glyphic", sans-serif !important;
+  font-size: 28px;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .skills-column {
   display: flex;
   justify-content: space-between;
@@ -805,6 +823,11 @@ p {
   animation-delay: 1s;
 }
 
+.skill-images-container div.filled {
+  background-color: var(--Light-Mode-Active-Menu-Timeline);
+  animation: charge-animation 1s ease forwards, pulse 1.5s ease;
+}
+
 /* Animation keyframes for charging effect */
 @keyframes charge-animation {
   from {
@@ -832,57 +855,65 @@ p {
   }
 }
 
-.skill-images-container div.filled {
-  background-color: var(--Light-Mode-Active-Menu-Timeline);
-  animation: charge-animation 1s ease forwards, pulse 1.5s ease;
-}
-
-/* Responsive Design */
+/* For devices with max-width of 768px (tablets and smaller) */
 @media (max-width: 768px) {
-  /* Adjust the skills container for smaller devices */
   .skills-container {
-    flex-direction: column; /* Stack columns vertically */
-    align-items: center; /* Center-align on small screens */
+    flex-direction: column; /* Stacks items vertically */
+    padding: 10px; /* Adds spacing for readability */
   }
 
-  .skills-column {
-    align-items: center; /* Center-align skills in each column */
-    width: 90%; /* Reduce width for better spacing */
+  .skill {
+    width: 100%; /* Full width for stacking */
+    padding: 0px 10px;
   }
 
-  .skill h2 {
-    font-size: 1.2rem; /* Smaller heading font */
+  .skills-column > h2:first-of-type {
+    font-size: 1.2rem; /* Smaller font size for mobile */
+    padding: 5px;
+    margin: 10px 0;
+  }
+
+  #skills > h2:first-of-type:after {
+    width: 20%; /* Slightly larger line for visibility */
   }
 
   .skill-images-container {
-    flex-wrap: wrap; /* Allow images to wrap */
-    justify-content: center; /* Center images on small screens */
+    gap: 8px; /* Reduced gap between circles */
   }
 
   .skill-images-container div {
-    width: 15px; /* Reduce circle size for small screens */
-    height: 15px;
-    margin: 3px; /* Reduce spacing between circles */
+    width: 25px; /* Larger for touch devices */
+    height: 25px;
+    margin: 5px; /* Consistent spacing */
   }
 }
 
+/* For devices with max-width of 480px (phones) */
 @media (max-width: 480px) {
-  /* Further adjustments for extra-small screens */
   .skills-container {
-    padding: 10px;
+    padding: 5px; /* More compact spacing */
   }
 
   .skill h2 {
-    font-size: 1rem; /* Smaller heading font */
-    padding: 5px 0;
+    font-size: 1rem; /* Adjust heading size for small screens */
+  }
+
+  .skills-column {
+    margin: 5px 0; /* Reduced margin */
   }
 
   .skill-images-container div {
-    width: 12px; /* Smaller circles for very small screens */
-    height: 12px;
-    margin: 2px;
+    width: 20px; /* Slightly smaller for very small screens */
+    height: 20px;
+    margin: 0;
+    padding: 0;
+  }
+
+  #skills > h2:first-of-type:after {
+    width: 25%; /* Even larger line for visibility */
   }
 }
+
 
 
 /* Contact Section */
@@ -1080,6 +1111,10 @@ body.dark-mode .about-container img {
 body.dark-mode .skill-images-container div  {
   background-color: var(--Soft-Black); /* Dark skill bar fill */
   box-shadow: 0 0 4px var(--Soft-White);
+}
+
+body.dark-mode .skills-column > h2:first-of-type {
+  box-shadow: 0 0px 10px var(--Soft-White);
 }
 
 /* Animation keyframes for charging effect */
