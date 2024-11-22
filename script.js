@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const slides = document.querySelectorAll(".slide");
-  const navButtons = document.querySelectorAll(".nav-btn");
   const menuIcon = document.querySelector(".menu-icon");
   const menu = document.querySelector(".navbar ul");
   const navLinks = document.querySelectorAll(".navbar .nav-link");
@@ -8,19 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const hamburger = document.querySelector(".hamburger-menu");
   const navigation = document.querySelector(".navigation");
   const skills = document.querySelectorAll(".skill");
-
-  // Helper function to update active slide
-  const changeSlide = (index) => {
-      if (index >= 0 && index < slides.length) {
-          slides.forEach((slide, i) => {
-              slide.classList.toggle("active", i === index);
-          });
-          navButtons.forEach((button, i) => {
-              button.classList.toggle("active", i === index);
-          });
-          currentSlideIndex = index;
-      }
-  };
 
   const observerOptions = {
     root: null, // Observe viewport
@@ -109,6 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const experienceSection = document.getElementById("experience");
   const slides = Array.from(experienceSection.querySelectorAll(".slide"));
   const navButtons = Array.from(experienceSection.querySelectorAll(".nav-btn"));
+  const navLinks = document.querySelectorAll(".nav-link");
 
   let currentIndex = 0;
   let isScrolling = false;
@@ -246,6 +232,21 @@ document.addEventListener("DOMContentLoaded", () => {
   // Attach scroll listener only when section is in view
   experienceSection.addEventListener("wheel", handleScroll);
 
-  // Initialize the first slide as active
-  slides[currentIndex].classList.add("active");
+  navLinks.forEach(link => {
+    link.addEventListener("click", e => {
+      setTimeout(() => {
+        const targetIndex = Array.from(navLinks).indexOf(link); // Get index of the clicked nav item
+        const experienceIndex = Array.from(navLinks).findIndex((navLink) =>
+        navLink.getAttribute("href").includes("experience"));
+        if(targetIndex > experienceIndex) {
+          currentIndex = slides.length - 1; // Reset to first slide
+          updateSlideClasses(currentIndex, "up"); // Update slide classes
+        }else{
+          currentIndex = 0;
+          updateSlideClasses(currentIndex, "down");
+        }
+        unlockScroll();
+      }, 300); // Delay to make sure we unlock after a while so we are outside of the section
+    })
+  });
 });

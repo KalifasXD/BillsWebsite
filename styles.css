@@ -434,6 +434,11 @@ a {
   height: 85vh;
 }
 
+.timeline h1:first-of-type {
+  margin-top: 20px;
+  margin-bottom: 0px;
+} 
+
 .timeline h1 {
   font-size: 3.5em;
   color: var(--Soft-Black);
@@ -494,6 +499,7 @@ a {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  height: 100vh;
 }
 
 .slide {
