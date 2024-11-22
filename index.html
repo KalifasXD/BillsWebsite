@@ -8,9 +8,15 @@
   <link rel="stylesheet" href="styles.css?v=5">
   <!-- Include ScrollMagic and GSAP plugin -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.0/TweenMax.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.3/ScrollMagic.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.3/plugins/animation.gsap.min.js"></script>
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <!-- ScrollMagic -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"></script>
+  <!-- ScrollMagic GSAP Plugin (Optional for GSAP 3 Integration) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/plugins/animation.gsap.min.js"></script>
+  <!-- Debugging Plugin (Optional) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/plugins/debug.addIndicators.min.js"></script>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
   <script src="script.js"></script>
@@ -33,7 +39,7 @@
     <ul>
       <li><a href="#home" class="nav-link active">Home</a></li>
       <li><a href="#biography" class="nav-link">Biography</a></li>
-      <li><a href="#experience2" class="nav-link">Experience</a></li>
+      <li><a href="#experience" class="nav-link">Experience</a></li>
       <li><a href="#skills" class="nav-link">Skills</a></li>
       <li><a href="#contact" class="nav-link">Contact</a></li>
     </ul>
@@ -51,7 +57,7 @@
     <h1>HI, I AM VASILEIOS DOUNAVIS</h1>
     <p>An aspiring Software Engineer with a passion for coding, focusing on both Frontend and Backend web development, as well as CyberSecurity, which I explored in my thesis. 
       I'm always excited to apply my expertise to Desktop or Mobile Apps, Websites, and Video Games, always driven by my love for programming.</p>
-    <a class="arrow quick-links" href="#experience2" >
+    <a class="arrow quick-links" href="#experience" >
       <span></span>
       <span></span>
       <span></span>
@@ -76,18 +82,18 @@
 
   <!-- Portfolio Section -->
   <section class="timeline" id="experience">
-    <div class="timeline-container" id="experience2">
+    <div class="timeline-container">
       <h1>Experience</h1>
       <a href="#experience" class="hamburger-menu">Menu ☰</a>
       <div class="slides">
-          <div class="slide turqoise active">
+          <div class="slide active">
               <div class="content">
                   <h1>UE4 Marketplace Content Creator</h1>
                   <p class="short-desc">April 2021 to July 2022</p>
                   <p class="long-desc">Epic Games contracted me in May 2021 and December 2022 to be a sponsored content creator for the Unreal Engine 4 Marketplace. This partnership with a leading industry player has provided me with a unique platform to showcase my expertise and share high-quality assets and resources with the Unreal Engine community. It’s been an enriching experience working closely with Epic Games to create valuable content that empowers developers worldwide to bring ideas to life using Unreal Engine.</p>
               </div>
           </div>
-          <div class="slide green">
+          <div class="slide">
               <div class="content">
                   <h1>FullStack Developer</h1>
                   <p class="short-desc">March 2022 to October 2024</p>
@@ -98,14 +104,14 @@
                     requirements and specifications.</p>
               </div>
           </div>
-          <div class="slide bordeaux">
+          <div class="slide">
               <div class="content">
                   <h1>Lush Forest</h1>
                   <p class="short-desc">Greenery as far as the eye can see.</p>
                   <p class="long-desc">Step into a vibrant forest filled with diverse flora and fauna. Step into a vibrant forest filled withStep into a vibrant forest filled withStep into a vibrant forest filled withA true paradise for nature lovers and adventure seekers.</p>
               </div>
           </div>
-          <div class="slide blue">
+          <div class="slide">
               <div class="content">
                   <h1>Client Collaboration</h1>
                   <p class="short-desc">June 2020 to October 2023</p>
@@ -114,7 +120,7 @@
                     Additionally, I provided ongoing maintenance and support for completed projects, addressing any issues and implementing updates as required.</p>
               </div>
           </div>
-          <div class="slide red">
+          <div class="slide">
               <div class="content">
                   <h1>University Work</h1>
                   <p class="short-desc">October 2019 to September 2023</p>

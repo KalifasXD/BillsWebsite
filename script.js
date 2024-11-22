@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const controller = new ScrollMagic.Controller();
   const slides = document.querySelectorAll(".slide");
   const navButtons = document.querySelectorAll(".nav-btn");
   const menuIcon = document.querySelector(".menu-icon");
@@ -9,9 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const hamburger = document.querySelector(".hamburger-menu");
   const navigation = document.querySelector(".navigation");
   const skills = document.querySelectorAll(".skill");
-
-  let currentSlideIndex = 0;
-  let experiencePin;
 
   // Helper function to update active slide
   const changeSlide = (index) => {
@@ -59,43 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Observe each skill element
   skills.forEach(skill => skillObserver.observe(skill));
 
-
-  // Initialize ScrollMagic Scene
-  const initScrollMagic = () => {
-      const experienceSection = document.querySelector("#experience");
-
-      if (experiencePin) {
-          experiencePin.destroy(true); // Clear the old scene
-      }
-
-      experiencePin = new ScrollMagic.Scene({
-          triggerElement: "#experience",
-          triggerHook: 0.1,
-          duration: '55%',
-      })
-          .on("start", (e) => {
-            document.querySelector(`.navbar a[href="#experience2"]`).classList.add("active");
-          })
-          .on("enter", (e) => {
-            document.querySelector(`.navbar a[href="#experience2"]`).classList.add("active");
-          })
-          .on("progress", (e) => {
-              const nextSlideIndex = Math.round(e.progress * (slides.length - 1));
-              if (nextSlideIndex !== currentSlideIndex) {
-                  changeSlide(nextSlideIndex);
-              }
-          })
-          .on("leave", (e) => {
-            document.querySelector(`.navbar a[href="#experience2"]`).classList.remove("active");
-          })
-          .setPin("#experience")
-          .addTo(controller);
-  };
-
-  // Navigation button events
-  navButtons.forEach((button, index) => {
-      button.addEventListener("click", () => changeSlide(index));
-  });
+  
 
   // Hamburger menu toggle
   menuIcon.addEventListener("click", () => {
@@ -143,10 +103,149 @@ document.addEventListener("DOMContentLoaded", () => {
   hamburger.addEventListener("click", () => {
       navigation.classList.toggle("active");
   });
+});
 
-  // Handle window resizing
-  window.addEventListener("resize", initScrollMagic);
+document.addEventListener("DOMContentLoaded", () => {
+  const experienceSection = document.getElementById("experience");
+  const slides = Array.from(experienceSection.querySelectorAll(".slide"));
+  const navButtons = Array.from(experienceSection.querySelectorAll(".nav-btn"));
 
-  // Initialize on page load
-  initScrollMagic();
+  let currentIndex = 0;
+  let isScrolling = false;
+  let isSectionInView = false;
+  let isAtBoundary = false;
+
+
+  navButtons.forEach((button, index) => {
+    button.addEventListener("click", () => {
+      if (currentIndex !== index) {
+        const direction = index > currentIndex ? "down" : "up";
+        currentIndex = index; // Update current index
+        isScrolling = true;
+        updateSlideClasses(currentIndex, direction);
+
+        // Set timeout to match the transition duration
+        setTimeout(() => {
+          isScrolling = false;
+        }, 800); // Match with CSS animation duration
+
+        console.log("Nav button clicked, moved to slide:", currentIndex);
+      }
+    });
+  });
+
+  const lockScroll = () => {
+    console.log("Scroll locked");
+    document.body.style.overflow = "hidden";
+    sectionObserver.disconnect();
+    experienceSection.addEventListener("wheel", handleScroll);
+  };
+
+  const unlockScroll = () => {
+    console.log("Scroll unlocked");
+    document.body.style.overflow = "auto";
+    sectionObserver.observe(experienceSection);
+    experienceSection.removeEventListener("wheel", handleScroll);
+  };
+
+  const updateSlideClasses = (newIndex, direction) => {
+    slides.forEach((slide, idx) => {
+      slide.classList.remove(
+        "slide-in-right",
+        "slide-in-left",
+        "slide-out-right",
+        "slide-out-left",
+        "active"
+      );
+
+      if (idx === newIndex) {
+        slide.classList.add("active", direction === "down" ? "slide-in-right" : "slide-in-left");
+      } else if (idx === currentIndex) {
+        slide.classList.add(direction === "down" ? "slide-out-left" : "slide-out-right");
+      }
+    });
+
+    navButtons.forEach((button, idx) => {
+      button.classList.remove("active");
+      if (idx === newIndex) {
+        button.classList.add("active");
+      }
+    });
+  };
+
+  const handleScroll = (event) => {
+    if (!isSectionInView || isAtBoundary) {
+      console.log("Scroll ignored. Section not fully in view or at boundary.");
+      return;
+    }
+  
+    if (isScrolling) {
+      console.log("Scroll is locked or in progress.");
+      return;
+    }
+  
+    const deltaY = event.deltaY;
+  
+    let direction = null;
+  
+    // Determine direction and update index if possible
+    if (deltaY > 0 && currentIndex < slides.length - 1) {
+      direction = "down";
+      currentIndex++;
+    } else if (deltaY < 0 && currentIndex > 0) {
+      direction = "up";
+      currentIndex--;
+    }
+  
+    // Handle scrolling
+    if (direction) {
+      isScrolling = true;
+      updateSlideClasses(currentIndex, direction);
+  
+      setTimeout(() => {
+        isScrolling = false;
+      }, 800); // Match with CSS animation duration
+    }
+  
+    // Handle boundaries (first and last slides)
+    if (currentIndex === 0 || currentIndex === slides.length - 1) {
+      isAtBoundary = true; // Set the flag to true at boundaries
+      unlockScroll();
+    } else {
+      isAtBoundary = false; // Reset the flag for middle slides
+    }
+  };
+  
+  // Observer to handle section visibility
+  const sectionObserver = new IntersectionObserver(
+    ([entry]) => {  
+      // Reset isAtBoundary when section is outside of view
+      if (isAtBoundary) {
+        if(entry.intersectionRatio <= 0.925){
+          isAtBoundary = false; // Section is no longer in view, reset boundary flag
+        }
+        return
+      }
+  
+      // If the section is in view and not at the boundary, lock scrolling
+      if (entry.intersectionRatio > 0.925) {
+        isSectionInView = true;
+        lockScroll();
+      } else {
+        isSectionInView = false;
+      }
+    },
+    {
+      threshold: Array.from({ length: 101 }, (_, i) => i / 100), // Fine-grained thresholds
+    }
+  );
+  
+
+  sectionObserver.observe(experienceSection);
+
+  // Attach scroll listener only when section is in view
+  experienceSection.addEventListener("wheel", handleScroll);
+
+  // Initialize the first slide as active
+  slides[currentIndex].classList.add("active");
 });

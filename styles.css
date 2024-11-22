@@ -26,6 +26,7 @@ body {
   background-color: #f4f4f4;  /* Light background color */
   color: #333;  /* Dark text for contrast */
   overflow-x: hidden;
+  scroll-snap-type: y mandatory;
 }
 
 .extra-padding {
@@ -427,10 +428,10 @@ a {
 .timeline-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   position: relative;
-  padding-top: 0;
+  height: 85vh;
 }
 
 .timeline h1 {
@@ -440,15 +441,12 @@ a {
   opacity: 0;
   transform: translateX(300px);
   animation: SlideFade 1s forwards 0.3s;
-  margin: 0;
-  margin-top: 10px;
 }
 
 /* Add a line after the heading */
 .timeline h1::after {
   content: '';
   display: block;
-  margin: 10px auto;
   border-radius: 2px;
   width: 100%;
   height: 3px;
@@ -483,10 +481,10 @@ a {
 }
 
 .slides {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  min-height: 100%;
   position: relative;
-  top: -150px;
+  top: -0;
   margin-top: 30px;
 }
 
@@ -494,13 +492,13 @@ a {
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 
 .slide {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   display: none;
   justify-content: center;
   align-items: center;
@@ -509,13 +507,86 @@ a {
   background-position: center;
   padding: 20px;
   text-align: center;
-  transition: transform 5s ease-in-out;
-  transform: translateX(100%);
+  opacity: 0; /* Make sure slides are hidden initially */
+  transform: translateY(100%);
+  transition: transform 0.8s ease, opacity 0.8s ease;
 }
 
+
+/* Active slide */
 .slide.active {
   display: flex;
-  transform: translateX(0);
+  opacity: 1;
+  transform: translateY(0);
+  transition: transform 0.8s ease, opacity 0.8s ease;
+}
+
+/* Optional: Slide out effect for the previous slide */
+.slide.previous {
+  opacity: 0.5;
+  transform: translateY(-100%);
+}
+
+/* Slide transitions */
+.slide-in-right {
+  animation: slideInRight 0.8s forwards;
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.8s forwards;
+}
+
+.slide-out-right {
+  animation: slideOutRight 0.8s forwards;
+}
+
+.slide-out-left {
+  animation: slideOutLeft 0.8s forwards;
+}
+
+/* Keyframes for slide animations */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+@keyframes slideOutLeft {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
 }
 
 /* Main Navigation Container */
