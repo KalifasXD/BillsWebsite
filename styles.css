@@ -1350,8 +1350,13 @@ body.dark-mode .timeline :is(h1, p, a) {
 }
 
 body.dark-mode .nav-btn {
-  color: var(--Dark-Mode-Hover-Gold);
+  color: var(--Soft-White);
 }
+
+body.dark-mode .nav-btn::before{
+  color: var(--Soft-White);
+}
+
 
 body.dark-mode .about-container img {
   box-shadow: 0 0 30px 10px var(--Soft-White),
