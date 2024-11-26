@@ -250,3 +250,38 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const homeSection = document.querySelector('#home');
+  const aboutSection = document.querySelector('.about');
+
+  // Function to check if the user is in the home section
+  function isInHomeSection() {
+    const rect = homeSection.getBoundingClientRect();
+    return rect.bottom > 0 && rect.top < window.innerHeight;
+  }
+
+  let hasScrolledToAbout = false; // To prevent repetitive scroll triggers
+  let lastScrollY = window.scrollY; // Track the last scroll position
+
+  // Scroll event listener
+  window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
+
+    // Detect scroll direction
+    const scrollingDown = currentScrollY > lastScrollY;
+
+    // If in the home section and scrolling down, scroll to about
+    if (isInHomeSection() && scrollingDown && !hasScrolledToAbout) {
+      hasScrolledToAbout = true; // Prevent multiple triggers
+      aboutSection.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Reset the ability to scroll to about when back at the top of home
+    if (isInHomeSection() && !scrollingDown) {
+      hasScrolledToAbout = false;
+    }
+
+    lastScrollY = currentScrollY; // Update the last scroll position
+  });
+});

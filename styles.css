@@ -20,14 +20,20 @@
   --GradientHero-Light-Mode:#FEEADB, #F3EBEE, #FEEADB ;
 }
 
+html{
+  
+}
+
+
 /* Body */
 body {
   font-family: 'Rubik', sans-serif;
   background-color: #f4f4f4;  /* Light background color */
   color: #333;  /* Dark text for contrast */
   overflow-x: hidden;
-  scroll-snap-type: y mandatory;
 }
+
+
 
 .extra-padding {
   padding: 100px 0px;
@@ -665,23 +671,23 @@ a {
 @media (max-width: 768px) {
   .timeline h1 {
     font-size: 2.5em;
-    margin-bottom: 5px; /* Reduce space after heading */
+    margin-bottom: 10px; /* Maintain a consistent gap */
   }
 
   .content {
-    margin-top: 5px; /* Reduce space above content */
+    margin-top: 10px; /* Adjust spacing for clarity */
   }
 
   .timeline p {
-    font-size: 1.1em;
-    width: 80%;
+    font-size: 1.2em; /* Slightly larger for readability */
+    width: 85%;
   }
 
   .slides {
-    width: 80vw;
+    width: 85vw; /* Maintain proportional scaling */
   }
 
-  /* Horizontal navigation at the top for mobile */
+  /* Horizontal navigation for smaller devices */
   .navigation {
     position: fixed;
     top: 0;
@@ -689,30 +695,30 @@ a {
     width: 100%;
     height: auto;
     flex-direction: row;
-    justify-content: space-around;
-    padding: 5px;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    justify-content: space-evenly; /* Center navigation buttons evenly */
+    padding: 8px;
+    background-color: rgba(0, 0, 0, 0.6); /* Slightly darker for better contrast */
   }
 
   .navigation::before {
-    content: none; /* Hide vertical line */
+    display: none; /* Completely hide the vertical line */
   }
 
   .nav-btn {
-    font-size: 1.1rem;
-    width: auto;
-    padding: 8px 12px;
+    font-size: 1rem; /* Consistent and compact */
+    padding: 6px 10px;
   }
 }
 
 @media (max-width: 576px) {
   .timeline h1 {
-    font-size: 2em;
+    font-size: 2.2em; /* Maintain visual hierarchy */
+    margin-bottom: 8px;
   }
 
   .timeline p {
     font-size: 1em;
-    width: 90%;
+    width: 90%; /* Narrower for smaller screens */
   }
 
   .slides {
@@ -720,30 +726,41 @@ a {
   }
 
   .nav-btn {
-    font-size: 1rem;
+    font-size: 0.95rem; /* Proportional scaling */
     padding: 5px 10px;
+  }
+
+  .content {
+    margin-top: 8px;
   }
 }
 
 @media (max-width: 400px) {
   .timeline h1 {
-    font-size: 1.8em;
+    font-size: 1.8em; /* Smaller yet legible */
+    margin-bottom: 6px;
   }
 
   .timeline p {
-    font-size: 0.9em;
+    font-size: 0.9em; /* Compact text for small screens */
     width: 95%;
   }
 
   .slides {
-    width: 90vw;
+    width: 95vw; /* Maximize available space */
   }
 
   .nav-btn {
-    font-size: 0.9rem;
+    font-size: 0.85rem; /* Optimized for ultra-small devices */
     padding: 5px 8px;
   }
+
+  .navigation {
+    padding: 4px;
+    background-color: rgba(0, 0, 0, 0.7); /* Slightly darker for extra visibility */
+  }
 }
+
 
 .hamburger-menu {
   color: var(--Active-Gold); /* Ensure contrast with background */
