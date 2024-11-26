@@ -337,7 +337,25 @@ a {
   z-index: 1; /* Above the hero section */
   padding: 20px;
   transition: all 1s cubic-bezier(0.42, 0, 0.58, 1), transform 1s ease-out; /* Smooth transitions */
+  animation: unfoldEffect 1.2s ease-out forwards;
 }
+
+/* Animation for the container expanding */
+@keyframes unfoldEffect {
+  0% {
+    transform: scale(0.6) translateY(40px); /* Start small and move slightly */
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1) translateY(20px); /* Scale up a bit more */
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1) translateY(0); /* End at full size */
+    opacity: 1;
+  }
+}
+
 
 /* Expanded state: Full-size about section */
 .about.full-view {
@@ -355,26 +373,34 @@ a {
   border-radius: 0; /* Remove rounded corners */
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1), 0 0 60px rgba(255, 255, 255, 0.3); /* Soft shadow */
   transition: all 1s cubic-bezier(0.42, 0, 0.58, 1); /* Smooth transition to full size */
-  animation: elegantReveal 1.5s ease-out forwards; /* Subtle animations */
+  animation: popOffEffect 2s ease-out forwards, shadowPulse 2s ease-in-out infinite;
 }
 
-/* Elegant reveal effect for the final state */
-@keyframes elegantReveal {
+/* Popping off animation */
+@keyframes popOffEffect {
   0% {
-    transform: scale(0.5) translateY(40px);
-    opacity: 0;
-  }
-  40% {
-    transform: scale(1.05) translateY(-10px); /* Slight overshoot for fluidity */
-    opacity: 0.6;
+    transform: scale(0.5) translateY(30px); /* Start small and slightly below */
+    opacity: 0; /* Fully transparent */
   }
   60% {
-    transform: scale(1) translateY(0); /* Return to final position */
-    opacity: 1;
+    transform: scale(1.1) translateY(-10px); /* Slight overshoot for the 'pop' effect */
+    opacity: 1; /* Fully opaque */
   }
   100% {
-    transform: scale(1) translateY(0);
-    opacity: 1;
+    transform: scale(1) translateY(0); /* Final scale and position */
+  }
+}
+
+/* Subtle shadow pulse for dynamic effect */
+@keyframes shadowPulse {
+  0% {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1), 0 0 60px rgba(255, 255, 255, 0.3); /* Soft glow */
+  }
+  50% {
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15), 0 0 80px rgba(255, 255, 255, 0.4); /* Expanded glow */
+  }
+  100% {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1), 0 0 60px rgba(255, 255, 255, 0.3); /* Soft glow */
   }
 }
 
@@ -385,13 +411,14 @@ a {
   letter-spacing: 1px; /* Slightly increased spacing for elegance */
   text-align: center;
   text-transform: uppercase;
+  transform: translateY(40px);
   padding: 12px 30px; /* Add some padding around the text */
   border: 2px solid transparent; /* Initially invisible border */
   border-radius: 12px; /* Rounded corners */
   background: linear-gradient(rgb(255, 255, 255, 0.5), rgb(255, 255, 255, 0.5)) padding-box, 
               linear-gradient(120deg, rgb(var(--Light-Beige), 0.5), rgb(139, 94, 60, 0.5)) border-box; /* Flashy gradient border */
   box-shadow: 0 0 10px rgba(223, 173, 87, 0.6), 0 0 30px rgba(139, 94, 60, 0.3); /* Soft glow */
-  animation: h2Appear 1s ease-out forwards, borderGlow 3s infinite; /* Apply animations */
+  animation: borderGlow 3s infinite; /* Apply animations */
 }
 
 /* Keyframe animation for the circulating border glowing effect */
@@ -458,8 +485,9 @@ a {
 
 .about.full-view  h2 {
   position: relative;
+  transform: translateY(0px);
   text-align: center;
-  margin: 10px auto;
+  margin: 0px auto;
   font-weight: 600;
   font-size: 2rem;
   letter-spacing: 1px; /* Optional */
@@ -475,8 +503,8 @@ a {
   margin-left: auto; /* Push the paragraph to the right */
   width: 100%; /* Allow the paragraph to extend fully */
 }
-
-.about h2::after {
+  
+.about.full-view h2::after {
   content: '';
   display: block;
   margin: 10px auto;

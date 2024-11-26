@@ -258,7 +258,8 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
   const homeSection = document.querySelector('#home');
   const aboutSection = document.querySelector('.about.extra-padding');
-  const offset = 100;
+  const offset = 200;
+
   // Helper function to check if a section is fully visible
   function isFullyVisible(el) {
     const rect = el.getBoundingClientRect();
