@@ -347,7 +347,7 @@ a {
     opacity: 0;
   }
   50% {
-    transform: scale(1.1) translateY(20px); /* Scale up a bit more */
+    transform: scale(1.05) translateY(20px); /* Scale up a bit more */
     opacity: 0.8;
   }
   100% {
