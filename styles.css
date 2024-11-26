@@ -20,11 +20,6 @@
   --GradientHero-Light-Mode:#FEEADB, #F3EBEE, #FEEADB ;
 }
 
-html{
-  
-}
-
-
 /* Body */
 body {
   font-family: 'Rubik', sans-serif;
@@ -329,20 +324,19 @@ a {
 .about {
   position: absolute;
   bottom: 5%; /* Near the bottom of the hero */
-  left: 25%; /* Centered horizontally in its smaller state */
+  left: 25%; /* Centered horizontally */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 50%; /* Smaller width for temporary state */
-  height: 25px; /* Compact height initially */
-  opacity: 0.9; /* Slight transparency */
-  transform: scale(0.8); /* Slightly shrunken initially */
-  transition: all 0.5s ease-in-out; /* Smooth transitions */
-  z-index: 1; /* Above the hero */
-  border-radius: 10px; /* Rounded corners */
+  width: 50%; /* Smaller width initially */
+  height: 100px; /* Compact height */
+  transform: translateY(40px); /* Start small and move slightly */
+  pointer-events: none; /* Disable interactions initially */
+  background: transparent;
+  z-index: 1; /* Above the hero section */
   padding: 20px;
-  pointer-events: none; /* Prevent interaction */
+  transition: all 1s cubic-bezier(0.42, 0, 0.58, 1), transform 1s ease-out; /* Smooth transitions */
 }
 
 /* Expanded state: Full-size about section */
@@ -351,14 +345,82 @@ a {
   bottom: unset; /* Reset position */
   left: unset; /* Reset position */
   width: 100%; /* Full width */
-  height: auto; /* Expand to fit content */
-  opacity: 1; /* Fully opaque */
-  transform: scale(1); /* Scale up to full size */
-  background: white; /* Solid background */
+  height: auto; /* Expand height automatically */
+  transform: scale(1) translateY(0); /* Final full size and position */
+  opacity: 1; /* Full opacity */
+  pointer-events: auto; /* Enable interactions */
+  padding: 60px 40px;
+  z-index: 2; /* Above the home section */
+  background: #fff; /* Simple white background */
   border-radius: 0; /* Remove rounded corners */
-  pointer-events: auto; /* Enable interaction */
-  padding: 100px 0;
-  z-index: auto; /* Restore normal stacking */
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1), 0 0 60px rgba(255, 255, 255, 0.3); /* Soft shadow */
+  transition: all 1s cubic-bezier(0.42, 0, 0.58, 1); /* Smooth transition to full size */
+  animation: elegantReveal 1.5s ease-out forwards; /* Subtle animations */
+}
+
+/* Elegant reveal effect for the final state */
+@keyframes elegantReveal {
+  0% {
+    transform: scale(0.5) translateY(40px);
+    opacity: 0;
+  }
+  40% {
+    transform: scale(1.05) translateY(-10px); /* Slight overshoot for fluidity */
+    opacity: 0.6;
+  }
+  60% {
+    transform: scale(1) translateY(0); /* Return to final position */
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Initial state: The h2 tag with subtle glowing border */
+.about h2 {
+  font-size: 2.2rem; /* Elegant font size */
+  font-weight: 700;
+  letter-spacing: 1px; /* Slightly increased spacing for elegance */
+  text-align: center;
+  text-transform: uppercase;
+  padding: 12px 30px; /* Add some padding around the text */
+  border: 2px solid transparent; /* Initially invisible border */
+  border-radius: 12px; /* Rounded corners */
+  background: linear-gradient(rgb(255, 255, 255, 0.5), rgb(255, 255, 255, 0.5)) padding-box, 
+              linear-gradient(120deg, rgb(var(--Light-Beige), 0.5), rgb(139, 94, 60, 0.5)) border-box; /* Flashy gradient border */
+  box-shadow: 0 0 10px rgba(223, 173, 87, 0.6), 0 0 30px rgba(139, 94, 60, 0.3); /* Soft glow */
+  animation: h2Appear 1s ease-out forwards, borderGlow 3s infinite; /* Apply animations */
+}
+
+/* Keyframe animation for the circulating border glowing effect */
+@keyframes borderGlow {
+  0% {
+    box-shadow: 0 0 10px rgba(223, 173, 87, 0.4), 0 0 20px rgba(139, 94, 60, 0.3); /* Soft glow */
+    box-shadow: 0 0 5px rgba(223, 173, 87, 0.4), 0 0 20px rgba(139, 94, 60, 0.3) inset; /* Soft glow */
+    border-image: linear-gradient(45deg, #dfad57, #8b5e3c) 1;
+  }
+  25% {
+    box-shadow: 0 0 15px rgba(223, 173, 87, 0.6), 0 0 30px rgba(139, 94, 60, 0.5); /* Moderate glow */
+    box-shadow: 0 0 7.5px rgba(223, 173, 87, 0.6), 0 0 30px rgba(139, 94, 60, 0.5) inset; /* Moderate glow */
+    border-image: linear-gradient(135deg, #dfad57, #8b5e3c) 1.2;
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(223, 173, 87, 0.8), 0 0 40px rgba(139, 94, 60, 0.7); /* Stronger glow */
+    box-shadow: 0 0 10px rgba(223, 173, 87, 0.8), 0 0 40px rgba(139, 94, 60, 0.7) inset; /* Stronger glow */
+    border-image: linear-gradient(225deg, #dfad57, #8b5e3c) 1.4;
+  }
+  75% {
+    box-shadow: 0 0 15px rgba(223, 173, 87, 0.6), 0 0 30px rgba(139, 94, 60, 0.5); /* Moderate glow */
+    box-shadow: 0 0 7.5px rgba(223, 173, 87, 0.6), 0 0 30px rgba(139, 94, 60, 0.5) inset; /* Moderate glow */
+    border-image: linear-gradient(315deg, #dfad57, #8b5e3c) 1.2;
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(223, 173, 87, 0.4), 0 0 20px rgba(139, 94, 60, 0.3); /* Final soft glow */
+    box-shadow: 0 0 5px rgba(223, 173, 87, 0.4), 0 0 20px rgba(139, 94, 60, 0.3) inset; /* Final soft glow */
+    border-image: linear-gradient(45deg, #dfad57, #8b5e3c) 1;
+  }
 }
 
 .about.full-view .about-container {
@@ -393,9 +455,18 @@ a {
               0 0 50px 20px var(--Soft-Black) inset;
 }
 
-.about h2 {
+
+.about.full-view  h2 {
+  position: relative;
   text-align: center;
   margin: 10px auto;
+  font-weight: 600;
+  font-size: 2rem;
+  letter-spacing: 1px; /* Optional */
+  background: none;
+  box-shadow: none;
+  animation: none;
+  border: none;
 }
 
 .about p {
