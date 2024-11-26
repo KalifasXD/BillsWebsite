@@ -336,7 +336,6 @@ a {
   background: transparent;
   z-index: 1; /* Above the hero section */
   padding: 20px;
-  transition: all 1s cubic-bezier(0.42, 0, 0.58, 1), transform 1s ease-out; /* Smooth transitions */
   animation: unfoldEffect 1.2s ease-out forwards;
 }
 
@@ -369,7 +368,6 @@ a {
   pointer-events: auto; /* Enable interactions */
   padding: 60px 40px;
   z-index: 2; /* Above the home section */
-  background: #fff; /* Simple white background */
   border-radius: 0; /* Remove rounded corners */
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1), 0 0 60px rgba(255, 255, 255, 0.3); /* Soft shadow */
   transition: all 1s cubic-bezier(0.42, 0, 0.58, 1); /* Smooth transition to full size */
