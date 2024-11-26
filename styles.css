@@ -210,7 +210,7 @@ a {
 
 /* Hero Section Styling */
 .hero {
-  height: 100vh; /* Full screen height */
+  height: 100dvh; /* Full screen height */
   display: flex;
   justify-content: center; /* Center content horizontally */
   flex-direction: column;
@@ -288,7 +288,7 @@ a {
 
 .arrow {
   position: relative;
-  top: 20%;
+  top: 12%;
   cursor: pointer;
 }
 
@@ -325,12 +325,56 @@ a {
   }
 }
 
-.about{
+/* Initial state: About section in hero section */
+.about {
+  position: absolute;
+  bottom: 5%; /* Near the bottom of the hero */
+  left: 25%; /* Centered horizontally in its smaller state */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 50%; /* Smaller width for temporary state */
+  height: 25px; /* Compact height initially */
+  opacity: 0.9; /* Slight transparency */
+  transform: scale(0.8); /* Slightly shrunken initially */
+  transition: all 0.5s ease-in-out; /* Smooth transitions */
+  z-index: 1; /* Above the hero */
+  border-radius: 10px; /* Rounded corners */
+  padding: 20px;
+  pointer-events: none; /* Prevent interaction */
 }
+
+/* Expanded state: Full-size about section */
+.about.full-view {
+  position: relative; /* Normal document flow */
+  bottom: unset; /* Reset position */
+  left: unset; /* Reset position */
+  width: 100%; /* Full width */
+  height: auto; /* Expand to fit content */
+  opacity: 1; /* Fully opaque */
+  transform: scale(1); /* Scale up to full size */
+  background: white; /* Solid background */
+  border-radius: 0; /* Remove rounded corners */
+  pointer-events: auto; /* Enable interaction */
+  padding: 100px 0;
+  z-index: auto; /* Restore normal stacking */
+}
+
+.about.full-view .about-container {
+  display: flex;
+}
+
+.about .about-container {
+  display: none;
+}
+
+/*.about{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+} */
 
 .about-container {
   margin: 0 20px;
@@ -399,7 +443,7 @@ a {
 }
 
 .timeline {
-  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -437,7 +481,7 @@ a {
   justify-content: flex-start;
   align-items: center;
   position: relative;
-  height: 85vh;
+  height: 85dvh;
 }
 
 .timeline h1:first-of-type {
@@ -505,7 +549,7 @@ a {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  height: 100vh;
+  height: 100dvh;
 }
 
 .slide {
@@ -613,7 +657,7 @@ a {
   align-items: center;
   padding: 10px;
   z-index: 1;
-  height: 100vh;
+  height: 100dvh;
   pointer-events: auto;
 }
 
@@ -784,7 +828,7 @@ a {
   top: 50%;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
   background-color: rgba(0, 0, 0, 0.8);
   color: white;
   flex-direction: column;

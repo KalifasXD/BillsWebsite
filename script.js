@@ -122,6 +122,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const lockScroll = () => {
     console.log("Scroll locked");
+    setTimeout(() => {
+      const targetPosition = experienceSection.getBoundingClientRect().top + window.scrollY - 25;
+      window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+    }, 100);
     document.body.style.overflow = "hidden";
     sectionObserver.disconnect();
     experienceSection.addEventListener("wheel", handleScroll);
@@ -253,35 +257,47 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
   const homeSection = document.querySelector('#home');
-  const aboutSection = document.querySelector('.about');
-
-  // Function to check if the user is in the home section
-  function isInHomeSection() {
-    const rect = homeSection.getBoundingClientRect();
-    return rect.bottom > 0 && rect.top < window.innerHeight;
+  const aboutSection = document.querySelector('.about.extra-padding');
+  const offset = 100;
+  // Helper function to check if a section is fully visible
+  function isFullyVisible(el) {
+    const rect = el.getBoundingClientRect();
+    return rect.top >= 0 && rect.bottom <= window.innerHeight;
   }
 
-  let hasScrolledToAbout = false; // To prevent repetitive scroll triggers
-  let lastScrollY = window.scrollY; // Track the last scroll position
+  // Helper function to check if a section is partially visible
+  function isPartiallyVisible(el, threshold = 0.05) {
+    const rect = el.getBoundingClientRect();
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+    const topVisible = rect.top >= 0 && rect.top < windowHeight * threshold;
+    const bottomVisible = rect.bottom > windowHeight * (1 - threshold) && rect.bottom <= windowHeight;
+    return topVisible || bottomVisible;
+  }
+
+  let hasScrolledToAbout = false; // Prevents multiple triggers
+  let isInFullView = false; // Tracks if about section is in full view
 
   // Scroll event listener
   window.addEventListener('scroll', () => {
-    const currentScrollY = window.scrollY;
+    const homeVisible = isFullyVisible(homeSection);
+    const aboutPartiallyVisible = isPartiallyVisible(aboutSection, 0.9);
 
-    // Detect scroll direction
-    const scrollingDown = currentScrollY > lastScrollY;
-
-    // If in the home section and scrolling down, scroll to about
-    if (isInHomeSection() && scrollingDown && !hasScrolledToAbout) {
-      hasScrolledToAbout = true; // Prevent multiple triggers
-      aboutSection.scrollIntoView({ behavior: 'smooth' });
+    // Scroll down: Expand the about section fully
+    if (!hasScrolledToAbout && aboutPartiallyVisible) {
+      aboutSection.classList.add('full-view');
+      hasScrolledToAbout = true;
+      setTimeout(() => {
+        const targetPosition = aboutSection.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+        isInFullView = true;
+      }, 300);           
     }
 
-    // Reset the ability to scroll to about when back at the top of home
-    if (isInHomeSection() && !scrollingDown) {
+    // Scroll up: Reset the about section when home is fully visible
+    if (homeVisible && isInFullView) {
+      aboutSection.classList.remove('full-view');
       hasScrolledToAbout = false;
+      isInFullView = false;
     }
-
-    lastScrollY = currentScrollY; // Update the last scroll position
   });
 });
