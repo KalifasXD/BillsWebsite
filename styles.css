@@ -402,50 +402,39 @@ a {
   }
 }
 
-/* Initial state: The h2 tag with subtle glowing border */
 .about h2 {
   font-size: 2.2rem; /* Elegant font size */
   font-weight: 700;
-  letter-spacing: 1px; /* Slightly increased spacing for elegance */
+  letter-spacing: 2px; /* Slightly increased spacing */
   text-align: center;
   text-transform: uppercase;
+  color: black; /* Solid black text */
+  position: relative;
+  padding: 12px 30px;
+  z-index: 1; /* Text above all other effects */
+  text-shadow: 0 0 5px rgb(129, 129, 129); /* Subtle initial glow */
+  transition: text-shadow 0.4s ease, transform 0.4s ease;
   transform: translateY(40px);
-  padding: 12px 30px; /* Add some padding around the text */
-  border: 2px solid transparent; /* Initially invisible border */
-  border-radius: 12px; /* Rounded corners */
-  background: linear-gradient(rgb(255, 255, 255, 0.5), rgb(255, 255, 255, 0.5)) padding-box, 
-              linear-gradient(120deg, rgb(var(--Light-Beige), 0.5), rgb(139, 94, 60, 0.5)) border-box; /* Flashy gradient border */
-  box-shadow: 0 0 10px rgba(223, 173, 87, 0.6), 0 0 30px rgba(139, 94, 60, 0.3); /* Soft glow */
-  animation: borderGlow 3s infinite; /* Apply animations */
+  cursor: pointer;
+  border-radius: 8px; /* Rounded corners for the background */
+  padding: 20px 40px; /* Adjust padding for better fit */
 }
 
-/* Keyframe animation for the circulating border glowing effect */
-@keyframes borderGlow {
-  0% {
-    box-shadow: 0 0 10px rgba(223, 173, 87, 0.4), 0 0 20px rgba(139, 94, 60, 0.3); /* Soft glow */
-    box-shadow: 0 0 5px rgba(223, 173, 87, 0.4), 0 0 20px rgba(139, 94, 60, 0.3) inset; /* Soft glow */
-    border-image: linear-gradient(45deg, #dfad57, #8b5e3c) 1;
-  }
-  25% {
-    box-shadow: 0 0 15px rgba(223, 173, 87, 0.6), 0 0 30px rgba(139, 94, 60, 0.5); /* Moderate glow */
-    box-shadow: 0 0 7.5px rgba(223, 173, 87, 0.6), 0 0 30px rgba(139, 94, 60, 0.5) inset; /* Moderate glow */
-    border-image: linear-gradient(135deg, #dfad57, #8b5e3c) 1.2;
-  }
-  50% {
-    box-shadow: 0 0 20px rgba(223, 173, 87, 0.8), 0 0 40px rgba(139, 94, 60, 0.7); /* Stronger glow */
-    box-shadow: 0 0 10px rgba(223, 173, 87, 0.8), 0 0 40px rgba(139, 94, 60, 0.7) inset; /* Stronger glow */
-    border-image: linear-gradient(225deg, #dfad57, #8b5e3c) 1.4;
-  }
-  75% {
-    box-shadow: 0 0 15px rgba(223, 173, 87, 0.6), 0 0 30px rgba(139, 94, 60, 0.5); /* Moderate glow */
-    box-shadow: 0 0 7.5px rgba(223, 173, 87, 0.6), 0 0 30px rgba(139, 94, 60, 0.5) inset; /* Moderate glow */
-    border-image: linear-gradient(315deg, #dfad57, #8b5e3c) 1.2;
-  }
-  100% {
-    box-shadow: 0 0 10px rgba(223, 173, 87, 0.4), 0 0 20px rgba(139, 94, 60, 0.3); /* Final soft glow */
-    box-shadow: 0 0 5px rgba(223, 173, 87, 0.4), 0 0 20px rgba(139, 94, 60, 0.3) inset; /* Final soft glow */
-    border-image: linear-gradient(45deg, #dfad57, #8b5e3c) 1;
-  }
+/* Advanced subtle glowing outline effect */
+.about h2::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px solid rgba(129, 129, 129, 1); /* Soft border */
+  border-radius: 8px; /* Rounded corners for the outline */
+  z-index: -1;
+  box-shadow: 0 0 20px rgba(129, 129, 129, 1); /* Subtle outer glow */
+  box-shadow: 0 0 20px rgba(129, 129, 129, 1) inset; /* Subtle outer glow */
+  transform: scale(1.05);
+  transition: box-shadow 0.4s ease, transform 0.4s ease;
 }
 
 .about.full-view .about-container {
@@ -480,6 +469,13 @@ a {
               0 0 50px 20px var(--Soft-Black) inset;
 }
 
+.about.full-view  h2::before {
+  background: none;
+  box-shadow: none;
+  animation: none;
+  border: none;
+  text-shadow: none;
+}
 
 .about.full-view  h2 {
   position: relative;
@@ -492,6 +488,7 @@ a {
   background: none;
   box-shadow: none;
   animation: none;
+  text-shadow: none;
   border: none;
 }
 
@@ -1334,6 +1331,26 @@ body.dark-mode .hero::after {
   opacity: 0.25; /* Enhances particle visibility without overpowering */
   mix-blend-mode: normal;
 }
+
+/* Advanced subtle glowing outline effect */
+body.dark-mode .about h2::before {
+  border: 2px solid rgba(255, 255, 255, 0.9); /* Soft border */
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); /* Subtle outer glow */
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2) inset; /* Subtle initial glow */
+}
+
+body.dark-mode .about h2 {
+  color: var(--Soft-White);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.2); /* Subtle initial glow */
+}
+
+body.dark-mode .about.full-view h2::before {
+  color: var(--Soft-White);
+  text-shadow: none;
+  box-shadow: none;
+  border: none;
+}
+
 
 body.dark-mode .timeline::after {
   background-color: var(--Soft-White);
