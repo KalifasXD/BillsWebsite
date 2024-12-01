@@ -28,7 +28,27 @@ body {
   overflow-x: hidden;
 }
 
+/* Hero Section Styling */
+.variable-background {
+  position: relative;
+  background: linear-gradient(135deg, var(--GradientHero-Light-Mode));
+  background-size: 200% 200%;
+  animation: gradientAnimation 7s ease infinite;
+}
 
+.variable-background::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://www.transparenttextures.com/patterns/cubes.png');
+  background-repeat: repeat;
+  mix-blend-mode: multiply;
+  background-color: var(--Soft-Black);
+  opacity: 0.2;
+}
 
 .extra-padding {
   padding: 100px 0px;
@@ -211,36 +231,12 @@ a {
   flex-direction: column;
   align-items: center; /* Center content vertically */
   text-align: center;
-  position: relative;
-  overflow: hidden;
-  padding: 0;
-  box-sizing: border-box;
-  z-index: 0;
-  background: linear-gradient(135deg, var(--GradientHero-Light-Mode));
-  background-size: 200% 200%;
-  animation: gradientAnimation 7s ease infinite;
 }
 
 @keyframes gradientAnimation {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
-}
-
-/* Particle Effect */
-.hero::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('https://www.transparenttextures.com/patterns/cubes.png');
-  background-repeat: repeat;
-  mix-blend-mode: multiply;
-  background-color: var(--Soft-Black);
-  opacity: 0.2;
-  z-index: -1;
 }
 
 /* Hero Text Styling */
@@ -283,7 +279,7 @@ a {
 
 .arrow {
   position: relative;
-  top: 12%;
+  top: 10%;
   cursor: pointer;
 }
 
@@ -336,24 +332,27 @@ a {
   background: transparent;
   z-index: 1; /* Above the hero section */
   padding: 20px;
-  animation: unfoldEffect 1.2s ease-out forwards;
+  animation: unfoldEffect 1s cubic-bezier(0.42, 0, 0.58, 1) forwards;
 }
 
-/* Animation for the container expanding */
 @keyframes unfoldEffect {
   0% {
     transform: scale(0.6) translateY(40px); /* Start small and move slightly */
     opacity: 0;
   }
   50% {
-    transform: scale(1.05) translateY(20px); /* Scale up a bit more */
-    opacity: 0.8;
+    transform: scale(1.05) translateY(10px); /* Scale up a bit more */
+    opacity: 0.9; /* Almost fully visible */
+  }
+  80% {
+    transform: scale(0.98) translateY(0); /* Subtle back-shrink for smooth effect */
   }
   100% {
     transform: scale(1) translateY(0); /* End at full size */
     opacity: 1;
   }
 }
+
 
 
 /* Expanded state: Full-size about section */
@@ -370,8 +369,7 @@ a {
   z-index: 2; /* Above the home section */
   border-radius: 0; /* Remove rounded corners */
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1), 0 0 60px rgba(255, 255, 255, 0.3); /* Soft shadow */
-  transition: all 1s cubic-bezier(0.42, 0, 0.58, 1); /* Smooth transition to full size */
-  animation: popOffEffect 2s ease-out forwards, shadowPulse 2s ease-in-out infinite;
+  animation: popOffEffect 1s ease-out forwards, shadowPulse 1s ease-in-out infinite;
 }
 
 /* Popping off animation */
@@ -382,7 +380,7 @@ a {
   }
   60% {
     transform: scale(1.1) translateY(-10px); /* Slight overshoot for the 'pop' effect */
-    opacity: 1; /* Fully opaque */
+    opacity: 1; /* Fully visible */
   }
   100% {
     transform: scale(1) translateY(0); /* Final scale and position */
@@ -544,29 +542,7 @@ a {
   align-items: center;
   text-align: center;
   position: relative;
-  overflow: hidden;
-  padding: 0;
-  box-sizing: border-box;
-  z-index: 0;
-  background: linear-gradient(135deg, var(--GradientHero-Light-Mode));
-  background-size: 200% 200%;
-  animation: gradientAnimation 7s ease infinite;
-}
-
-/* Particle Effect */
-.timeline::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('https://www.transparenttextures.com/patterns/cubes.png');
-  background-repeat: repeat;
-  mix-blend-mode: multiply;
-  background-color: var(--Soft-Black);
-  opacity: 0.2;
-  z-index: -1;
+  z-index: 1 !important;
 }
 
 .timeline-container {
@@ -576,6 +552,7 @@ a {
   align-items: center;
   position: relative;
   height: 85dvh;
+  z-index: 1;
 }
 
 .timeline h1:first-of-type {
@@ -1016,6 +993,11 @@ p {
   margin: 10px;
 }
 
+.skill-image {
+  font-size: 3rem !important;
+  margin-right: 8px;
+}
+
 .skill-images-container {
   display: flex;
   flex-direction: row;
@@ -1030,6 +1012,17 @@ p {
   font-size: 1.4rem;
   margin: 0;
   padding: 10px 0;
+  display: flex; /* Makes the <h2> a flex container */
+  align-items: center; /* Vertically aligns icon and text */
+  justify-content: center; /* Horizontally centers content */
+  opacity: 0; /* Initially transparent */
+  transform: translateY(-20px); /* Start slightly below the final position */
+  transition: opacity 1.5s ease, transform 1.5s ease; /* Smooth transition */
+}
+
+.skill h2.fade_in {
+  opacity: 1; /* Fully visible */
+  transform: translateY(0); /* Original position */
 }
 
 .skill-images-container div {
@@ -1161,25 +1154,152 @@ p {
   }
 }
 
+/* General Section Styling */
+#education-languages {
+  padding: 60px 20px;
+  color: var(--Soft-Black);
+  margin: 20px auto;
+  width: 100dvw;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#education-languages h2 {
+  font-size: 2rem;
+  text-align: center;
+  color: var(--Soft-Black); /* Matches vibrant blue theme */
+  margin-bottom: 40px;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+#education-languages h2::after {
+  content: '';
+  display: block;
+  margin: 10px auto;
+  border-radius: 2px;
+  width: 100%;
+  height: 3px;
+  background-color: var(--Active-Gold);  /* Hex color for the line */
+  background: linear-gradient(to right, 
+    #b35e2c00 0%,        /* Transparent on the left */
+    var(--Active-Gold) 10%,       /* Fully opaque */
+    var(--Active-Gold) 90%,       /* Fully opaque */
+    #b35e2c00 100%);
+}
+
+
+.education-languages-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
+}
+
+.education, .languages, .achievements {
+  flex: 1 1 45%; /* Adjusts for smaller screens */
+  background-color: rgb(17, 17, 17, 0.5);
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Light shadow */
+  max-width: 35%;
+  opacity: 0; /* Initially hidden */
+  transform: translateX(100%); /* Positioned off-screen to the right */
+}
+
+/* Base styles for animation target elements */
+.education, .languages, .achievements {
+  opacity: 0; /* Initially hidden */
+  transform: translateY(50px); /* Start slightly below their position */
+  transition: opacity 1s ease, transform 1s ease; /* Smooth transition */
+}
+
+/* Visible state (triggered by JavaScript) */
+.education.visible, .languages.visible, .achievements.visible {
+  opacity: 1; /* Fully visible */
+  transform: translateY(0); /* Move to the center position */
+}
+
+/* Keyframes for Converge Animation */
+@keyframes converge {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0); /* Positioned normally */
+    opacity: 1;
+  }
+}
+
+.education h3, .languages h3, .achievements h3 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: var(--Soft-Black);
+}
+
+.education ul, .languages ul, .achievements ul {
+  list-style: none;
+  padding: 0;
+}
+
+.education ul li, .languages ul li, .achievements ul li {
+  margin-bottom: 15px;
+}
+
+.education ul li h4 {
+  font-size: 1.2rem;
+  color: var(--Active-Gold);
+  margin-bottom: 5px;
+}
+
+.education ul li p {
+  font-size: 0.9rem;
+  color: var(--Dark-Beige);
+  line-height: 1.5;
+}
+
+.languages ul li {
+  font-size: 1rem;
+  color: #444;
+}
+
+.languages ul li strong {
+  color: var(--Active-Gold);
+}
+
+/* Hover Effects */
+.education:hover, .languages:hover {
+  transform: scale(1.02);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .education-languages-container {
+    flex-direction: column;
+  }
+
+  .education, .languages {
+    flex: 1 1 100%;
+  }
+}
+
+
 
 
 /* Contact Section */
 .contact {
-  background: linear-gradient(135deg, var(--GradientHero-Light-Mode));  /* Similar to the hero section */
-  background-size: 200% 200%;
-  animation: gradientAnimation 7s ease infinite;
   padding: 60px 20px;
   text-align: center;
   max-width: 100%;
   margin: 0 auto;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-}
-
-/* Gradient Animation */
-@keyframes gradientAnimation {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
 }
 
 .contact-form {
@@ -1307,14 +1427,7 @@ body.dark-mode .navbar .nav-link.active {
   color: var(--Active-Gold);
 }
 
-body.dark-mode .hero {
-  mix-blend-mode: difference;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(39, 39, 39, 0.7), rgba(0, 0, 0, 0.6)); /* Slightly transparent gradient */
-  background-size: 200% 200%;
-  animation: gradientAnimation 7s ease infinite;
-}
-
-body.dark-mode .timeline {
+body.dark-mode .variable-background {
   mix-blend-mode: difference;
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(39, 39, 39, 0.7), rgba(0, 0, 0, 0.6)); /* Slightly transparent gradient */
   background-size: 200% 200%;
@@ -1351,6 +1464,13 @@ body.dark-mode .about.full-view h2::before {
   border: none;
 }
 
+body.dark-mode #education-languages{
+  background-color: var(--Soft-White);
+}
+
+body.dark-mode #education-languages h2 {
+  color: var(--Soft-White);
+}
 
 body.dark-mode .timeline::after {
   background-color: var(--Soft-White);
@@ -1549,6 +1669,7 @@ body.dark-mode .checkbox-label .ball{
 
 .social ul li {
   display: inline-block;
+  margin:0 5px;
 }
 
 .footer-bottom {

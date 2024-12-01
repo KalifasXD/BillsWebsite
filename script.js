@@ -18,19 +18,23 @@ document.addEventListener("DOMContentLoaded", () => {
         const skill = entry.target;
         const currentScore = parseInt(skill.getAttribute('current-score'));
         const container = skill.querySelector('.skill-images-container');
-
+        const title = skill.querySelector('h2'); // Target the title for fading
+  
+        // Add fade-in effect to the title
+        title.classList.add('fade_in');
+  
         // Add circles dynamically and animate them
         for (let i = 0; i < 10; i++) {
           const circle = document.createElement('div');
           container.appendChild(circle);
-
+  
           if (i < currentScore) {
             setTimeout(() => {
               circle.classList.add('filled');
             }, i * 200); // Delay each circle by 200ms
           }
         }
-
+  
         // Stop observing once the animation is triggered
         skillObserver.unobserve(skill);
       }
@@ -301,4 +305,23 @@ document.addEventListener("DOMContentLoaded", () => {
       isInFullView = false;
     }
   });
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const observer = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible"); // Add 'visible' class when in view
+          observer.unobserve(entry.target); // Stop observing once animated
+        }
+      });
+    },
+    { threshold: 0.1 } // Trigger when 10% of the element is visible
+  );
+
+  // Target specific elements
+  const targets = document.querySelectorAll(".education, .languages, .achievements");
+  targets.forEach(target => observer.observe(target));
 });
