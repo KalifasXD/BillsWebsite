@@ -538,6 +538,7 @@ a {
 
 .timeline {
   min-height: 100dvh;
+  max-height: 100dvh;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -554,6 +555,7 @@ a {
   align-items: center;
   position: relative;
   height: 85dvh;
+  max-height: 85dvh;
   z-index: 2;
 }
 
@@ -623,6 +625,7 @@ a {
   justify-content: flex-start;
   align-items: center;
   height: 100dvh;
+  max-height: 100dvh;
 }
 
 .slide {
@@ -731,6 +734,7 @@ a {
   padding: 10px;
   z-index: 1;
   height: 100dvh;
+  max-height: 100dvh;
   pointer-events: auto;
 }
 
