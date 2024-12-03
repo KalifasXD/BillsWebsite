@@ -1406,8 +1406,8 @@ p {
   }
 
   .skill-images-container div {
-    width: 25px; /* Larger for touch devices */
-    height: 25px;
+    width: 70px; /* Larger for touch devices */
+    height: 15px;
     margin: 5px; /* Consistent spacing */
   }
 }
@@ -1423,8 +1423,8 @@ p {
   }
 
   .skill-images-container div {
-    width: 20px; /* Slightly smaller for very small screens */
-    height: 20px;
+    width: 70px; /* Slightly smaller for very small screens */
+    height: 15px;
     margin: 0;
     padding: 0;
   }
