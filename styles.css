@@ -34,6 +34,7 @@ body {
   background: linear-gradient(135deg, var(--GradientHero-Light-Mode));
   background-size: 200% 200%;
   animation: gradientAnimation 7s ease infinite;
+  z-index: -1;
 }
 
 .variable-background::after {
@@ -48,6 +49,7 @@ body {
   mix-blend-mode: multiply;
   background-color: var(--Soft-Black);
   opacity: 0.2;
+  z-index: -1;
 }
 
 .extra-padding {
@@ -542,7 +544,7 @@ a {
   align-items: center;
   text-align: center;
   position: relative;
-  z-index: 1 !important;
+  z-index: 2 !important;
 }
 
 .timeline-container {
@@ -552,7 +554,7 @@ a {
   align-items: center;
   position: relative;
   height: 85dvh;
-  z-index: 1;
+  z-index: 2;
 }
 
 .timeline h1:first-of-type {
@@ -976,11 +978,11 @@ p {
   justify-content: center;
 }
 .skills-column:first-of-type {
-  margin: 10px 10px 10px 0;
+  margin: 20px 10px 20px 0;
 }
 
 .skills-column:last-of-type {
-  margin: 10px 0 10px 10px;
+  margin: 20px 0 20px 10px;
 }
 
 .skills-column {
@@ -990,7 +992,7 @@ p {
   align-items: flex-start;
   width: 100%; /* Ensures full width on smaller screens */
   height: auto;
-  margin: 10px;
+  margin: 20px 10px;
 }
 
 .skill-image {
@@ -1004,7 +1006,7 @@ p {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap; /* Allows images to wrap on smaller screens */
-  gap: 5px; /* Adds consistent spacing between circles */
+  gap: 1px; /* Adds consistent spacing between circles */
 }
 
 .skill h2 {
@@ -1026,64 +1028,342 @@ p {
 }
 
 .skill-images-container div {
-  width: 20px; /* Circle size */
-  height: 20px;
-  border-radius: 50%; /* Makes the element circular */
+  width: 70px; /* Circle size */
+  height: 15px;
   background-color: var(--Soft-White); /* Light gray background */
-  margin: 0 5px; /* Space between circles */
   position: relative;
-  
+  border: 1px solid var(--Soft-Black);
   /* Outer glow effect */
-  box-shadow: 0 0 4px var(--Soft-Black);
   transition: box-shadow 0.3s ease; /* Smooth transition for glow effect */
 }
 
 /* Add delay to each circle for charging effect */
-.skill-images-container div:nth-child(1) {
+.skill-images-container div.filled:nth-child(1) {
   animation-delay: 0.2s;
 }
-.skill-images-container div:nth-child(2) {
+.skill-images-container div.filled:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.skill-images-container div.filled:nth-child(3) {
   animation-delay: 0.4s;
 }
-.skill-images-container div:nth-child(3) {
+.skill-images-container div.filled:nth-child(4) {
+  animation-delay: 0.5s;
+}
+.skill-images-container div.filled:nth-child(5) {
   animation-delay: 0.6s;
-}
-.skill-images-container div:nth-child(4) {
-  animation-delay: 0.8s;
-}
-.skill-images-container div:nth-child(5) {
-  animation-delay: 1s;
 }
 
 .skill-images-container div.filled {
-  background-color: var(--Light-Mode-Active-Menu-Timeline);
-  animation: charge-animation 1s ease forwards, pulse 1.5s ease;
-}
-
-/* Animation keyframes for charging effect */
-@keyframes charge-animation {
-  from {
-    background-color: var(--Soft-White);
-    box-shadow: 0 0 4px var(--Soft-White);
-  }
-  to {
-    background-color: var(--Soft-Black);
-    box-shadow: 0 0 6px var(--Soft-Black);
-  }
+  background-color: var(--Soft-White);
+  background-size: 200% 100%; /* Makes the gradient twice the width for animation */
+  background-position: 100% 0; /* Start with the "empty" side */
+  animation: pulse 0.3s ease-in-out forwards;
 }
 
 @keyframes pulse {
   0% {
-    transform: scale(1);
-    box-shadow: 0 0 6px var(--Soft-Black);
+      background: linear-gradient(to right, var(--Soft-White) 0%, var(--Soft-White) 0%, var(--Soft-White) 100%);
+  }
+  1% {
+      background: linear-gradient(to right, var(--Soft-Black) 1%, var(--Soft-White) 1%, var(--Soft-White) 100%);
+  }
+  2% {
+      background: linear-gradient(to right, var(--Soft-Black) 2%, var(--Soft-White) 2%, var(--Soft-White) 100%);
+  }
+  3% {
+      background: linear-gradient(to right, var(--Soft-Black) 3%, var(--Soft-White) 3%, var(--Soft-White) 100%);
+  }
+  4% {
+      background: linear-gradient(to right, var(--Soft-Black) 4%, var(--Soft-White) 4%, var(--Soft-White) 100%);
+  }
+  5% {
+      background: linear-gradient(to right, var(--Soft-Black) 5%, var(--Soft-White) 5%, var(--Soft-White) 100%);
+  }
+  6% {
+      background: linear-gradient(to right, var(--Soft-Black) 6%, var(--Soft-White) 6%, var(--Soft-White) 100%);
+  }
+  7% {
+      background: linear-gradient(to right, var(--Soft-Black) 7%, var(--Soft-White) 7%, var(--Soft-White) 100%);
+  }
+  8% {
+      background: linear-gradient(to right, var(--Soft-Black) 8%, var(--Soft-White) 8%, var(--Soft-White) 100%);
+  }
+  9% {
+      background: linear-gradient(to right, var(--Soft-Black) 9%, var(--Soft-White) 9%, var(--Soft-White) 100%);
+  }
+  10% {
+      background: linear-gradient(to right, var(--Soft-Black) 10%, var(--Soft-White) 10%, var(--Soft-White) 100%);
+  }
+  11% {
+      background: linear-gradient(to right, var(--Soft-Black) 11%, var(--Soft-White) 11%, var(--Soft-White) 100%);
+  }
+  12% {
+      background: linear-gradient(to right, var(--Soft-Black) 12%, var(--Soft-White) 12%, var(--Soft-White) 100%);
+  }
+  13% {
+      background: linear-gradient(to right, var(--Soft-Black) 13%, var(--Soft-White) 13%, var(--Soft-White) 100%);
+  }
+  14% {
+      background: linear-gradient(to right, var(--Soft-Black) 14%, var(--Soft-White) 14%, var(--Soft-White) 100%);
+  }
+  15% {
+      background: linear-gradient(to right, var(--Soft-Black) 15%, var(--Soft-White) 15%, var(--Soft-White) 100%);
+  }
+  16% {
+      background: linear-gradient(to right, var(--Soft-Black) 16%, var(--Soft-White) 16%, var(--Soft-White) 100%);
+  }
+  17% {
+      background: linear-gradient(to right, var(--Soft-Black) 17%, var(--Soft-White) 17%, var(--Soft-White) 100%);
+  }
+  18% {
+      background: linear-gradient(to right, var(--Soft-Black) 18%, var(--Soft-White) 18%, var(--Soft-White) 100%);
+  }
+  19% {
+      background: linear-gradient(to right, var(--Soft-Black) 19%, var(--Soft-White) 19%, var(--Soft-White) 100%);
+  }
+  20% {
+      background: linear-gradient(to right, var(--Soft-Black) 20%, var(--Soft-White) 20%, var(--Soft-White) 100%);
+  }
+  21% {
+      background: linear-gradient(to right, var(--Soft-Black) 21%, var(--Soft-White) 21%, var(--Soft-White) 100%);
+  }
+  22% {
+      background: linear-gradient(to right, var(--Soft-Black) 22%, var(--Soft-White) 22%, var(--Soft-White) 100%);
+  }
+  23% {
+      background: linear-gradient(to right, var(--Soft-Black) 23%, var(--Soft-White) 23%, var(--Soft-White) 100%);
+  }
+  24% {
+      background: linear-gradient(to right, var(--Soft-Black) 24%, var(--Soft-White) 24%, var(--Soft-White) 100%);
+  }
+  25% {
+      background: linear-gradient(to right, var(--Soft-Black) 25%, var(--Soft-White) 25%, var(--Soft-White) 100%);
+  }
+  26% {
+      background: linear-gradient(to right, var(--Soft-Black) 26%, var(--Soft-White) 26%, var(--Soft-White) 100%);
+  }
+  27% {
+      background: linear-gradient(to right, var(--Soft-Black) 27%, var(--Soft-White) 27%, var(--Soft-White) 100%);
+  }
+  28% {
+      background: linear-gradient(to right, var(--Soft-Black) 28%, var(--Soft-White) 28%, var(--Soft-White) 100%);
+  }
+  29% {
+      background: linear-gradient(to right, var(--Soft-Black) 29%, var(--Soft-White) 29%, var(--Soft-White) 100%);
+  }
+  30% {
+      background: linear-gradient(to right, var(--Soft-Black) 30%, var(--Soft-White) 30%, var(--Soft-White) 100%);
+  }
+  31% {
+      background: linear-gradient(to right, var(--Soft-Black) 31%, var(--Soft-White) 31%, var(--Soft-White) 100%);
+  }
+  32% {
+      background: linear-gradient(to right, var(--Soft-Black) 32%, var(--Soft-White) 32%, var(--Soft-White) 100%);
+  }
+  33% {
+      background: linear-gradient(to right, var(--Soft-Black) 33%, var(--Soft-White) 33%, var(--Soft-White) 100%);
+  }
+  34% {
+      background: linear-gradient(to right, var(--Soft-Black) 34%, var(--Soft-White) 34%, var(--Soft-White) 100%);
+  }
+  35% {
+      background: linear-gradient(to right, var(--Soft-Black) 35%, var(--Soft-White) 35%, var(--Soft-White) 100%);
+  }
+  36% {
+      background: linear-gradient(to right, var(--Soft-Black) 36%, var(--Soft-White) 36%, var(--Soft-White) 100%);
+  }
+  37% {
+      background: linear-gradient(to right, var(--Soft-Black) 37%, var(--Soft-White) 37%, var(--Soft-White) 100%);
+  }
+  38% {
+      background: linear-gradient(to right, var(--Soft-Black) 38%, var(--Soft-White) 38%, var(--Soft-White) 100%);
+  }
+  39% {
+      background: linear-gradient(to right, var(--Soft-Black) 39%, var(--Soft-White) 39%, var(--Soft-White) 100%);
+  }
+  40% {
+      background: linear-gradient(to right, var(--Soft-Black) 40%, var(--Soft-White) 40%, var(--Soft-White) 100%);
+  }
+  41% {
+      background: linear-gradient(to right, var(--Soft-Black) 41%, var(--Soft-White) 41%, var(--Soft-White) 100%);
+  }
+  42% {
+      background: linear-gradient(to right, var(--Soft-Black) 42%, var(--Soft-White) 42%, var(--Soft-White) 100%);
+  }
+  43% {
+      background: linear-gradient(to right, var(--Soft-Black) 43%, var(--Soft-White) 43%, var(--Soft-White) 100%);
+  }
+  44% {
+      background: linear-gradient(to right, var(--Soft-Black) 44%, var(--Soft-White) 44%, var(--Soft-White) 100%);
+  }
+  45% {
+      background: linear-gradient(to right, var(--Soft-Black) 45%, var(--Soft-White) 45%, var(--Soft-White) 100%);
+  }
+  46% {
+      background: linear-gradient(to right, var(--Soft-Black) 46%, var(--Soft-White) 46%, var(--Soft-White) 100%);
+  }
+  47% {
+      background: linear-gradient(to right, var(--Soft-Black) 47%, var(--Soft-White) 47%, var(--Soft-White) 100%);
+  }
+  48% {
+      background: linear-gradient(to right, var(--Soft-Black) 48%, var(--Soft-White) 48%, var(--Soft-White) 100%);
+  }
+  49% {
+      background: linear-gradient(to right, var(--Soft-Black) 49%, var(--Soft-White) 49%, var(--Soft-White) 100%);
   }
   50% {
-    transform: scale(1.2);
-    box-shadow: 0 0 12px var(--Soft-Black);
+      background: linear-gradient(to right, var(--Soft-Black) 50%, var(--Soft-White) 50%, var(--Soft-White) 100%);
+  }
+  51% {
+      background: linear-gradient(to right, var(--Soft-Black) 51%, var(--Soft-White) 51%, var(--Soft-White) 100%);
+  }
+  52% {
+      background: linear-gradient(to right, var(--Soft-Black) 52%, var(--Soft-White) 52%, var(--Soft-White) 100%);
+  }
+  53% {
+      background: linear-gradient(to right, var(--Soft-Black) 53%, var(--Soft-White) 53%, var(--Soft-White) 100%);
+  }
+  54% {
+      background: linear-gradient(to right, var(--Soft-Black) 54%, var(--Soft-White) 54%, var(--Soft-White) 100%);
+  }
+  55% {
+      background: linear-gradient(to right, var(--Soft-Black) 55%, var(--Soft-White) 55%, var(--Soft-White) 100%);
+  }
+  56% {
+      background: linear-gradient(to right, var(--Soft-Black) 56%, var(--Soft-White) 56%, var(--Soft-White) 100%);
+  }
+  57% {
+      background: linear-gradient(to right, var(--Soft-Black) 57%, var(--Soft-White) 57%, var(--Soft-White) 100%);
+  }
+  58% {
+      background: linear-gradient(to right, var(--Soft-Black) 58%, var(--Soft-White) 58%, var(--Soft-White) 100%);
+  }
+  59% {
+      background: linear-gradient(to right, var(--Soft-Black) 59%, var(--Soft-White) 59%, var(--Soft-White) 100%);
+  }
+  60% {
+      background: linear-gradient(to right, var(--Soft-Black) 60%, var(--Soft-White) 60%, var(--Soft-White) 100%);
+  }
+  61% {
+      background: linear-gradient(to right, var(--Soft-Black) 61%, var(--Soft-White) 61%, var(--Soft-White) 100%);
+  }
+  62% {
+      background: linear-gradient(to right, var(--Soft-Black) 62%, var(--Soft-White) 62%, var(--Soft-White) 100%);
+  }
+  63% {
+      background: linear-gradient(to right, var(--Soft-Black) 63%, var(--Soft-White) 63%, var(--Soft-White) 100%);
+  }
+  64% {
+      background: linear-gradient(to right, var(--Soft-Black) 64%, var(--Soft-White) 64%, var(--Soft-White) 100%);
+  }
+  65% {
+      background: linear-gradient(to right, var(--Soft-Black) 65%, var(--Soft-White) 65%, var(--Soft-White) 100%);
+  }
+  66% {
+      background: linear-gradient(to right, var(--Soft-Black) 66%, var(--Soft-White) 66%, var(--Soft-White) 100%);
+  }
+  67% {
+      background: linear-gradient(to right, var(--Soft-Black) 67%, var(--Soft-White) 67%, var(--Soft-White) 100%);
+  }
+  68% {
+      background: linear-gradient(to right, var(--Soft-Black) 68%, var(--Soft-White) 68%, var(--Soft-White) 100%);
+  }
+  69% {
+      background: linear-gradient(to right, var(--Soft-Black) 69%, var(--Soft-White) 69%, var(--Soft-White) 100%);
+  }
+  70% {
+      background: linear-gradient(to right, var(--Soft-Black) 70%, var(--Soft-White) 70%, var(--Soft-White) 100%);
+  }
+  71% {
+      background: linear-gradient(to right, var(--Soft-Black) 71%, var(--Soft-White) 71%, var(--Soft-White) 100%);
+  }
+  72% {
+      background: linear-gradient(to right, var(--Soft-Black) 72%, var(--Soft-White) 72%, var(--Soft-White) 100%);
+  }
+  73% {
+      background: linear-gradient(to right, var(--Soft-Black) 73%, var(--Soft-White) 73%, var(--Soft-White) 100%);
+  }
+  74% {
+      background: linear-gradient(to right, var(--Soft-Black) 74%, var(--Soft-White) 74%, var(--Soft-White) 100%);
+  }
+  75% {
+      background: linear-gradient(to right, var(--Soft-Black) 75%, var(--Soft-White) 75%, var(--Soft-White) 100%);
+  }
+  76% {
+      background: linear-gradient(to right, var(--Soft-Black) 76%, var(--Soft-White) 76%, var(--Soft-White) 100%);
+  }
+  77% {
+      background: linear-gradient(to right, var(--Soft-Black) 77%, var(--Soft-White) 77%, var(--Soft-White) 100%);
+  }
+  78% {
+      background: linear-gradient(to right, var(--Soft-Black) 78%, var(--Soft-White) 78%, var(--Soft-White) 100%);
+  }
+  79% {
+      background: linear-gradient(to right, var(--Soft-Black) 79%, var(--Soft-White) 79%, var(--Soft-White) 100%);
+  }
+  80% {
+      background: linear-gradient(to right, var(--Soft-Black) 80%, var(--Soft-White) 80%, var(--Soft-White) 100%);
+  }
+  81% {
+      background: linear-gradient(to right, var(--Soft-Black) 81%, var(--Soft-White) 81%, var(--Soft-White) 100%);
+  }
+  82% {
+      background: linear-gradient(to right, var(--Soft-Black) 82%, var(--Soft-White) 82%, var(--Soft-White) 100%);
+  }
+  83% {
+      background: linear-gradient(to right, var(--Soft-Black) 83%, var(--Soft-White) 83%, var(--Soft-White) 100%);
+  }
+  84% {
+      background: linear-gradient(to right, var(--Soft-Black) 84%, var(--Soft-White) 84%, var(--Soft-White) 100%);
+  }
+  85% {
+      background: linear-gradient(to right, var(--Soft-Black) 85%, var(--Soft-White) 85%, var(--Soft-White) 100%);
+  }
+  86% {
+      background: linear-gradient(to right, var(--Soft-Black) 86%, var(--Soft-White) 86%, var(--Soft-White) 100%);
+  }
+  87% {
+      background: linear-gradient(to right, var(--Soft-Black) 87%, var(--Soft-White) 87%, var(--Soft-White) 100%);
+  }
+  88% {
+      background: linear-gradient(to right, var(--Soft-Black) 88%, var(--Soft-White) 88%, var(--Soft-White) 100%);
+  }
+  89% {
+      background: linear-gradient(to right, var(--Soft-Black) 89%, var(--Soft-White) 89%, var(--Soft-White) 100%);
+  }
+  90% {
+      background: linear-gradient(to right, var(--Soft-Black) 90%, var(--Soft-White) 90%, var(--Soft-White) 100%);
+  }
+  91% {
+      background: linear-gradient(to right, var(--Soft-Black) 91%, var(--Soft-White) 91%, var(--Soft-White) 100%);
+  }
+  92% {
+      background: linear-gradient(to right, var(--Soft-Black) 92%, var(--Soft-White) 92%, var(--Soft-White) 100%);
+  }
+  93% {
+      background: linear-gradient(to right, var(--Soft-Black) 93%, var(--Soft-White) 93%, var(--Soft-White) 100%);
+  }
+  94% {
+      background: linear-gradient(to right, var(--Soft-Black) 94%, var(--Soft-White) 94%, var(--Soft-White) 100%);
+  }
+  95% {
+      background: linear-gradient(to right, var(--Soft-Black) 95%, var(--Soft-White) 95%, var(--Soft-White) 100%);
+  }
+  96% {
+      background: linear-gradient(to right, var(--Soft-Black) 96%, var(--Soft-White) 96%, var(--Soft-White) 100%);
+  }
+  97% {
+      background: linear-gradient(to right, var(--Soft-Black) 97%, var(--Soft-White) 97%, var(--Soft-White) 100%);
+  }
+  98% {
+      background: linear-gradient(to right, var(--Soft-Black) 98%, var(--Soft-White) 98%, var(--Soft-White) 100%);
+  }
+  99% {
+      background: linear-gradient(to right, var(--Soft-Black) 99%, var(--Soft-White) 99%, var(--Soft-White) 100%);
   }
   100% {
-    transform: scale(1);
-    box-shadow: 0 0 6px var(--Soft-Black);
+      background: linear-gradient(to right, var(--Soft-Black) 100%, var(--Soft-Black) 100%, var(--Soft-Black) 100%);
   }
 }
 
@@ -1174,6 +1454,7 @@ p {
   margin-bottom: 40px;
   display: inline-block;
   padding-bottom: 10px;
+  z-index: 0;
 }
 
 #education-languages h2::after {
@@ -1494,7 +1775,6 @@ body.dark-mode .nav-btn::before{
   color: var(--Soft-White);
 }
 
-
 body.dark-mode .about-container img {
   box-shadow: 0 0 30px 10px var(--Soft-White),
               0 0 50px 20px var(--Soft-White) inset;
@@ -1502,43 +1782,323 @@ body.dark-mode .about-container img {
 
 body.dark-mode .skill-images-container div  {
   background-color: var(--Soft-Black); /* Dark skill bar fill */
-  box-shadow: 0 0 4px var(--Soft-White);
+  border: 1px solid var(--Active-Gold);
 }
 
-body.dark-mode .skills-column > h2:first-of-type {
-  box-shadow: 0 0px 10px var(--Soft-White);
+body.dark-mode .education h3, body.dark-mode .languages h3, body.dark-mode .achievements h3 {
+  color: var(--Soft-White);
 }
 
-/* Animation keyframes for charging effect */
-@keyframes charge-animation-dark-mode {
-  from {
-    background-color: var(--Soft-Black);
-    box-shadow: 0 0 4px var(--Soft-Black);
-  }
-  to {
-    background-color: var(--Soft-White);
-    box-shadow: 0 0 6px var(--Soft-White);
-  }
-}
-
-@keyframes pulse-darkmode {
+@keyframes dark-mode-pulse {
   0% {
-    transform: scale(1);
-    box-shadow: 0 0 6px var(--Soft-White);
+      background: linear-gradient(to right, var(--Soft-Black) 0%, var(--Soft-Black) 0%, var(--Soft-Black) 100%);
+  }
+  1% {
+      background: linear-gradient(to right, var(--Soft-White) 1%, var(--Soft-Black) 1%, var(--Soft-Black) 100%);
+  }
+  2% {
+      background: linear-gradient(to right, var(--Soft-White) 2%, var(--Soft-Black) 2%, var(--Soft-Black) 100%);
+  }
+  3% {
+      background: linear-gradient(to right, var(--Soft-White) 3%, var(--Soft-Black) 3%, var(--Soft-Black) 100%);
+  }
+  4% {
+      background: linear-gradient(to right, var(--Soft-White) 4%, var(--Soft-Black) 4%, var(--Soft-Black) 100%);
+  }
+  5% {
+      background: linear-gradient(to right, var(--Soft-White) 5%, var(--Soft-Black) 5%, var(--Soft-Black) 100%);
+  }
+  6% {
+      background: linear-gradient(to right, var(--Soft-White) 6%, var(--Soft-Black) 6%, var(--Soft-Black) 100%);
+  }
+  7% {
+      background: linear-gradient(to right, var(--Soft-White) 7%, var(--Soft-Black) 7%, var(--Soft-Black) 100%);
+  }
+  8% {
+      background: linear-gradient(to right, var(--Soft-White) 8%, var(--Soft-Black) 8%, var(--Soft-Black) 100%);
+  }
+  9% {
+      background: linear-gradient(to right, var(--Soft-White) 9%, var(--Soft-Black) 9%, var(--Soft-Black) 100%);
+  }
+  10% {
+      background: linear-gradient(to right, var(--Soft-White) 10%, var(--Soft-Black) 10%, var(--Soft-Black) 100%);
+  }
+  11% {
+      background: linear-gradient(to right, var(--Soft-White) 11%, var(--Soft-Black) 11%, var(--Soft-Black) 100%);
+  }
+  12% {
+      background: linear-gradient(to right, var(--Soft-White) 12%, var(--Soft-Black) 12%, var(--Soft-Black) 100%);
+  }
+  13% {
+      background: linear-gradient(to right, var(--Soft-White) 13%, var(--Soft-Black) 13%, var(--Soft-Black) 100%);
+  }
+  14% {
+      background: linear-gradient(to right, var(--Soft-White) 14%, var(--Soft-Black) 14%, var(--Soft-Black) 100%);
+  }
+  15% {
+      background: linear-gradient(to right, var(--Soft-White) 15%, var(--Soft-Black) 15%, var(--Soft-Black) 100%);
+  }
+  16% {
+      background: linear-gradient(to right, var(--Soft-White) 16%, var(--Soft-Black) 16%, var(--Soft-Black) 100%);
+  }
+  17% {
+      background: linear-gradient(to right, var(--Soft-White) 17%, var(--Soft-Black) 17%, var(--Soft-Black) 100%);
+  }
+  18% {
+      background: linear-gradient(to right, var(--Soft-White) 18%, var(--Soft-Black) 18%, var(--Soft-Black) 100%);
+  }
+  19% {
+      background: linear-gradient(to right, var(--Soft-White) 19%, var(--Soft-Black) 19%, var(--Soft-Black) 100%);
+  }
+  20% {
+      background: linear-gradient(to right, var(--Soft-White) 20%, var(--Soft-Black) 20%, var(--Soft-Black) 100%);
+  }
+  21% {
+      background: linear-gradient(to right, var(--Soft-White) 21%, var(--Soft-Black) 21%, var(--Soft-Black) 100%);
+  }
+  22% {
+      background: linear-gradient(to right, var(--Soft-White) 22%, var(--Soft-Black) 22%, var(--Soft-Black) 100%);
+  }
+  23% {
+      background: linear-gradient(to right, var(--Soft-White) 23%, var(--Soft-Black) 23%, var(--Soft-Black) 100%);
+  }
+  24% {
+      background: linear-gradient(to right, var(--Soft-White) 24%, var(--Soft-Black) 24%, var(--Soft-Black) 100%);
+  }
+  25% {
+      background: linear-gradient(to right, var(--Soft-White) 25%, var(--Soft-Black) 25%, var(--Soft-Black) 100%);
+  }
+  26% {
+      background: linear-gradient(to right, var(--Soft-White) 26%, var(--Soft-Black) 26%, var(--Soft-Black) 100%);
+  }
+  27% {
+      background: linear-gradient(to right, var(--Soft-White) 27%, var(--Soft-Black) 27%, var(--Soft-Black) 100%);
+  }
+  28% {
+      background: linear-gradient(to right, var(--Soft-White) 28%, var(--Soft-Black) 28%, var(--Soft-Black) 100%);
+  }
+  29% {
+      background: linear-gradient(to right, var(--Soft-White) 29%, var(--Soft-Black) 29%, var(--Soft-Black) 100%);
+  }
+  30% {
+      background: linear-gradient(to right, var(--Soft-White) 30%, var(--Soft-Black) 30%, var(--Soft-Black) 100%);
+  }
+  31% {
+      background: linear-gradient(to right, var(--Soft-White) 31%, var(--Soft-Black) 31%, var(--Soft-Black) 100%);
+  }
+  32% {
+      background: linear-gradient(to right, var(--Soft-White) 32%, var(--Soft-Black) 32%, var(--Soft-Black) 100%);
+  }
+  33% {
+      background: linear-gradient(to right, var(--Soft-White) 33%, var(--Soft-Black) 33%, var(--Soft-Black) 100%);
+  }
+  34% {
+      background: linear-gradient(to right, var(--Soft-White) 34%, var(--Soft-Black) 34%, var(--Soft-Black) 100%);
+  }
+  35% {
+      background: linear-gradient(to right, var(--Soft-White) 35%, var(--Soft-Black) 35%, var(--Soft-Black) 100%);
+  }
+  36% {
+      background: linear-gradient(to right, var(--Soft-White) 36%, var(--Soft-Black) 36%, var(--Soft-Black) 100%);
+  }
+  37% {
+      background: linear-gradient(to right, var(--Soft-White) 37%, var(--Soft-Black) 37%, var(--Soft-Black) 100%);
+  }
+  38% {
+      background: linear-gradient(to right, var(--Soft-White) 38%, var(--Soft-Black) 38%, var(--Soft-Black) 100%);
+  }
+  39% {
+      background: linear-gradient(to right, var(--Soft-White) 39%, var(--Soft-Black) 39%, var(--Soft-Black) 100%);
+  }
+  40% {
+      background: linear-gradient(to right, var(--Soft-White) 40%, var(--Soft-Black) 40%, var(--Soft-Black) 100%);
+  }
+  41% {
+      background: linear-gradient(to right, var(--Soft-White) 41%, var(--Soft-Black) 41%, var(--Soft-Black) 100%);
+  }
+  42% {
+      background: linear-gradient(to right, var(--Soft-White) 42%, var(--Soft-Black) 42%, var(--Soft-Black) 100%);
+  }
+  43% {
+      background: linear-gradient(to right, var(--Soft-White) 43%, var(--Soft-Black) 43%, var(--Soft-Black) 100%);
+  }
+  44% {
+      background: linear-gradient(to right, var(--Soft-White) 44%, var(--Soft-Black) 44%, var(--Soft-Black) 100%);
+  }
+  45% {
+      background: linear-gradient(to right, var(--Soft-White) 45%, var(--Soft-Black) 45%, var(--Soft-Black) 100%);
+  }
+  46% {
+      background: linear-gradient(to right, var(--Soft-White) 46%, var(--Soft-Black) 46%, var(--Soft-Black) 100%);
+  }
+  47% {
+      background: linear-gradient(to right, var(--Soft-White) 47%, var(--Soft-Black) 47%, var(--Soft-Black) 100%);
+  }
+  48% {
+      background: linear-gradient(to right, var(--Soft-White) 48%, var(--Soft-Black) 48%, var(--Soft-Black) 100%);
+  }
+  49% {
+      background: linear-gradient(to right, var(--Soft-White) 49%, var(--Soft-Black) 49%, var(--Soft-Black) 100%);
   }
   50% {
-    transform: scale(1.2);
-    box-shadow: 0 0 12px var(--Soft-White);
+      background: linear-gradient(to right, var(--Soft-White) 50%, var(--Soft-Black) 50%, var(--Soft-Black) 100%);
+  }
+  51% {
+      background: linear-gradient(to right, var(--Soft-White) 51%, var(--Soft-Black) 51%, var(--Soft-Black) 100%);
+  }
+  52% {
+      background: linear-gradient(to right, var(--Soft-White) 52%, var(--Soft-Black) 52%, var(--Soft-Black) 100%);
+  }
+  53% {
+      background: linear-gradient(to right, var(--Soft-White) 53%, var(--Soft-Black) 53%, var(--Soft-Black) 100%);
+  }
+  54% {
+      background: linear-gradient(to right, var(--Soft-White) 54%, var(--Soft-Black) 54%, var(--Soft-Black) 100%);
+  }
+  55% {
+      background: linear-gradient(to right, var(--Soft-White) 55%, var(--Soft-Black) 55%, var(--Soft-Black) 100%);
+  }
+  56% {
+      background: linear-gradient(to right, var(--Soft-White) 56%, var(--Soft-Black) 56%, var(--Soft-Black) 100%);
+  }
+  57% {
+      background: linear-gradient(to right, var(--Soft-White) 57%, var(--Soft-Black) 57%, var(--Soft-Black) 100%);
+  }
+  58% {
+      background: linear-gradient(to right, var(--Soft-White) 58%, var(--Soft-Black) 58%, var(--Soft-Black) 100%);
+  }
+  59% {
+      background: linear-gradient(to right, var(--Soft-White) 59%, var(--Soft-Black) 59%, var(--Soft-Black) 100%);
+  }
+  60% {
+      background: linear-gradient(to right, var(--Soft-White) 60%, var(--Soft-Black) 60%, var(--Soft-Black) 100%);
+  }
+  61% {
+      background: linear-gradient(to right, var(--Soft-White) 61%, var(--Soft-Black) 61%, var(--Soft-Black) 100%);
+  }
+  62% {
+      background: linear-gradient(to right, var(--Soft-White) 62%, var(--Soft-Black) 62%, var(--Soft-Black) 100%);
+  }
+  63% {
+      background: linear-gradient(to right, var(--Soft-White) 63%, var(--Soft-Black) 63%, var(--Soft-Black) 100%);
+  }
+  64% {
+      background: linear-gradient(to right, var(--Soft-White) 64%, var(--Soft-Black) 64%, var(--Soft-Black) 100%);
+  }
+  65% {
+      background: linear-gradient(to right, var(--Soft-White) 65%, var(--Soft-Black) 65%, var(--Soft-Black) 100%);
+  }
+  66% {
+      background: linear-gradient(to right, var(--Soft-White) 66%, var(--Soft-Black) 66%, var(--Soft-Black) 100%);
+  }
+  67% {
+      background: linear-gradient(to right, var(--Soft-White) 67%, var(--Soft-Black) 67%, var(--Soft-Black) 100%);
+  }
+  68% {
+      background: linear-gradient(to right, var(--Soft-White) 68%, var(--Soft-Black) 68%, var(--Soft-Black) 100%);
+  }
+  69% {
+      background: linear-gradient(to right, var(--Soft-White) 69%, var(--Soft-Black) 69%, var(--Soft-Black) 100%);
+  }
+  70% {
+      background: linear-gradient(to right, var(--Soft-White) 70%, var(--Soft-Black) 70%, var(--Soft-Black) 100%);
+  }
+  71% {
+      background: linear-gradient(to right, var(--Soft-White) 71%, var(--Soft-Black) 71%, var(--Soft-Black) 100%);
+  }
+  72% {
+      background: linear-gradient(to right, var(--Soft-White) 72%, var(--Soft-Black) 72%, var(--Soft-Black) 100%);
+  }
+  73% {
+      background: linear-gradient(to right, var(--Soft-White) 73%, var(--Soft-Black) 73%, var(--Soft-Black) 100%);
+  }
+  74% {
+      background: linear-gradient(to right, var(--Soft-White) 74%, var(--Soft-Black) 74%, var(--Soft-Black) 100%);
+  }
+  75% {
+      background: linear-gradient(to right, var(--Soft-White) 75%, var(--Soft-Black) 75%, var(--Soft-Black) 100%);
+  }
+  76% {
+      background: linear-gradient(to right, var(--Soft-White) 76%, var(--Soft-Black) 76%, var(--Soft-Black) 100%);
+  }
+  77% {
+      background: linear-gradient(to right, var(--Soft-White) 77%, var(--Soft-Black) 77%, var(--Soft-Black) 100%);
+  }
+  78% {
+      background: linear-gradient(to right, var(--Soft-White) 78%, var(--Soft-Black) 78%, var(--Soft-Black) 100%);
+  }
+  79% {
+      background: linear-gradient(to right, var(--Soft-White) 79%, var(--Soft-Black) 79%, var(--Soft-Black) 100%);
+  }
+  80% {
+      background: linear-gradient(to right, var(--Soft-White) 80%, var(--Soft-Black) 80%, var(--Soft-Black) 100%);
+  }
+  81% {
+      background: linear-gradient(to right, var(--Soft-White) 81%, var(--Soft-Black) 81%, var(--Soft-Black) 100%);
+  }
+  82% {
+      background: linear-gradient(to right, var(--Soft-White) 82%, var(--Soft-Black) 82%, var(--Soft-Black) 100%);
+  }
+  83% {
+      background: linear-gradient(to right, var(--Soft-White) 83%, var(--Soft-Black) 83%, var(--Soft-Black) 100%);
+  }
+  84% {
+      background: linear-gradient(to right, var(--Soft-White) 84%, var(--Soft-Black) 84%, var(--Soft-Black) 100%);
+  }
+  85% {
+      background: linear-gradient(to right, var(--Soft-White) 85%, var(--Soft-Black) 85%, var(--Soft-Black) 100%);
+  }
+  86% {
+      background: linear-gradient(to right, var(--Soft-White) 86%, var(--Soft-Black) 86%, var(--Soft-Black) 100%);
+  }
+  87% {
+      background: linear-gradient(to right, var(--Soft-White) 87%, var(--Soft-Black) 87%, var(--Soft-Black) 100%);
+  }
+  88% {
+      background: linear-gradient(to right, var(--Soft-White) 88%, var(--Soft-Black) 88%, var(--Soft-Black) 100%);
+  }
+  89% {
+      background: linear-gradient(to right, var(--Soft-White) 89%, var(--Soft-Black) 89%, var(--Soft-Black) 100%);
+  }
+  90% {
+      background: linear-gradient(to right, var(--Soft-White) 90%, var(--Soft-Black) 90%, var(--Soft-Black) 100%);
+  }
+  91% {
+      background: linear-gradient(to right, var(--Soft-White) 91%, var(--Soft-Black) 91%, var(--Soft-Black) 100%);
+  }
+  92% {
+      background: linear-gradient(to right, var(--Soft-White) 92%, var(--Soft-Black) 92%, var(--Soft-Black) 100%);
+  }
+  93% {
+      background: linear-gradient(to right, var(--Soft-White) 93%, var(--Soft-Black) 93%, var(--Soft-Black) 100%);
+  }
+  94% {
+      background: linear-gradient(to right, var(--Soft-White) 94%, var(--Soft-Black) 94%, var(--Soft-Black) 100%);
+  }
+  95% {
+      background: linear-gradient(to right, var(--Soft-White) 95%, var(--Soft-Black) 95%, var(--Soft-Black) 100%);
+  }
+  96% {
+      background: linear-gradient(to right, var(--Soft-White) 96%, var(--Soft-Black) 96%, var(--Soft-Black) 100%);
+  }
+  97% {
+      background: linear-gradient(to right, var(--Soft-White) 97%, var(--Soft-Black) 97%, var(--Soft-Black) 100%);
+  }
+  98% {
+      background: linear-gradient(to right, var(--Soft-White) 98%, var(--Soft-Black) 98%, var(--Soft-Black) 100%);
+  }
+  99% {
+      background: linear-gradient(to right, var(--Soft-White) 99%, var(--Soft-Black) 99%, var(--Soft-Black) 100%);
   }
   100% {
-    transform: scale(1);
-    box-shadow: 0 0 6px var(--Soft-White);
+      background: linear-gradient(to right, var(--Soft-White) 100%, var(--Soft-Black) 100%, var(--Soft-Black) 100%);
   }
 }
+
 
 body.dark-mode .skill-images-container div.filled  {
   background-color: var(--Soft-White); /* Dark skill bar fill */
-  animation: charge-animation-dark-mode 1s ease forwards, pulse-darkmode 1.5s ease;
+  animation: dark-mode-pulse 0.3s ease-in-out forwards;
 }
 
 body.dark-mode .contact-form input,

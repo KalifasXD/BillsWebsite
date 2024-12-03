@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (entry.isIntersecting) {
         const skill = entry.target;
         const currentScore = parseInt(skill.getAttribute('current-score'));
+        const totalScore = parseInt(skill.getAttribute("score"));
         const container = skill.querySelector('.skill-images-container');
         const title = skill.querySelector('h2'); // Target the title for fading
   
@@ -24,10 +25,10 @@ document.addEventListener("DOMContentLoaded", () => {
         title.classList.add('fade_in');
   
         // Add circles dynamically and animate them
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < totalScore; i++) {
           const circle = document.createElement('div');
           container.appendChild(circle);
-  
+
           if (i < currentScore) {
             setTimeout(() => {
               circle.classList.add('filled');
@@ -43,8 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Observe each skill element
   skills.forEach(skill => skillObserver.observe(skill));
-
-  
 
   // Hamburger menu toggle
   menuIcon.addEventListener("click", () => {
@@ -130,14 +129,14 @@ document.addEventListener("DOMContentLoaded", () => {
       const targetPosition = experienceSection.getBoundingClientRect().top + window.scrollY - 25;
       window.scrollTo({ top: targetPosition, behavior: 'smooth' });
     }, 100);
-    document.body.style.overflow = "hidden";
+    document.body.style.overflowY = "hidden";
     sectionObserver.disconnect();
     experienceSection.addEventListener("wheel", handleScroll);
   };
 
   const unlockScroll = () => {
     console.log("Scroll unlocked");
-    document.body.style.overflow = "auto";
+    document.body.style.overflowY = "auto";
     sectionObserver.observe(experienceSection);
     experienceSection.removeEventListener("wheel", handleScroll);
   };

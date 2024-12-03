@@ -5,7 +5,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vasileios Dounavis | Portfolio</title>
-  <link rel="stylesheet" href="styles.css?v=8">
+  <link id="dynamic-css" rel="stylesheet" href="styles.css">
+  <script>
+    // REMEMBER TO CHANGE THE CSS VERSION CALL WHEN THE WEBSITE IS DEPLOYED
+    const cssLink = document.getElementById('dynamic-css');
+    const version = new Date().getTime(); // Use the current timestamp
+    cssLink.href = `styles.css?v=${version}`;
+  </script>
   <!-- Include ScrollMagic and GSAP plugin -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -142,92 +148,92 @@
     <div class="skills-container">
       <div class="skills-column">
         <h2>Web Design</h2>
-        <div class="skill" current-score='8' score="10">
+        <div class="skill" current-score='4' score="5">
           <h2><i class="skill-image fab fa-html5"></i>HTML</h2>
           <div class="skill-images-container"></div>
         </div>
-        <div class="skill" current-score='8' score="10">
+        <div class="skill" current-score='4' score="5">
           <h2><i class="skill-image fab fa-css3-alt"></i>CSS</h2>
           <div class="skill-images-container"></div>
         </div>
-        <div class="skill" current-score='5' score="10">
+        <div class="skill" current-score='2' score="5">
           <h2><i class="skill-image fab fa-js"></i>JavaScript</h2>
           <div class="skill-images-container"></div>
         </div>
-        <div class="skill" current-score='7' score="10">
+        <div class="skill" current-score='3' score="5">
           <h2><i class="skill-image fab fa-php"></i>PHP</h2>
           <div class="skill-images-container"></div>
         </div>
-        <div class="skill" current-score='5' score="10">
+        <div class="skill" current-score='2' score="5">
           <h2><i class="skill-image fas fa-database"></i>SQL/Databases</h2>
           <div class="skill-images-container"></div>
         </div>
-        <div class="skill" current-score='8' score="10">
+        <div class="skill" current-score='2' score="5">
           <h2><i class="skill-image fab fa-wordpress"></i>WordPress</h2>
           <div class="skill-images-container"></div>
         </div>
       </div>
       <div class="skills-column">
         <h2>Security & Game Engines</h2>
-        <div class="skill" current-score='3' score="10">
+        <div class="skill" current-score='1' score="5">
           <h2><i class="skill-image fa fa-shield-alt"></i>Cyber Security</h2>
           <div class="skill-images-container"></div>
         </div>
-        <div class="skill" current-score='5' score="10">
+        <div class="skill" current-score='2' score="5">
           <h2><i class="skill-image fa fa-key"></i>Encryption</h2>
           <div class="skill-images-container"></div>
         </div>
-        <div class="skill" current-score='8' score="10">
+        <div class="skill" current-score='2' score="5">
           <h2><i class="skill-image devicon-unrealengine-original"></i>Unreal Engine 4-5</h2>
           <div class="skill-images-container"></div>
         </div>
-        <div class="skill" current-score='7' score="10">
+        <div class="skill" current-score='3' score="5">
           <h2><i class="skill-image devicon-unity-plain"></i>Unity 3D</h2>
           <div class="skill-images-container"></div>
         </div>
       </div>
       <div class="skills-column">
         <h2>Programming Languages</h2>
-        <div class="skill" current-score='7' score="10">
+        <div class="skill" current-score='2' score="5">
           <h2><i class="skill-image fab fa-python"></i>Python</h2>
           <div class="skill-images-container"></div>
         </div>
-        <div class="skill" current-score='5' score="10">
+        <div class="skill" current-score='1' score="5">
           <h2><i class="skill-image devicon-cplusplus-plain"></i></h2>
           <div class="skill-images-container"></div>
         </div>
-        <div class="skill" current-score='6' score="10">
+        <div class="skill" current-score='3' score="5">
           <h2><i class="skill-image devicon-csharp-plain"></i></h2>
           <div class="skill-images-container"></div>
         </div>
-        <div class="skill" current-score='8' score="10">
+        <div class="skill" current-score='4' score="5">
           <h2><i class="skill-image devicon-c-plain"></i></h2>
           <div class="skill-images-container"></div>
         </div>
-        <div class="skill" current-score='7' score="10">
+        <div class="skill" current-score='3' score="5">
           <h2><i class="skill-image devicon-java-plain"></i>Java</h2>
           <div class="skill-images-container"></div>
         </div>
       </div>
       <div class="skills-column">
         <h2>Development Tools</h2>
-        <div class="skill" current-score='6' score="10">
+        <div class="skill" current-score='3' score="5">
           <h2><i class="skill-image devicon-vscode-plain"></i>Visual Studio Code</h2>
           <div class="skill-images-container"></div>
         </div>
-        <div class="skill" current-score='6' score="10">
+        <div class="skill" current-score='3' score="5">
           <h2><i class="skill-image devicon-pycharm-plain"></i>PyCharm</h2>
           <div class="skill-images-container"></div>
         </div>
-        <div class="skill" current-score='6' score="10">
+        <div class="skill" current-score='3' score="5">
           <h2><i class="skill-image devicon-intellij-plain"></i>Intelli J</h2>
           <div class="skill-images-container"></div>
         </div>
-        <div class="skill" current-score='3' score="10">
+        <div class="skill" current-score='1' score="5">
           <h2><i class="skill-image devicon-eclipse-plain"></i>Eclipse</h2>
           <div class="skill-images-container"></div>
         </div>
-        <div class="skill" current-score='8' score="10">
+        <div class="skill" current-score='3' score="5">
           <h2><i class="skill-image devicon-sanity-plain"></i>Sublime Text 3-4</h2>
           <div class="skill-images-container"></div>
         </div>
@@ -241,7 +247,7 @@
   <div class="education-languages-container">
     <!-- Education Section -->
     <div class="education">
-      <h3>Education</h3>
+      <h3>Education <i class="fas fa-graduation-cap"></i></h3>
       <ul>
         <li>
           <h4>Bachelor's in Software Engineering</h4>
@@ -256,7 +262,7 @@
 
     <!-- Languages Section -->
     <div class="languages">
-      <h3>Languages</h3>
+      <h3>Languages <i class="fas fa-globe"></i></h3>
       <ul>
         <li><strong>Greek:</strong> Native</li>
         <li><strong>English:</strong> Fluent</li>
@@ -265,7 +271,7 @@
     </div>
     <!-- Achievements Section -->
     <div class="achievements">
-      <h3>Αchievements</h3>
+      <h3>Αchievements <i class="fas fa-trophy"></i></h3>
       <ul>
         <li><strong>Greek:</strong> Native</li>
         <li><strong>English:</strong> Fluent</li>
