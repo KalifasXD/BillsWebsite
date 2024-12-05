@@ -168,14 +168,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 100);
     document.body.style.overflowY = "hidden";
     //sectionObserver.disconnect();
-    experienceSection.addEventListener("wheel", handleScroll);
+    //experienceSection.addEventListener("wheel", handleScroll);
+    ['wheel', 'touchmove'].forEach(event => {
+      experienceSection.addEventListener(event, handleScroll);
+    });
   };
 
   const unlockScroll = () => {
     console.log("Scroll unlocked");
     document.body.style.overflowY = "auto";
     //sectionObserver.observe(experienceSection);
-    experienceSection.removeEventListener("wheel", handleScroll);
+    //experienceSection.removeEventListener("wheel", handleScroll);
+    ['wheel', 'touchmove'].forEach(event => {
+      experienceSection.removeEventListener(event, handleScroll);
+    });
   };
 
   const updateSlideClasses = (newIndex, direction) => {
@@ -277,8 +283,11 @@ document.addEventListener("DOMContentLoaded", () => {
   sectionObserver.observe(experienceSection);
 
   // Attach scroll listener only when section is in view
-  experienceSection.addEventListener("wheel", handleScroll);
-  experienceSection.addEventListener("touchmove", handleScroll);
+  // experienceSection.addEventListener("wheel", handleScroll);
+  // experienceSection.addEventListener("touchmove", handleScroll);
+  ['wheel', 'touchmove'].forEach(event => {
+    experienceSection.addEventListener(event, handleScroll);
+  });
   navLinks.forEach(link => {
     link.addEventListener("click", e => {
       setTimeout(() => {
