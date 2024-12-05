@@ -220,7 +220,7 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("Scroll is locked or in progress.");
       return;
     }
-  
+    event.preventDefault()
     const deltaY = event.deltaY;
   
     let direction = null;
