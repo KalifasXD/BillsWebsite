@@ -1633,6 +1633,10 @@ p {
     flex-direction: column;
   }
 
+  .education, .languages, .achievements {
+    max-width: 100%;
+  } 
+
   .education, .languages {
     flex: 1 1 100%;
   }
