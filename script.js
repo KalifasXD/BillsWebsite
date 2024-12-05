@@ -1,3 +1,36 @@
+let isRedirecting = false;
+let scrollTimeout;
+
+function handleRedirection(scrollToTarget, offset) {
+  if (isRedirecting) {
+    console.log("Already in motion. Can't initiate a new redirection");
+    return;
+  }
+
+  isRedirecting = true;
+  const finalOffsetPOS = scrollToTarget.getBoundingClientRect().top + window.scrollY - offset;
+  scrollToTarget.scrollIntoView({behavior: 'smooth'});
+  
+  // Listen for the scrolling to end using requestAnimationFrame
+  const checkScrollEnd = () => {
+    console.log("Target Scroll Position: ", finalOffsetPOS);
+    console.log("Current Scroll Position: ", window.scrollY);
+    // If the page is still scrolling, continue checking
+    if (Math.abs(window.scrollY - finalOffsetPOS) > (offset || 10)) {
+      requestAnimationFrame(checkScrollEnd); // Keep checking if not yet scrolled to the target
+    } else {
+      window.scrollTo({ top: finalOffsetPOS, behavior: 'smooth' });
+      setTimeout(() => {
+        isRedirecting = false;
+        console.log("Can redirect again!");
+      }, 500);
+    }
+  };
+
+  // Start checking once the scrolling starts
+  checkScrollEnd();
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const menuIcon = document.querySelector(".menu-icon");
   const menu = document.querySelector(".navbar ul");
@@ -62,13 +95,16 @@ document.addEventListener("DOMContentLoaded", () => {
       document.body.classList.toggle("dark-mode", this.checked);
   });
 
+
   // Smooth scroll for links
   document.querySelectorAll(".nav-link, .quick-links, .hamburger-menu").forEach((link) => {
       link.addEventListener("click", (e) => {
           e.preventDefault();
-          const target = document.querySelector(link.getAttribute("href"));
-          if (target) {
-              target.scrollIntoView({ behavior: "smooth" });
+          const targetId = document.querySelector(link.getAttribute("href"));
+
+          if (targetId) {
+            handleRedirection(targetId, 0);
+            //target.scrollIntoView({ behavior: "smooth" });
           }
       });
   });
@@ -127,17 +163,18 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("Scroll locked");
     setTimeout(() => {
       const targetPosition = experienceSection.getBoundingClientRect().top + window.scrollY - 25;
-      window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+      handleRedirection(experienceSection, 50);
+      //window.scrollTo({ top: targetPosition, behavior: 'smooth' });
     }, 100);
     document.body.style.overflowY = "hidden";
-    sectionObserver.disconnect();
+    //sectionObserver.disconnect();
     experienceSection.addEventListener("wheel", handleScroll);
   };
 
   const unlockScroll = () => {
     console.log("Scroll unlocked");
     document.body.style.overflowY = "auto";
-    sectionObserver.observe(experienceSection);
+    //sectionObserver.observe(experienceSection);
     experienceSection.removeEventListener("wheel", handleScroll);
   };
 
@@ -169,6 +206,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const handleScroll = (event) => {
     if (!isSectionInView || isAtBoundary) {
       console.log("Scroll ignored. Section not fully in view or at boundary.");
+      unlockScroll();
       return;
     }
   
@@ -216,6 +254,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (isAtBoundary) {
         if(entry.intersectionRatio <= 0.925){
           isAtBoundary = false; // Section is no longer in view, reset boundary flag
+          unlockScroll();
         }
         return
       }
@@ -226,6 +265,7 @@ document.addEventListener("DOMContentLoaded", () => {
         lockScroll();
       } else {
         isSectionInView = false;
+        unlockScroll();
       }
     },
     {
@@ -261,6 +301,7 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
   const homeSection = document.querySelector('#home');
   const aboutSection = document.querySelector('.about.extra-padding');
+  const aboutHeader = document.querySelector('#home h2');
   const offset = 200;
 
   // Helper function to check if a section is fully visible
@@ -289,10 +330,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // Scroll down: Expand the about section fully
     if (!hasScrolledToAbout && aboutPartiallyVisible) {
       aboutSection.classList.add('full-view');
+      aboutHeader.classList.add('full-view');
       hasScrolledToAbout = true;
       setTimeout(() => {
         const targetPosition = aboutSection.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+        //window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+        handleRedirection(aboutSection, offset);
         isInFullView = true;
       }, 300);           
     }
@@ -300,6 +343,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Scroll up: Reset the about section when home is fully visible
     if (homeVisible && isInFullView) {
       aboutSection.classList.remove('full-view');
+      aboutHeader.classList.remove('full-view');
       hasScrolledToAbout = false;
       isInFullView = false;
     }

@@ -225,6 +225,63 @@ a {
   color: #007bff;
 }
 
+
+.quick-introduction {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 0 15px 1px var(--Light-Beige) inset;
+}
+
+.quick-introduction h2::after {
+  content: '';
+  display: block;
+  margin: 10px auto;
+  border-radius: 2px;
+  width: 100%;
+  height: 3px;
+  background-color: var(--Active-Gold);  /* Hex color for the line */
+  background: linear-gradient(to right, 
+    #b35e2c00 0%,        /* Transparent on the left */
+    var(--Active-Gold) 10%,       /* Fully opaque */
+    var(--Active-Gold) 90%,       /* Fully opaque */
+    #b35e2c00 100%);
+}
+
+.introduction-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  width: 90dvw;
+  gap:50px;
+}
+
+.introduction-container div {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 50dvw;
+  border: 1px solid red;
+  width: 50%;
+  height: 25%;
+}
+
+.introduction-container div h1{
+  font-size: 1.5rem;
+}
+
+.introduction-container p {
+  
+}
+
+.introduction-container img {
+  width: 25%;
+  height: 25%;
+}
+
 /* Hero Section Styling */
 .hero {
   height: 100dvh; /* Full screen height */
@@ -318,24 +375,66 @@ a {
   }
 }
 
-/* Initial state: About section in hero section */
-.about {
-  position: absolute;
-  bottom: 5%; /* Near the bottom of the hero */
-  left: 25%; /* Centered horizontally */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 50%; /* Smaller width initially */
-  height: 100px; /* Compact height */
-  transform: translateY(40px); /* Start small and move slightly */
-  pointer-events: none; /* Disable interactions initially */
-  background: transparent;
-  z-index: 1; /* Above the hero section */
+
+
+
+#home h2.full-view{
+  opacity: 1;
+  animation: foldEffect 1s cubic-bezier(0.42, 0, 0.58, 1) forwards;
+}
+
+@keyframes foldEffect {
+  0% {
+    transform: scale(1); /* Start small and move slightly */
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.5) translateY(10px); /* Scale up a bit more */
+    opacity: 0.5; /* Almost fully visible */
+  }
+  80% {
+    transform: scale(0.3) translateY(0); /* Subtle back-shrink for smooth effect */
+  }
+  100% {
+    transform: scale(0.0) translateY(0); /* End at full size */
+    opacity: 0;
+  }
+}
+
+
+#home h2{
+  position: relative;
+  top: 20%;
+  width: auto; /* Smaller width initially */
   padding: 20px;
+  font-size: 2.2rem; /* Elegant font size */
+  font-weight: 700;
+  letter-spacing: 2px; /* Slightly increased spacing */
+  text-align: center;
+  text-transform: uppercase;
+  color: black; /* Solid black text */
+  text-shadow: 0 0 5px rgb(129, 129, 129); /* Subtle initial glow */
+  transition: text-shadow 0.4s ease, transform 0.4s ease;
   animation: unfoldEffect 1s cubic-bezier(0.42, 0, 0.58, 1) forwards;
 }
+
+/* Advanced subtle glowing outline effect */
+#home h2::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px solid rgba(129, 129, 129, 1); /* Soft border */
+  border-radius: 8px; /* Rounded corners for the outline */
+  z-index: -1;
+  box-shadow: 0 0 20px rgba(129, 129, 129, 1); /* Subtle outer glow */
+  box-shadow: 0 0 20px rgba(129, 129, 129, 1) inset; /* Subtle outer glow */
+  transform: scale(1.05);
+  transition: box-shadow 0.4s ease, transform 0.4s ease;
+}
+
 
 @keyframes unfoldEffect {
   0% {
@@ -355,34 +454,39 @@ a {
   }
 }
 
-
+.about {
+  position: relative;
+  bottom: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  padding: 20px;
+  opacity: 0;
+  transform: scale(1);
+  height: 75dvh;
+}
 
 /* Expanded state: Full-size about section */
 .about.full-view {
-  position: relative; /* Normal document flow */
-  bottom: unset; /* Reset position */
   left: unset; /* Reset position */
   width: 100%; /* Full width */
-  height: auto; /* Expand height automatically */
+  height: 75dvh;
   transform: scale(1) translateY(0); /* Final full size and position */
   opacity: 1; /* Full opacity */
-  pointer-events: auto; /* Enable interactions */
   padding: 60px 40px;
   z-index: 2; /* Above the home section */
   border-radius: 0; /* Remove rounded corners */
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1), 0 0 60px rgba(255, 255, 255, 0.3); /* Soft shadow */
-  animation: popOffEffect 1s ease-out forwards, shadowPulse 1s ease-in-out infinite;
+
 }
 
 /* Popping off animation */
 @keyframes popOffEffect {
   0% {
-    transform: scale(0.5) translateY(30px); /* Start small and slightly below */
+    transform: scale(0) translateY(30px); /* Start small and slightly below */
     opacity: 0; /* Fully transparent */
-  }
-  60% {
-    transform: scale(1.1) translateY(-10px); /* Slight overshoot for the 'pop' effect */
-    opacity: 1; /* Fully visible */
   }
   100% {
     transform: scale(1) translateY(0); /* Final scale and position */
@@ -402,55 +506,14 @@ a {
   }
 }
 
-.about h2 {
-  font-size: 2.2rem; /* Elegant font size */
-  font-weight: 700;
-  letter-spacing: 2px; /* Slightly increased spacing */
-  text-align: center;
-  text-transform: uppercase;
-  color: black; /* Solid black text */
-  position: relative;
-  padding: 12px 30px;
-  z-index: 1; /* Text above all other effects */
-  text-shadow: 0 0 5px rgb(129, 129, 129); /* Subtle initial glow */
-  transition: text-shadow 0.4s ease, transform 0.4s ease;
-  transform: translateY(40px);
-  cursor: pointer;
-  border-radius: 8px; /* Rounded corners for the background */
-  padding: 20px 40px; /* Adjust padding for better fit */
-}
-
-/* Advanced subtle glowing outline effect */
-.about h2::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border: 2px solid rgba(129, 129, 129, 1); /* Soft border */
-  border-radius: 8px; /* Rounded corners for the outline */
-  z-index: -1;
-  box-shadow: 0 0 20px rgba(129, 129, 129, 1); /* Subtle outer glow */
-  box-shadow: 0 0 20px rgba(129, 129, 129, 1) inset; /* Subtle outer glow */
-  transform: scale(1.05);
-  transition: box-shadow 0.4s ease, transform 0.4s ease;
-}
-
 .about.full-view .about-container {
+  animation: popOffEffect 1s ease-in forwards;
   display: flex;
 }
 
 .about .about-container {
   display: none;
 }
-
-/*.about{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-} */
 
 .about-container {
   margin: 0 20px;
@@ -463,7 +526,7 @@ a {
 
 .about-container img {
   width: 22%;
-  height: 22%;
+  height: 100%;
   border-radius: 20%;
   box-shadow: 0 0 30px 10px var(--Soft-Black),
               0 0 50px 20px var(--Soft-Black) inset;
@@ -1442,7 +1505,7 @@ p {
 #education-languages {
   padding: 60px 20px;
   color: var(--Soft-Black);
-  margin: 20px auto;
+  margin: 0px auto;
   width: 100dvw;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
   display: flex;
@@ -1585,6 +1648,7 @@ p {
   max-width: 100%;
   margin: 0 auto;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  z-index: 2;
 }
 
 .contact-form {
@@ -1697,6 +1761,10 @@ body.dark-mode .navbar ul.active {
   background-color: var(--Soft-Black); /* Or your preferred color */
 }
 
+body.dark-mode .menu-icon {
+  color: var(--Soft-White);
+}
+
 /* Dark Mode styles */
 body[data-theme="dark"] .menu a.active {
   color:var(--Soft-White); /* White text in dark mode */
@@ -1731,13 +1799,13 @@ body.dark-mode .hero::after {
 }
 
 /* Advanced subtle glowing outline effect */
-body.dark-mode .about h2::before {
+body.dark-mode #home h2::before {
   border: 2px solid rgba(255, 255, 255, 0.9); /* Soft border */
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); /* Subtle outer glow */
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.2) inset; /* Subtle initial glow */
 }
 
-body.dark-mode .about h2 {
+body.dark-mode #home h2 {
   color: var(--Soft-White);
   text-shadow: 0 0 5px rgba(255, 255, 255, 0.2); /* Subtle initial glow */
 }
