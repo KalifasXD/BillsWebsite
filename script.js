@@ -169,8 +169,8 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.style.overflowY = "hidden";
     //sectionObserver.disconnect();
     //experienceSection.addEventListener("wheel", handleScroll);
-    ['wheel', 'touchmove'].forEach(event => {
-      experienceSection.addEventListener(event, handleScroll);
+    ['scroll', 'wheel', 'touchmove'].forEach(event => {
+      experienceSection.addEventListener(event, handleScroll, true);
     });
   };
 
@@ -179,8 +179,8 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.style.overflowY = "auto";
     //sectionObserver.observe(experienceSection);
     //experienceSection.removeEventListener("wheel", handleScroll);
-    ['wheel', 'touchmove'].forEach(event => {
-      experienceSection.removeEventListener(event, handleScroll);
+    ['scroll', 'wheel', 'touchmove'].forEach(event => {
+      experienceSection.removeEventListener(event, handleScroll, true);
     });
   };
 
@@ -285,8 +285,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Attach scroll listener only when section is in view
   // experienceSection.addEventListener("wheel", handleScroll);
   // experienceSection.addEventListener("touchmove", handleScroll);
-  ['wheel', 'touchmove'].forEach(event => {
-    experienceSection.addEventListener(event, handleScroll);
+  ['scroll', 'wheel', 'touchmove'].forEach(event => {
+    experienceSection.addEventListener(event, handleScroll, true);
   });
   navLinks.forEach(link => {
     link.addEventListener("click", e => {
