@@ -278,7 +278,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Attach scroll listener only when section is in view
   experienceSection.addEventListener("wheel", handleScroll);
-
+  experienceSection.addEventListener("touchmove", handleScroll);
   navLinks.forEach(link => {
     link.addEventListener("click", e => {
       setTimeout(() => {
