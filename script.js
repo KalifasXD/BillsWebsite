@@ -13,8 +13,8 @@ function handleRedirection(scrollToTarget, offset) {
   
   // Listen for the scrolling to end using requestAnimationFrame
   const checkScrollEnd = () => {
-    console.log("Target Scroll Position: ", finalOffsetPOS);
-    console.log("Current Scroll Position: ", window.scrollY);
+    // console.log("Target Scroll Position: ", finalOffsetPOS);
+    // console.log("Current Scroll Position: ", window.scrollY);
     // If the page is still scrolling, continue checking
     if (Math.abs(window.scrollY - finalOffsetPOS) > (offset || 10)) {
       requestAnimationFrame(checkScrollEnd); // Keep checking if not yet scrolled to the target

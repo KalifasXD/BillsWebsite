@@ -278,8 +278,11 @@ a {
 }
 
 .introduction-container img {
-  width: 25%;
-  height: 25%;
+  width: 22%;
+  height: 100%;
+  border-radius: 20%;
+  box-shadow: 0 0 30px 10px var(--Soft-Black),
+              0 0 50px 20px var(--Soft-Black) inset;
 }
 
 /* Hero Section Styling */
@@ -1503,14 +1506,14 @@ p {
 
 /* General Section Styling */
 #education-languages {
-  padding: 60px 20px;
+  padding: 60px 0px;
   color: var(--Soft-Black);
   margin: 0px auto;
   width: 100dvw;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 
@@ -1541,35 +1544,66 @@ p {
 
 
 .education-languages-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 20px;
+  display: flex; /* Enable Flexbox for layout */
+  flex-direction: row; /* Stack title and content vertically */
+  justify-content: flex-start; /* Align items at the top */
+  align-items: flex-start; /* Center horizontally */
   width: 100%;
 }
 
+.education-languages-container > div:first-child {
+  border-left: none; /* Remove left border for the first column */
+}
+
+.education-languages-container > div:nth-child(2) {
+  border-left: 2px solid var(--Active-Gold);
+  border-right: 2px solid var(--Active-Gold);
+}
+
 .education, .languages, .achievements {
-  flex: 1 1 45%; /* Adjusts for smaller screens */
-  background-color: rgb(17, 17, 17, 0.5);
+  flex: 1; /* Ensures all sections take up equal space */
+  max-width: 100%; /* Optional: Prevents sections from exceeding one-third */
+  background-color: rgba(0, 0, 0, 0.8); /* Background styling */
   padding: 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Light shadow */
-  max-width: 35%;
-  opacity: 0; /* Initially hidden */
-  transform: translateX(100%); /* Positioned off-screen to the right */
+  transform: translateY(50px); /* Animation start state */
+  transition: opacity 1s ease, transform 1s ease; /* Smooth transition */
+  
+  display: flex; /* Enable flexbox */
+  flex-direction: column; /* Stack items vertically */
+  justify-content: flex-start; /* Center items vertically */
+  align-items: center; /* Center items horizontally */
+  height: 40dvh;
 }
 
 /* Base styles for animation target elements */
 .education, .languages, .achievements {
   opacity: 0; /* Initially hidden */
   transform: translateY(50px); /* Start slightly below their position */
-  transition: opacity 1s ease, transform 1s ease; /* Smooth transition */
+  
 }
 
-/* Visible state (triggered by JavaScript) */
+/* Animation keyframes */
+@keyframes fadeInUpEducation {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .education.visible, .languages.visible, .achievements.visible {
-  opacity: 1; /* Fully visible */
-  transform: translateY(0); /* Move to the center position */
+  animation: fadeInUpEducation 0.7s ease forwards; /* Base animation */
+}
+
+.languages.visible {
+  animation-delay: 0.5s;
+}
+
+.achievements.visible {
+  animation-delay: 1s;
 }
 
 /* Keyframes for Converge Animation */
@@ -1586,64 +1620,87 @@ p {
 
 .education h3, .languages h3, .achievements h3 {
   font-size: 1.5rem;
-  margin-bottom: 20px;
-  color: var(--Soft-Black);
+  font-weight: bold;
+  color: var(--Active-Gold); /* Gold color for the title */
+  margin: 0;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--Active-Gold); /* Gold line separating title and content */
+  width: 100%; /* Full-width for the divider */
+  text-align: center;
 }
 
 .education ul, .languages ul, .achievements ul {
   list-style: none;
+  margin: 20px 0 0; /* Spacing between the title and content */
   padding: 0;
+  color: var(--Soft-Black);
 }
 
 .education ul li, .languages ul li, .achievements ul li {
   margin-bottom: 15px;
 }
 
-.education ul li h4 {
+#education-languages ul li h4 {
   font-size: 1.2rem;
   color: var(--Active-Gold);
   margin-bottom: 5px;
 }
 
-.education ul li p {
+#education-languages ul li p {
   font-size: 0.9rem;
   color: var(--Dark-Beige);
   line-height: 1.5;
 }
 
-.languages ul li {
+#education-languages ul li {
   font-size: 1rem;
-  color: #444;
+  color: var(--Dark-Beige);
 }
 
-.languages ul li strong {
+#education-languages ul li strong {
   color: var(--Active-Gold);
 }
 
-/* Hover Effects */
-.education:hover, .languages:hover {
-  transform: scale(1.02);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+/* Responsive Layout with Media Queries */
+@media (max-width: 1024px) {
+  .education, .languages, .achievements {
+    max-width: 45%; /* Two columns on tablets */
+  }
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .education-languages-container {
-    flex-direction: column;
+    flex-direction: column; /* Stack columns vertically on smaller screens */
   }
 
   .education, .languages, .achievements {
-    max-width: 100%;
-  } 
-
-  .education, .languages {
-    flex: 1 1 100%;
+    max-width: 100dvw; /* Full width for each section */
+    border-bottom: 2px solid var(--Active-Gold);
+    border-left: none;
+    border-right: none;
   }
 }
 
+@media (max-width: 480px) {
+  #education-languages h2 {
+    font-size: 1.5rem; /* Smaller font size for smaller screens */
+  }
 
+  .education h3, .languages h3, .achievements h3 {
+    font-size: 1.2rem; /* Adjust title size */
+  }
 
+  .education ul li h4, .languages ul li strong, .achievements ul li {
+    font-size: 1rem; /* Adjust content font size */
+  }
+
+  .education, .languages, .achievements {
+    max-width: 100dvw; /* Full width for each section */
+    border-bottom: 2px solid var(--Active-Gold);
+    border-left: none;
+    border-right: none;
+  }
+}
 
 /* Contact Section */
 .contact {
@@ -1851,7 +1908,7 @@ body.dark-mode .nav-btn::before{
   color: var(--Soft-White);
 }
 
-body.dark-mode .about-container img {
+body.dark-mode .about-container img, .introduction-container img {
   box-shadow: 0 0 30px 10px var(--Soft-White),
               0 0 50px 20px var(--Soft-White) inset;
 }
@@ -2175,6 +2232,10 @@ body.dark-mode .education h3, body.dark-mode .languages h3, body.dark-mode .achi
 body.dark-mode .skill-images-container div.filled  {
   background-color: var(--Soft-White); /* Dark skill bar fill */
   animation: dark-mode-pulse 0.3s ease-in-out forwards;
+}
+
+body.dark-mode .education, body.dark-mode .languages, body.dark-mode .achievements {
+  background-color: rgb(255, 255, 255, 0.1);
 }
 
 body.dark-mode .contact-form input,
