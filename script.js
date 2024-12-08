@@ -146,24 +146,6 @@ document.addEventListener("DOMContentLoaded", () => {
   let isAtBoundary = false;
   let startY = 0; // For touch handling
 
-    // Add touchstart and touchmove listeners
-    experienceSection.addEventListener("touchstart", (event) => {
-      startY = event.touches[0].clientY; // Record initial touch Y position
-    }, { passive: false });
-  
-    experienceSection.addEventListener("touchmove", (event) => {
-      const currentY = event.touches[0].clientY;
-      const deltaY = startY - currentY; // Calculate deltaY (similar to wheel event deltaY)
-  
-      // Simulate a scroll event and call handleScroll
-      handleScroll({ deltaY });
-  
-      // Update startY for continuous scrolling
-      startY = currentY;
-  
-      event.preventDefault(); // Prevent default scrolling behavior
-    }, { passive: false });
-
   navButtons.forEach((button, index) => {
     button.addEventListener("click", () => {
       if (currentIndex !== index) {
@@ -190,12 +172,33 @@ document.addEventListener("DOMContentLoaded", () => {
     ['scroll', 'wheel'].forEach(event => {
       experienceSection.addEventListener(event, handleScroll, { passive: false} );
     });
+    // Add touchstart and touchmove listeners
+    experienceSection.addEventListener("touchstart", handleTouchStart, { passive: false });
+    experienceSection.addEventListener("touchmove", handleTouchMove, { passive: false });
+  
     setTimeout(() => {
       const targetPosition = experienceSection.getBoundingClientRect().top + window.scrollY - 25;
       handleRedirection(experienceSection, 50);
       //window.scrollTo({ top: targetPosition, behavior: 'smooth' });
     }, 100);
     
+  };
+
+  const handleTouchStart = (event) => {
+    startY = event.touches[0].clientY; // Record initial touch Y position
+  };
+  
+  const handleTouchMove = (event) => {
+    const currentY = event.touches[0].clientY;
+    const deltaY = startY - currentY; // Calculate deltaY (similar to wheel event deltaY)
+  
+    // Simulate a scroll event and call handleScroll
+    handleScroll({ deltaY });
+  
+    // Update startY for continuous scrolling
+    startY = currentY;
+  
+    event.preventDefault(); // Prevent default scrolling behavior
   };
 
   const unlockScroll = () => {
@@ -206,6 +209,8 @@ document.addEventListener("DOMContentLoaded", () => {
     ['scroll', 'wheel'].forEach(event => {
       experienceSection.removeEventListener(event, handleScroll);
     });
+    experienceSection.removeEventListener("touchstart", handleTouchStart, { passive: false });
+    experienceSection.removeEventListener("touchmove", handleTouchMove, { passive: false });
   };
 
   const updateSlideClasses = (newIndex, direction) => {
