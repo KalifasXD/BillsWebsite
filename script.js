@@ -144,7 +144,25 @@ document.addEventListener("DOMContentLoaded", () => {
   let isScrolling = false;
   let isSectionInView = false;
   let isAtBoundary = false;
+  let startY = 0; // For touch handling
 
+    // Add touchstart and touchmove listeners
+    experienceSection.addEventListener("touchstart", (event) => {
+      startY = event.touches[0].clientY; // Record initial touch Y position
+    }, { passive: false });
+  
+    experienceSection.addEventListener("touchmove", (event) => {
+      const currentY = event.touches[0].clientY;
+      const deltaY = startY - currentY; // Calculate deltaY (similar to wheel event deltaY)
+  
+      // Simulate a scroll event and call handleScroll
+      handleScroll({ deltaY });
+  
+      // Update startY for continuous scrolling
+      startY = currentY;
+  
+      event.preventDefault(); // Prevent default scrolling behavior
+    }, { passive: false });
 
   navButtons.forEach((button, index) => {
     button.addEventListener("click", () => {
@@ -166,17 +184,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const lockScroll = () => {
     console.log("Scroll locked");
+    document.body.style.overflowY = "hidden";
+    //sectionObserver.disconnect();
+    //experienceSection.addEventListener("wheel", handleScroll);
+    ['scroll', 'wheel'].forEach(event => {
+      experienceSection.addEventListener(event, handleScroll, { passive: false} );
+    });
     setTimeout(() => {
       const targetPosition = experienceSection.getBoundingClientRect().top + window.scrollY - 25;
       handleRedirection(experienceSection, 50);
       //window.scrollTo({ top: targetPosition, behavior: 'smooth' });
     }, 100);
-    document.body.style.overflowY = "hidden";
-    //sectionObserver.disconnect();
-    //experienceSection.addEventListener("wheel", handleScroll);
-    ['scroll', 'wheel', 'touchmove'].forEach(event => {
-      experienceSection.addEventListener(event, handleScroll, { passive: false} );
-    });
+    
   };
 
   const unlockScroll = () => {
@@ -184,7 +203,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.style.overflowY = "auto";
     //sectionObserver.observe(experienceSection);
     //experienceSection.removeEventListener("wheel", handleScroll);
-    ['scroll', 'wheel', 'touchmove'].forEach(event => {
+    ['scroll', 'wheel'].forEach(event => {
       experienceSection.removeEventListener(event, handleScroll);
     });
   };
@@ -214,7 +233,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  const handleScroll = (event) => {
+  const handleScroll = (event, simulatedDeltaY = null) => {
+    // Use provided deltaY (from touchmove) or extract from event
+    const deltaY = simulatedDeltaY !== null ? simulatedDeltaY : event.deltaY;
+  
     if (!isSectionInView || isAtBoundary) {
       console.log("Scroll ignored. Section not fully in view or at boundary.");
       unlockScroll();
@@ -225,8 +247,11 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("Scroll is locked or in progress.");
       return;
     }
-    event.preventDefault()
-    const deltaY = event.deltaY;
+  
+    if (!deltaY) {
+      console.log("No deltaY detected.");
+      return;
+    }
   
     let direction = null;
   
@@ -290,8 +315,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Attach scroll listener only when section is in view
   // experienceSection.addEventListener("wheel", handleScroll);
   // experienceSection.addEventListener("touchmove", handleScroll);
-  ['scroll', 'wheel', 'touchmove'].forEach(event => {
-    experienceSection.addEventListener(event, handleScroll, true);
+  ['scroll', 'wheel'].forEach(event => {
+    experienceSection.addEventListener(event, handleScroll, {passive: false});
   });
 
   navLinks.forEach(link => {
