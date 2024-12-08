@@ -13,8 +13,6 @@ function handleRedirection(scrollToTarget, offset) {
   
   // Listen for the scrolling to end using requestAnimationFrame
   const checkScrollEnd = () => {
-    // console.log("Target Scroll Position: ", finalOffsetPOS);
-    // console.log("Current Scroll Position: ", window.scrollY);
     // If the page is still scrolling, continue checking
     if (Math.abs(window.scrollY - finalOffsetPOS) > (offset || 10)) {
       requestAnimationFrame(checkScrollEnd); // Keep checking if not yet scrolled to the target
@@ -39,6 +37,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const hamburger = document.querySelector(".hamburger-menu");
   const navigation = document.querySelector(".navigation");
   const skills = document.querySelectorAll(".skill");
+
+
+  // Overview button click logic
+  document.querySelector("#home h2").addEventListener("click", (event) => {
+    document.querySelector("#overview").scrollIntoView({behavior: 'smooth'});
+  });
+
 
   const observerOptions = {
     root: null, // Observe viewport
@@ -170,7 +175,7 @@ document.addEventListener("DOMContentLoaded", () => {
     //sectionObserver.disconnect();
     //experienceSection.addEventListener("wheel", handleScroll);
     ['scroll', 'wheel', 'touchmove'].forEach(event => {
-      experienceSection.addEventListener(event, handleScroll, true);
+      experienceSection.addEventListener(event, handleScroll, { passive: false} );
     });
   };
 
@@ -180,7 +185,7 @@ document.addEventListener("DOMContentLoaded", () => {
     //sectionObserver.observe(experienceSection);
     //experienceSection.removeEventListener("wheel", handleScroll);
     ['scroll', 'wheel', 'touchmove'].forEach(event => {
-      experienceSection.removeEventListener(event, handleScroll, true);
+      experienceSection.removeEventListener(event, handleScroll);
     });
   };
 
@@ -275,7 +280,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     },
     {
-      threshold: Array.from({ length: 101 }, (_, i) => i / 100), // Fine-grained thresholds
+      threshold: 0.925 // Fine-grained thresholds
     }
   );
   
@@ -288,6 +293,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ['scroll', 'wheel', 'touchmove'].forEach(event => {
     experienceSection.addEventListener(event, handleScroll, true);
   });
+
   navLinks.forEach(link => {
     link.addEventListener("click", e => {
       setTimeout(() => {

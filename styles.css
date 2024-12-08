@@ -273,9 +273,6 @@ a {
   font-size: 1.5rem;
 }
 
-.introduction-container p {
-  
-}
 
 .introduction-container img {
   width: 22%;
@@ -293,6 +290,7 @@ a {
   flex-direction: column;
   align-items: center; /* Center content vertically */
   text-align: center;
+  z-index: 5 !important;
 }
 
 @keyframes gradientAnimation {
@@ -419,6 +417,7 @@ a {
   text-shadow: 0 0 5px rgb(129, 129, 129); /* Subtle initial glow */
   transition: text-shadow 0.4s ease, transform 0.4s ease;
   animation: unfoldEffect 1s cubic-bezier(0.42, 0, 0.58, 1) forwards;
+  cursor: pointer;
 }
 
 /* Advanced subtle glowing outline effect */
@@ -437,7 +436,6 @@ a {
   transform: scale(1.05);
   transition: box-shadow 0.4s ease, transform 0.4s ease;
 }
-
 
 @keyframes unfoldEffect {
   0% {
@@ -611,7 +609,7 @@ a {
   align-items: center;
   text-align: center;
   position: relative;
-  z-index: 2 !important;
+  z-index: 15 !important;
 }
 
 .timeline-container {
@@ -622,7 +620,7 @@ a {
   position: relative;
   height: 85dvh;
   max-height: 85dvh;
-  z-index: 2;
+  z-index: 15 !important;
 }
 
 .timeline h1:first-of-type {
@@ -1579,7 +1577,6 @@ p {
 .education, .languages, .achievements {
   opacity: 0; /* Initially hidden */
   transform: translateY(50px); /* Start slightly below their position */
-  
 }
 
 /* Animation keyframes */
@@ -1634,10 +1631,12 @@ p {
   margin: 20px 0 0; /* Spacing between the title and content */
   padding: 0;
   color: var(--Soft-Black);
+  width: 100%;
 }
 
 .education ul li, .languages ul li, .achievements ul li {
   margin-bottom: 15px;
+  text-align: center;
 }
 
 #education-languages ul li h4 {
@@ -1655,6 +1654,22 @@ p {
 #education-languages ul li {
   font-size: 1rem;
   color: var(--Dark-Beige);
+}
+
+.achievements ul li {
+  display: flex; /* Enables flexbox for alignment */
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 1.025rem !important;
+}
+
+.achievements ul li::before {
+  content: '\f5a2'; /* Unicode for the medal icon */
+  font-family: "Font Awesome 5 Free"; /* Font Awesome font family */
+  color: var(--Active-Gold); /* Optional: Set icon color */
+  font-weight: 700; /* Required for solid icons */
+  padding-right: 1.5dvw;
 }
 
 #education-languages ul li strong {
