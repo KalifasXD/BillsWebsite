@@ -865,7 +865,7 @@ a {
 
   .timeline p {
     font-size: 1.2em; /* Slightly larger for readability */
-    width: 85%;
+    width: 100%;
   }
 
   .slides {
@@ -903,11 +903,11 @@ a {
 
   .timeline p {
     font-size: 1em;
-    width: 90%; /* Narrower for smaller screens */
+    width: 100%; /* Narrower for smaller screens */
   }
 
   .slides {
-    width: 90vw;
+    width: 100vw;
   }
 
   .nav-btn {
