@@ -1982,7 +1982,7 @@ body.dark-mode .nav-btn::before{
   color: var(--Soft-White);
 }
 
-body.dark-mode .about-container img, body.dark-mode .introduction-container img {
+body.dark-mode .about-container img {
   box-shadow: 0 0 30px 10px var(--Soft-White),
               0 0 50px 20px var(--Soft-White) inset;
 }
