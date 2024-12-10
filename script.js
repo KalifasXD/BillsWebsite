@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Overview button click logic
   document.querySelector("#home h2").addEventListener("click", (event) => {
-    document.querySelector("#overview").scrollIntoView({behavior: 'smooth'});
+    document.querySelector("#what-i-offer").scrollIntoView({behavior: 'smooth'});
   });
 
 
@@ -167,6 +167,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const lockScroll = () => {
     console.log("Scroll locked");
     document.body.style.overflowY = "hidden";
+    document.body.style.overflowX = "hidden";
     //sectionObserver.disconnect();
     //experienceSection.addEventListener("wheel", handleScroll);
     ['scroll', 'wheel'].forEach(event => {
@@ -204,6 +205,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const unlockScroll = () => {
     console.log("Scroll unlocked");
     document.body.style.overflowY = "auto";
+    document.body.style.overflowX = "hidden";
     //sectionObserver.observe(experienceSection);
     //experienceSection.removeEventListener("wheel", handleScroll);
     ['scroll', 'wheel'].forEach(event => {

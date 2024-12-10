@@ -226,15 +226,16 @@ a {
 }
 
 
-.quick-introduction {
+.what-i-offer {
   display: flex;
+  width: 100dvw;
+  height: 80dvh;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0 0 15px 1px var(--Light-Beige) inset;
 }
 
-.quick-introduction h2::after {
+.what-i-offer h2::after {
   content: '';
   display: block;
   margin: 10px auto;
@@ -248,38 +249,79 @@ a {
     var(--Active-Gold) 90%,       /* Fully opaque */
     #b35e2c00 100%);
 }
-
-.introduction-container {
+.what-i-offer-container {
   display: flex;
   justify-content: center;
-  flex-direction: row;
+  flex-wrap: wrap; /* Allows wrapping to the next row */
   align-items: center;
-  width: 90dvw;
-  gap:50px;
+  width: 100dvw; /* Consider using 100vw instead for better browser support */
+  height: auto;
+  gap: 20px;
+  padding: 20px; /* Add padding for better spacing */
 }
 
-.introduction-container div {
+.what-i-offer-sub-container {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  width: 50dvw;
-  border: 1px solid red;
-  width: 50%;
-  height: 25%;
+  height: auto;
+  width: 20%;
+  padding: 10px;
+  background-color: var(--Soft-White);
+  border-radius: 10px; 
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.introduction-container div h1{
-  font-size: 1.5rem;
+body.dark-mode .what-i-offer-sub-container h3 {
+  color: var(--Soft-White) !important;
 }
 
+body.dark-mode .what-i-offer-sub-container img {
+  filter: invert(1) brightness(2);
+}
 
-.introduction-container img {
-  width: 22%;
-  height: 100%;
-  border-radius: 20%;
-  box-shadow: 0 0 30px 10px var(--Soft-Black),
-              0 0 50px 20px var(--Soft-Black) inset;
+body.dark-mode .what-i-offer-sub-container {
+  background-color: var(--Soft-Black);
+  box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1); 
+  
+}
+
+.what-i-offer-sub-container:hover {
+  transform: translateY(-5px); /* Lifts the container slightly */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Intensifies the shadow */
+}
+
+.what-i-offer-sub-container img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 10px; /* Adds space between image and text */
+}
+
+.what-i-offer-sub-container h3 {
+  font-size: 1rem;
+  color: #333; /* Better readability with darker text */
+  text-align: center; /* Aligns text within the container */
+  margin: 0; /* Resets default margin */
+}
+
+@media (max-width: 1024px) {
+  .what-i-offer-sub-container {
+    width: 25%; /* Adjust to fit smaller screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .what-i-offer-sub-container {
+    width: 45%; /* Two items per row on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .what-i-offer-sub-container {
+    width: 45%; /* Single item per row on very small screens */
+  }
 }
 
 /* Hero Section Styling */
@@ -1923,7 +1965,7 @@ body.dark-mode .nav-btn::before{
   color: var(--Soft-White);
 }
 
-body.dark-mode .about-container img, .introduction-container img {
+body.dark-mode .about-container img, body.dark-mode .introduction-container img {
   box-shadow: 0 0 30px 10px var(--Soft-White),
               0 0 50px 20px var(--Soft-White) inset;
 }
