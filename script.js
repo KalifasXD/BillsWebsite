@@ -401,9 +401,13 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
   const observer = new IntersectionObserver(
     (entries, observer) => {
-      entries.forEach(entry => {
+      entries.forEach((entry, index) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("visible"); // Add 'visible' class when in view
+          if(entry.target.classList.contains('what-i-offer-sub-container')){
+            entry.target.style.animationDelay = `${index * 0.1}s`; // Stagger the delay for 'what-i-offer-sub-container'
+          }
+          
           observer.unobserve(entry.target); // Stop observing once animated
         }
       });
@@ -412,6 +416,6 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   // Target specific elements
-  const targets = document.querySelectorAll(".education, .languages, .achievements");
+  const targets = document.querySelectorAll(".education, .languages, .achievements, .what-i-offer-sub-container");
   targets.forEach(target => observer.observe(target));
 });
