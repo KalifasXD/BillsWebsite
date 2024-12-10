@@ -1060,7 +1060,9 @@ p {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  justify-content: center;
+  flex-wrap: wrap; /* Allow items to wrap */
+  justify-content: space-between; /* Space out columns evenly */
+  gap: 20px; /* Add spacing between columns */
   width: 100%;  
   height: auto;
 }
@@ -1100,6 +1102,8 @@ p {
 }
 
 .skills-column {
+  flex: 1 1 calc(22.5% - 20px); /* 4 columns per row minus gap */
+  box-sizing: border-box; /* Includes padding/border in width */
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -1121,6 +1125,19 @@ p {
   justify-content: center;
   flex-wrap: wrap; /* Allows images to wrap on smaller screens */
   gap: 1px; /* Adds consistent spacing between circles */
+}
+
+/* Adjust size of skill icons on smaller screens */
+@media (max-width: 768px) {
+  .skill-images-container div {
+    width: 50px; /* Adjust the icon size for tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .skill-images-container div {
+    width: 40px; /* Adjust the icon size for phones */
+  }
 }
 
 .skill h2 {
@@ -1481,72 +1498,28 @@ p {
   }
 }
 
-/* For devices with max-width of 768px (tablets and smaller) */
+/* For screens with max-width of 900px (Three columns per row) */
+@media (max-width: 900px) {
+  .skills-column {
+    flex: 1 1 calc(33.33% - 20px); /* 3 columns per row minus gap */
+  }
+}
+
+/* For screens with max-width of 768px (Two columns per row) */
 @media (max-width: 768px) {
-  .skills-container {
-    flex-direction: column; /* Stacks items vertically */
-  }
-
-  .skill {
-    box-sizing: border-box;
-    width: 100vw;
-    padding: 0px 10px;
-  }
-
   .skills-column {
-    margin: 0 auto;
-  }
-
-  .skills-column:first-of-type {
-    margin: 10px 0px 10px 0;
-  }
-  
-  .skills-column:last-of-type {
-    margin: 10px 0 10px 0px;
-  }
-
-  .skills-column > h2:first-of-type {
-    font-size: 1.4rem; /* Smaller font size for mobile */
-    padding: 5px;
-    margin: 10px 0;
-  }
-
-  #skills > h2:first-of-type:after {
-    width: 20%; /* Slightly larger line for visibility */
-  }
-
-  .skill-images-container {
-    gap: 8px; /* Reduced gap between circles */
-  }
-
-  .skill-images-container div {
-    width: 65px; /* Larger for touch devices */
-    height: 15px;
-    margin: 5px; /* Consistent spacing */
+    flex: 1 1 calc(48% - 20px); /* 2 columns per row minus gap */
   }
 }
 
-/* For devices with max-width of 480px (phones) */
+/* For screens with max-width of 480px (One column per row) */
 @media (max-width: 480px) {
-  .skill h2 {
-    font-size: 1rem; /* Adjust heading size for small screens */
-  }
-
   .skills-column {
-    margin: 5px 0; /* Reduced margin */
-  }
-
-  .skill-images-container div {
-    width: 65px; /* Slightly smaller for very small screens */
-    height: 15px;
-    margin: 0;
-    padding: 0;
-  }
-
-  #skills > h2:first-of-type:after {
-    width: 25%; /* Even larger line for visibility */
+    flex: 1 1 100%; /* Full width for each column */
+    margin: 10px auto; /* Center the columns */
   }
 }
+
 
 /* General Section Styling */
 #education-languages {
@@ -1724,8 +1697,19 @@ p {
 
 /* Responsive Layout with Media Queries */
 @media (max-width: 1024px) {
+  .education-languages-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping of items */
+    justify-content: space-between; /* Space out items evenly */
+  }
+
   .education, .languages, .achievements {
-    max-width: 45%; /* Two columns on tablets */
+    flex: 0 0 50%; /* Each item takes up roughly 48% of the row */
+    box-sizing: border-box; /* Ensures padding and border are included in width */
+  }
+  
+  .achievements {
+    border-top: 2px solid var(--Active-Gold);
   }
 }
 
@@ -1735,8 +1719,13 @@ p {
   }
 
   .education, .languages, .achievements {
-    max-width: 100dvw; /* Full width for each section */
+    min-width: 100dvw; /* Full width for each section */
+    border: none;
+  }
+
+  .education-languages-container > div:nth-child(2) {
     border-bottom: 2px solid var(--Active-Gold);
+    border-top: 2px solid var(--Active-Gold);
     border-left: none;
     border-right: none;
   }
@@ -1756,8 +1745,13 @@ p {
   }
 
   .education, .languages, .achievements {
-    max-width: 100dvw; /* Full width for each section */
+    min-width: 100dvw; /* Full width for each section */
+    border: none;
+  }
+
+  .education-languages-container > div:nth-child(2) {
     border-bottom: 2px solid var(--Active-Gold);
+    border-top: 2px solid var(--Active-Gold);
     border-left: none;
     border-right: none;
   }
