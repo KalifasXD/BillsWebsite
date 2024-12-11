@@ -2567,6 +2567,10 @@ body.dark-mode .checkbox-label .ball{
     display: none; /* Hide desktop navbar links */
   }
 
+  .navbar .name {
+    font-size: 1.2em;
+  }
+
   /* Hero section */
   .hero h1 {
     font-size: 2em; /* Reduce heading size */
