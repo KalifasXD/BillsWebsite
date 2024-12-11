@@ -775,7 +775,7 @@ a {
   justify-content: flex-start;
   align-items: center;
   height: 100dvh;
-  max-height: 100dvh;
+  max-height: 100%;
 }
 
 .slide {
@@ -787,7 +787,7 @@ a {
   color: var(--Soft-White);
   background-size: cover;
   background-position: center;
-  padding: 20px;
+  padding: 0px;
   text-align: center;
   opacity: 0; /* Make sure slides are hidden initially */
   transform: translateY(100%);
@@ -798,6 +798,8 @@ a {
 /* Active slide */
 .slide.active {
   display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
   opacity: 1;
   transform: translateY(0);
   transition: transform 0.8s ease, opacity 0.8s ease;
@@ -938,11 +940,49 @@ a {
   transform: scale(1);
 }
 
+@media (max-width: 1024px) {
+  .timeline h1 {
+    font-size: 2.2em; /* Maintain visual hierarchy */
+    margin-bottom: 8px;
+  }
+
+  .timeline p {
+    font-size: 1em;
+    width: 100%; /* Narrower for smaller screens */
+  }
+
+  .slides {
+    width: 100vw;
+    border: 2px solid blue;
+  }
+
+  .slide {
+    border: 2px solid white;
+  }
+
+  .nav-btn {
+    font-size: 0.95rem; /* Proportional scaling */
+    padding: 5px 10px;
+  }
+
+  .content {
+    margin: 0;
+    padding: 0;
+    border: 2px solid black;
+    width: 100%;
+    height: 100%;
+  }
+
+  .content h1 {
+    border: 1px solid red;
+  }
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
   .timeline h1 {
     font-size: 2.5em;
-    margin-bottom: 10px; /* Maintain a consistent gap */
+    margin-bottom: 0px; /* Maintain a consistent gap */
   }
 
   .content {
@@ -994,6 +1034,11 @@ a {
 
   .slides {
     width: 100vw;
+    border: 2px solid blue;
+  }
+
+  .slide {
+    border: 2px solid white;
   }
 
   .nav-btn {
@@ -1002,14 +1047,27 @@ a {
   }
 
   .content {
-    margin-top: 8px;
+    margin: 0;
+    padding: 0;
+    border: 2px solid black;
+    width: 100%;
+    height: 100%;
+  }
+
+  .content h1 {
+    border: 1px solid red;
   }
 }
 
 @media (max-width: 400px) {
   .timeline h1 {
     font-size: 1.8em; /* Smaller yet legible */
-    margin-bottom: 6px;
+    margin-bottom: 0px;
+    border: 2px solid blue;
+  }
+
+  .content h1 {
+    border: 2px solid blue;
   }
 
   .timeline p {
