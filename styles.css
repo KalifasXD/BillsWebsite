@@ -1750,7 +1750,7 @@ p {
   border-radius: 50%; /* Makes it a perfect circle */
   border: 2px solid var(--Active-Gold); /* Optional: Adds a border to the circle */
   box-shadow: 0px 4px 8px var(--Soft-Black) inset;
-  text-shadow: 0px 0px 5px var(--Active-Gold);
+  text-shadow: 0px 0px 4px var(--Active-Gold);
 }
 
 .education h3, .languages h3, .achievements h3 {
@@ -2084,7 +2084,7 @@ body.dark-mode #education-languages{
 
 body.dark-mode #education-languages .fas {
   box-shadow: 0px 4px 8px var(--Soft-White) inset;
-  text-shadow: 0px 0px 5px var(--Soft-White);
+  text-shadow: 0px 0px 4px var(--Soft-White);
 }
 
 body.dark-mode #education-languages h2 {
