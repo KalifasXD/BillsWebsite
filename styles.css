@@ -293,8 +293,8 @@ a {
 }
 
 .what-i-offer-sub-container:hover {
-  transform: translateY(-5px); /* Lifts the container slightly */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Intensifies the shadow */
+  /* transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); */
 }
 
 .what-i-offer-sub-container img {
@@ -1675,28 +1675,21 @@ p {
   width: 100%;
 }
 
-.education-languages-container > div:first-child {
-  border-left: none; /* Remove left border for the first column */
-}
-
-.education-languages-container > div:nth-child(2) {
-  border-left: 2px solid var(--Active-Gold);
-  border-right: 2px solid var(--Active-Gold);
-}
-
 .education, .languages, .achievements {
   flex: 1; /* Ensures all sections take up equal space */
-  max-width: 100%; /* Optional: Prevents sections from exceeding one-third */
+  max-width: 33%; /* Optional: Prevents sections from exceeding one-third */
   background-color: rgba(0, 0, 0, 0.8); /* Background styling */
   padding: 20px;
+  margin: 0 2rem;
   transform: translateY(50px); /* Animation start state */
   transition: opacity 1s ease, transform 1s ease; /* Smooth transition */
+  border: 2px solid var(--Active-Gold);
   
   display: flex; /* Enable flexbox */
   flex-direction: column; /* Stack items vertically */
   justify-content: flex-start; /* Center items vertically */
   align-items: center; /* Center items horizontally */
-  height: 40dvh;
+  height: 60dvh;
 }
 
 /* Base styles for animation target elements */
@@ -1741,6 +1734,22 @@ p {
   }
 }
 
+.flag-icon {
+  font-size: 1.2em;
+}
+
+#education-languages .fas {
+  font-size: 4.25rem; /* Icon size */
+  display: inline-flex; /* Ensures alignment of the icon */
+  justify-content: center; /* Centers the icon inside the circle */
+  align-items: center; /* Centers the icon inside the circle */
+  width: 9rem; /* Sets the width of the circle */
+  height: 9rem; /* Sets the height of the circle (equal to width for a circle) */
+  border-radius: 50%; /* Makes it a perfect circle */
+  border: 2px solid var(--Active-Gold); /* Optional: Adds a border to the circle */
+  box-shadow: 0px 4px 8px rgb(0, 0, 0) inset;
+}
+
 .education h3, .languages h3, .achievements h3 {
   font-size: 1.5rem;
   font-weight: bold;
@@ -1750,6 +1759,14 @@ p {
   border-bottom: 2px solid var(--Active-Gold); /* Gold line separating title and content */
   width: 100%; /* Full-width for the divider */
   text-align: center;
+}
+
+.languages ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 250px;
+  align-items: flex-start;
 }
 
 .education ul, .languages ul, .achievements ul {
@@ -1763,6 +1780,11 @@ p {
 .education ul li, .languages ul li, .achievements ul li {
   margin-bottom: 15px;
   text-align: center;
+}
+
+.languages ul li {
+  font-size: 1.15rem !important;
+  margin-bottom: 10%;
 }
 
 #education-languages ul li h4 {
