@@ -30,10 +30,12 @@ body {
 
 /* Hero Section Styling */
 .variable-background {
+  --animation-fireoff: 7s;
+  --dark-mode-background:  rgba(0, 0, 0, 0.8), rgba(39, 39, 39, 0.7), rgba(0, 0, 0, 0.6);
   position: relative;
   background: linear-gradient(135deg, var(--GradientHero-Light-Mode));
   background-size: 200% 200%;
-  animation: gradientAnimation 7s ease infinite;
+  animation: gradientAnimation var(--animation-fireoff) ease infinite;
   z-index: -1;
 }
 
@@ -1747,7 +1749,8 @@ p {
   height: 9rem; /* Sets the height of the circle (equal to width for a circle) */
   border-radius: 50%; /* Makes it a perfect circle */
   border: 2px solid var(--Active-Gold); /* Optional: Adds a border to the circle */
-  box-shadow: 0px 4px 8px rgb(0, 0, 0) inset;
+  box-shadow: 0px 4px 8px var(--Soft-Black) inset;
+  text-shadow: 0px 0px 5px var(--Active-Gold);
 }
 
 .education h3, .languages h3, .achievements h3 {
@@ -2027,9 +2030,9 @@ body.dark-mode .navbar .nav-link.active {
 
 body.dark-mode .variable-background {
   mix-blend-mode: difference;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(39, 39, 39, 0.7), rgba(0, 0, 0, 0.6)); /* Slightly transparent gradient */
+  background: linear-gradient(135deg, var(--dark-mode-background)); /* Slightly transparent gradient */
   background-size: 200% 200%;
-  animation: gradientAnimation 7s ease infinite;
+  animation: gradientAnimation var(--animation-fireoff) ease infinite;
 }
 
 body.dark-mode .what-i-offer-sub-container h3 {
@@ -2077,6 +2080,11 @@ body.dark-mode .about.full-view h2::before {
 
 body.dark-mode #education-languages{
   background-color: var(--Soft-White);
+}
+
+body.dark-mode #education-languages .fas {
+  box-shadow: 0px 4px 8px var(--Soft-White) inset;
+  text-shadow: 0px 0px 5px var(--Soft-White);
 }
 
 body.dark-mode #education-languages h2 {
