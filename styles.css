@@ -572,8 +572,9 @@ a {
   width: 22%;
   height: 100%;
   border-radius: 20%;
-  box-shadow: 0 0 30px 10px var(--Soft-Black),
-              0 0 50px 20px var(--Soft-Black) inset;
+  border: 1px solid black;
+  /*box-shadow: 0 0 30px 10px var(--Soft-Black),
+              0 0 50px 20px var(--Soft-Black) inset;*/
 }
 
 .about.full-view  h2 {
