@@ -2080,7 +2080,7 @@ body.dark-mode .about.full-view h2::before {
 }
 
 body.dark-mode #education-languages{
-  background-color: var(--Soft-White);
+  background-color: var(--Soft-White) !important;
 }
 
 body.dark-mode #education-languages .fas {
@@ -2125,6 +2125,15 @@ body.dark-mode .skill-images-container div  {
 }
 
 body.dark-mode .education h3, body.dark-mode .languages h3, body.dark-mode .achievements h3 {
+  color: var(--Soft-White);
+}
+
+
+body.dark-mode #education-languages ul li p {
+  color: var(--Soft-White);
+}
+
+body.dark-mode #education-languages ul li {
   color: var(--Soft-White);
 }
 
