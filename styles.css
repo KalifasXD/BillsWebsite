@@ -40,6 +40,7 @@ body {
   background-color: #f4f4f4;  /* Light background color */
   color: #333;  /* Dark text for contrast */
   overflow-x: hidden;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 /* Hero Section Styling */
@@ -1348,11 +1349,13 @@ p {
 }
 
 .skill-images-container div.filled {
-  background-color: var(--Soft-White);
+  background-color: linear-gradient(to right, var(--Soft-Black) 0%, var(--Soft-White) 0%);;
   background-size: 200% 100%; /* Makes the gradient twice the width for animation */
   background-position: 100% 0; /* Start with the "empty" side */
   animation: pulse 0.3s ease-in-out forwards;
 }
+
+
 
 @keyframes pulse {
   0% {
