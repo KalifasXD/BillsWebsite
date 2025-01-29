@@ -1279,14 +1279,14 @@ p {
 .skill-image {
   font-size: 3rem !important;
   margin-right: 8px;
-  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3)); /* Drop shadow */
-  transition: transform 0.2s ease, filter 0.2s ease; /* Smooth hover effect */
+  filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.85)); /* Drop shadow */
+  transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease; 
 }
 
 /* Hover effect for icons */
 .skill-image:hover {
   transform: scale(1.1); /* Slightly enlarge on hover */
-  filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.5)); /* Enhance shadow on hover */
+  filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.3)); /* Enhanced shadow on hover */
 }
 
 .skill-images-container {
@@ -2550,10 +2550,18 @@ body.dark-mode .highlight {
   }
 }
 
-
 body.dark-mode .skill-images-container div.filled  {
   background-color: var(--Soft-White); /* Dark skill bar fill */
   animation: dark-mode-pulse 0.3s ease-in-out forwards;
+}
+
+body.dark-mode .skill-image {
+  filter: drop-shadow(0px 0px 4px rgba(255, 255, 255, 0.35));
+}
+
+body.dark-mode .skill-image:hover {
+  transform: scale(1.1); /* Slightly enlarge on hover */
+  filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.5)); /* Enhanced shadow on hover */
 }
 
 body.dark-mode .education, body.dark-mode .languages, body.dark-mode .achievements {
@@ -2594,6 +2602,7 @@ body.dark-mode .checkbox-label {
 body.dark-mode .checkbox-label .ball{
   background-color: var(--Soft-Black);
 }
+
 
 .checkbox {
   opacity: 0;
