@@ -18,6 +18,7 @@
   <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" /> 
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet">  
   <script asp-append-version="true" src="script.js"></script>
+  <script asp-append-version="true" src="star_effect.js"></script>
 </head>
 
 <body>
@@ -48,16 +49,20 @@
     </label>
   </nav>
   <!-- Hero Section -->
+  <div class="canvas-wrapper">
+    <canvas>
+    </canvas>
+  </div>
   <section class="hero variable-background" id="home">
     <h1>HI, I AM VASILEIOS DOUNAVIS</h1>
     <p>An aspiring Software Engineer with a passion for coding, focusing on both Frontend and Backend web development, as well as CyberSecurity, which I explored in my thesis. 
       I'm always excited to apply my expertise to Desktop or Mobile Apps, Websites, and Video Games, always driven by my love for programming.</p>
-    <a class="arrow quick-links" href="#experience" >
+    <a style="z-index:55 !important;" class="arrow quick-links" href="#experience" >
       <span></span>
       <span></span>
       <span></span>
     </a>
-    <h2>What I Offer</h2>
+    <h2 style="z-index:55 !important;">What I Offer</h2>
   </section>
 
   <section class="what-i-offer extra-padding" id="what-i-offer">
@@ -97,7 +102,6 @@
       </div>
     </div>
   </section>
-
   <!-- Portfolio Section -->
   <section class="timeline variable-background" id="experience">
     <div class="timeline-container">
@@ -261,11 +265,13 @@
       </div>
     </div>
   </section>
-
+  <div style="--canvas-height: 80vh;" class="canvas-wrapper">
+    <canvas star-size="1.5"></canvas>
+  </div>
   <!-- Education & Languages Section -->
   <section class="extra-padding variable-background" style="--animation-fireoff:9s; --dark-mode-background: rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.775), rgba(0, 0, 0, 0.75);" id="education-languages">
-    <h2>Education & Languages & Achievements</h2>
-   <div class="education-languages-container">
+   <h2>Education & Languages & Achievements</h2>
+   <div class="education-languages-container" style="z-index:55 !important;">
     <!-- Education Section -->
     <div class="education">
       <h3><i class="fas fa-graduation-cap"></i><br><br>Education</h3>
@@ -295,9 +301,9 @@
       <h3><i class="fas fa-trophy"></i><br><br>Αchievements</h3>
       <ul>
         <li>Graduated at the top of my class in Software Engineering studies</li>
-        <li>Self-taught Software Engineer with a passion for coding and problem-solving</li>
-        <li>Contracted by Epic Games to create assets for the UE4 Marketplace</li>
-        <li>Thesis received a grade of 10/10 for outstanding research and execution</li>
+        <li>Self-taught <u class="highlight">Software Engineer</u> with a passion for <u class="highlight">coding</u> and <u class="highlight">problem-solving</u></li>
+        <li>Contracted by <strong class="highlight">Epic Games</strong> to create assets for the <strong class="highlight">UE4 Marketplace</strong></li>
+        <li>Thesis received a grade of <span class="highlight">10/10</span> for outstanding <div class="highlight">research</div> and <div class="highlight">execution</div></li>
       </ul>
     </div>
   </div>
@@ -381,8 +387,6 @@
     <p>&copy; 2024 VASILEIOS DOUNAVIS - All Rights Reserved</p>
   </div>
 </footer>
-
-  
 </body>
 
 </html>

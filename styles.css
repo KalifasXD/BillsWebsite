@@ -20,6 +20,20 @@
   --GradientHero-Light-Mode:#FEEADB, #F3EBEE, #FEEADB ;
 }
 
+.canvas-wrapper {
+  --canvas-height: 100vh;
+  position: absolute;
+  width: 100%;
+  z-index: 50 !important;
+  height: var(--canvas-height) !important; /* Use the custom property for height */
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
 /* Body */
 body {
   font-family: 'Rubik', sans-serif;
@@ -36,7 +50,6 @@ body {
   background: linear-gradient(135deg, var(--GradientHero-Light-Mode));
   background-size: 200% 200%;
   animation: gradientAnimation var(--animation-fireoff) ease infinite;
-  z-index: -1;
 }
 
 .variable-background::after {
@@ -51,7 +64,6 @@ body {
   mix-blend-mode: multiply;
   background-color: var(--Soft-Black);
   opacity: 0.2;
-  z-index: -1;
 }
 
 .extra-padding {
@@ -338,7 +350,6 @@ a {
   flex-direction: column;
   align-items: center; /* Center content vertically */
   text-align: center;
-  z-index: 5 !important;
 }
 
 @keyframes gradientAnimation {
@@ -1754,6 +1765,7 @@ p {
   text-shadow: 0px 0px 4px var(--Active-Gold);
 }
 
+
 .education h3, .languages h3, .achievements h3 {
   font-size: 1.5rem;
   font-weight: bold;
@@ -1805,6 +1817,10 @@ p {
 
 #education-languages ul li {
   font-size: 1rem;
+  color: var(--Dark-Beige);
+}
+
+#education-languages .highlight {
   color: var(--Dark-Beige);
 }
 
@@ -2135,6 +2151,10 @@ body.dark-mode #education-languages ul li p {
 
 body.dark-mode #education-languages ul li {
   color: var(--Soft-White);
+}
+
+body.dark-mode .highlight {
+  color: var(--Dark-Beige);
 }
 
 @keyframes dark-mode-pulse {
