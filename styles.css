@@ -1761,10 +1761,43 @@ p {
   height: 9rem; /* Sets the height of the circle (equal to width for a circle) */
   border-radius: 50%; /* Makes it a perfect circle */
   border: 2px solid var(--Active-Gold); /* Optional: Adds a border to the circle */
-  box-shadow: 0px 4px 8px var(--Soft-Black) inset;
-  text-shadow: 0px 0px 4px var(--Active-Gold);
+  animation: textShadowPulse 1.5s infinite ease-in-out;
 }
 
+body.dark-mode #education-languages .fas {
+  animation: textShadowPulse_darkmode 1.5s infinite ease-in-out;
+  
+}
+
+@keyframes textShadowPulse_darkmode {
+  0% {
+    text-shadow: 0px 0px 2px var(--Soft-White);
+    box-shadow: 0px 4px 4px var(--Soft-White) inset;
+  }
+  50% {
+    text-shadow: 0px 0px 8px var(--Soft-White);
+    box-shadow: 0px 6px 12px var(--Soft-White) inset;
+  }
+  100% {
+    text-shadow: 0px 0px 2px var(--Soft-White);
+    box-shadow: 0px 4px 4px var(--Soft-White) inset;
+  }
+}
+
+@keyframes textShadowPulse {
+  0% {
+    text-shadow: 0px 0px 2px var(--Active-Gold);
+    box-shadow: 0px 4px 8px var(--Soft-Black) inset;
+  }
+  50% {
+    text-shadow: 0px 0px 8px var(--Active-Gold);
+    box-shadow: 0px 6px 16px var(--Soft-Black) inset;
+  }
+  100% {
+    text-shadow: 0px 0px 2px var(--Active-Gold);
+    box-shadow: 0px 4px 8px var(--Soft-Black) inset;
+  }
+}
 
 .education h3, .languages h3, .achievements h3 {
   font-size: 1.5rem;
@@ -1821,7 +1854,7 @@ p {
 }
 
 #education-languages .highlight {
-  color: var(--Dark-Beige);
+  color: var(--Active-Gold);
 }
 
 .achievements ul li {
@@ -1830,6 +1863,9 @@ p {
   justify-content: flex-start;
   align-items: center;
   font-size: 1.025rem !important;
+  display: block;
+  line-height: 1.6; /* Ensures proper line height */
+  text-align: left;
 }
 
 .achievements ul li::before {
@@ -1837,7 +1873,7 @@ p {
   font-family: "Font Awesome 5 Free"; /* Font Awesome font family */
   color: var(--Active-Gold); /* Optional: Set icon color */
   font-weight: 700; /* Required for solid icons */
-  padding-right: 1.5dvw;
+  padding-right: 1.25dvw;
 }
 
 #education-languages ul li strong {
