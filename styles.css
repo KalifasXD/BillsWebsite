@@ -142,6 +142,43 @@ a {
   color: var(--Active-Gold);
 }
 
+/* Create a custom decorative line */
+.navbar .nav-link.active::after {
+  content: ''; /* Required for pseudo-element */
+  display: block;
+  width: 100%; /* Full width of the text */
+  height: 4px; /* Thickness of the line */
+  background-color: var(--Active-Gold); /* Color of the line */
+  position: relative;
+  bottom: -15px; /* Adjust spacing between text and line */
+  left: 0;
+  border-radius: 4px; /* Optional: Rounded corners for the line */
+  transform: scaleX(1); /* Start with no width */
+  transform-origin: left; /* Animation starts from the left */
+  animation: growLine 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+
+@keyframes growLine {
+  0% {
+    transform: scaleX(0);
+    background-color: var(--Active-Gold); /* Start color */
+    box-shadow: 0 0 0 rgba(255, 204, 0, 0); /* Start with no glow */
+  }
+  50% {
+    background-color: #ffcc00; /* Mid animation color shift */
+    box-shadow: 0 0 20px rgba(255, 204, 0, 0.5); /* Add a glow */
+  }
+  75% {
+    background-color: #ff9900; /* Another color shift */
+  }
+  100% {
+    transform: scaleX(1); /* Settle at full width */
+    background-color: var(--Active-Gold); /* Return to original color */
+    box-shadow: 0 0 0 rgba(255, 204, 0, 0); /* Remove glow */
+  }
+}
+
 .navbar.sticky {
   background-color: #f0f0f0;
 }
@@ -362,7 +399,9 @@ a {
 .hero h1 {
   font-size: 3.5em;
   color: var(--Soft-Black); /* Dark navy color */
-  font-weight: lighter;
+  font-weight: 500;
+  letter-spacing: 2px;
+  line-height: 1.2; /* Adjust as needed */
   opacity: 0;
   transform: translateY(50px);
   animation: fadeInUp 1s forwards 0.3s;
@@ -378,6 +417,7 @@ a {
   transform: translateY(30px);
   animation: fadeInUp 1s forwards 0.5s;
   margin-top: 10px; /* Small space between the heading and paragraph */
+  line-height: 1.6;
 }
 
 .hero .arrow {
@@ -473,7 +513,7 @@ a {
   text-align: center;
   text-transform: uppercase;
   color: black; /* Solid black text */
-  text-shadow: 0 0 5px rgb(129, 129, 129); /* Subtle initial glow */
+  text-shadow: 0 0 5px rgba(129, 129, 129, 0.3); /* Subtle initial glow */
   transition: text-shadow 0.4s ease, transform 0.4s ease;
   animation: unfoldEffect 1s cubic-bezier(0.42, 0, 0.58, 1) forwards;
   cursor: pointer;
