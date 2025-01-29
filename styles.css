@@ -1279,6 +1279,14 @@ p {
 .skill-image {
   font-size: 3rem !important;
   margin-right: 8px;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3)); /* Drop shadow */
+  transition: transform 0.2s ease, filter 0.2s ease; /* Smooth hover effect */
+}
+
+/* Hover effect for icons */
+.skill-image:hover {
+  transform: scale(1.1); /* Slightly enlarge on hover */
+  filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.5)); /* Enhance shadow on hover */
 }
 
 .skill-images-container {
