@@ -385,7 +385,7 @@ a {
 
 .hero .arrow {
   position: absolute;
-  top: 60vh !important; /* Places it dynamically based on viewport height */
+  top: 65vh !important; /* Places it dynamically based on viewport height */
   font-size: 2em;
   color: var(--Soft-Black); /* Consistent with paragraph color */
   opacity: 1;
@@ -402,8 +402,8 @@ a {
 
 .arrow span {
   display: block;
-  width: 2rem;
-  height: 2rem;
+  width: 2.25rem;
+  height: 2.25rem;
   border-bottom: 5px solid;
   border-right: 5px solid;
   transform: rotate(45deg);
@@ -461,9 +461,8 @@ a {
 
 
 #home h2{
-  position: relative;
-  top: 20%;
-  width: auto; /* Smaller width initially */
+  position: absolute;
+  top: 80vh;
   padding: 20px;
   font-size: 2.2rem; /* Elegant font size */
   font-weight: 700;
@@ -2700,12 +2699,6 @@ body.dark-mode .checkbox-label .ball{
   .footer-section {
     margin-bottom: 30px;
     text-align: center; /* Center-align text */
-  }
-
-   /* Adjust arrow size on smaller screens */
-   .arrow span {
-    width: 2.5rem;
-    height: 2.5rem;
   }
 
   .checkbox {
