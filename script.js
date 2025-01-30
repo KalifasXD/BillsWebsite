@@ -34,8 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const menu = document.querySelector(".navbar ul");
   const navLinks = document.querySelectorAll(".navbar .nav-link");
   const darkModeToggle = document.getElementById("darkModeToggle");
-  const hamburger = document.querySelector(".hamburger-menu");
-  const navigation = document.querySelector(".navigation");
   const skills = document.querySelectorAll(".skill");
 
 
@@ -83,7 +81,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // Observe each skill element
   skills.forEach(skill => skillObserver.observe(skill));
 
-  // Hamburger menu toggle
   menuIcon.addEventListener("click", () => {
       menu.classList.toggle("active");
   });
@@ -102,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   // Smooth scroll for links
-  document.querySelectorAll(".nav-link, .quick-links, .hamburger-menu").forEach((link) => {
+  document.querySelectorAll(".nav-link, .quick-links").forEach((link) => {
       link.addEventListener("click", (e) => {
           e.preventDefault();
           const targetId = document.querySelector(link.getAttribute("href"));
@@ -126,11 +123,6 @@ document.addEventListener("DOMContentLoaded", () => {
               activeLink.classList.toggle("active", scrollPos >= sectionTop && scrollPos < sectionBottom);
           }
       });
-  });
-
-  // Hamburger menu for the navigation panel
-  hamburger.addEventListener("click", () => {
-      navigation.classList.toggle("active");
   });
 });
 
