@@ -384,10 +384,11 @@ a {
 }
 
 .hero .arrow {
+  position: absolute;
+  top: 60vh !important; /* Places it dynamically based on viewport height */
   font-size: 2em;
   color: var(--Soft-Black); /* Consistent with paragraph color */
   opacity: 1;
-  padding-top: 30px; /* Space between the paragraph and scroll arrow */
   cursor: pointer;
 }
 
@@ -399,16 +400,10 @@ a {
   }
 }
 
-.arrow {
-  position: relative;
-  top: 10%;
-  cursor: pointer;
-}
-
 .arrow span {
   display: block;
-  width: 1.5vw;
-  height: 1.5vw;
+  width: 2rem;
+  height: 2rem;
   border-bottom: 5px solid;
   border-right: 5px solid;
   transform: rotate(45deg);
@@ -2709,14 +2704,8 @@ body.dark-mode .checkbox-label .ball{
 
    /* Adjust arrow size on smaller screens */
    .arrow span {
-    display: block;
-    width: 5vw;
-    height: 5vw;
-    border-bottom: 5px solid;
-    border-right: 5px solid;
-    transform: rotate(45deg);
-    margin: -10px;
-    animation: animate 2s infinite;
+    width: 2.5rem;
+    height: 2.5rem;
   }
 
   .checkbox {
