@@ -29,11 +29,6 @@ body {
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
-html, body {
-  overflow-x: hidden;
-}
-
-
 .extra-padding {
   padding: 100px 0px;
 }

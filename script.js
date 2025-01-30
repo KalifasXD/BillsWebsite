@@ -196,7 +196,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const unlockScroll = () => {
     console.log("Scroll unlocked");
-    document.body.style.overflowY = "auto";
+    document.body.style.overflowY = "visible";
     document.body.style.overflowX = "hidden";
     //sectionObserver.observe(experienceSection);
     //experienceSection.removeEventListener("wheel", handleScroll);
