@@ -386,7 +386,7 @@ a {
 .hero .arrow {
   position: absolute;
   top: 67.5vh !important; /* Places it dynamically based on viewport height */
-  font-size: 2em;
+  font-size: 1.5em;
   color: var(--Soft-Black); /* Consistent with paragraph color */
   opacity: 1;
   cursor: pointer;
