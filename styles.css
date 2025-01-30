@@ -43,30 +43,6 @@ body {
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
-/* Hero Section Styling */
-.variable-background {
-  --animation-fireoff: 7s;
-  --dark-mode-background:  rgba(0, 0, 0, 0.8), rgba(39, 39, 39, 0.7), rgba(0, 0, 0, 0.6);
-  position: relative;
-  background: linear-gradient(135deg, var(--GradientHero-Light-Mode));
-  background-size: 200% 200%;
-  animation: gradientAnimation var(--animation-fireoff) ease infinite;
-}
-
-.variable-background::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  /* background: url('https://www.transparenttextures.com/patterns/cubes.png'); */
-  background-repeat: repeat;
-  mix-blend-mode: multiply;
-  background-color: var(--Soft-Black);
-  opacity: 0.2;
-}
-
 .extra-padding {
   padding: 100px 0px;
 }
@@ -388,12 +364,6 @@ a {
   flex-direction: column;
   align-items: center; /* Center content vertically */
   text-align: center;
-}
-
-@keyframes gradientAnimation {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
 }
 
 /* Hero Text Styling */
@@ -2139,9 +2109,6 @@ body.dark-mode .navbar .nav-link.active {
 
 body.dark-mode .variable-background {
   mix-blend-mode: difference;
-  background: linear-gradient(135deg, var(--dark-mode-background)); /* Slightly transparent gradient */
-  background-size: 200% 200%;
-  animation: gradientAnimation var(--animation-fireoff) ease infinite;
 }
 
 body.dark-mode .what-i-offer-sub-container h3 {
@@ -2235,7 +2202,6 @@ body.dark-mode .skill-images-container div  {
 body.dark-mode .education h3, body.dark-mode .languages h3, body.dark-mode .achievements h3 {
   color: var(--Soft-White);
 }
-
 
 body.dark-mode #education-languages ul li p {
   color: var(--Soft-White);
