@@ -2729,10 +2729,10 @@ body.dark-mode .checkbox-label .ball{
 /* Extra small screens (under 576px) */
 @media (max-width: 576px) {
   .hero h1 {
-    font-size: 1.5em;
+    padding: 0 1.25rem;
   }
   .hero p {
-    font-size: 0.9em;
+    padding: 0 1.25rem;
   }
   .portfolio-grid {
     gap: 10px; /* Reduce gap */
