@@ -19,6 +19,9 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet">  
   <script asp-append-version="true" src="script.js"></script>
   <script asp-append-version="true" src="star_effect.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+  
 </head>
 
 <body>
@@ -49,9 +52,6 @@
     </label>
   </nav>
   <!-- Hero Section -->
-  <div class="canvas-wrapper">
-    <canvas star-size="1.5"></canvas>
-  </div>
   <section class="hero variable-background" id="home">
     <h1>HI, I AM VASILEIOS DOUNAVIS</h1>
     <p>An aspiring Software Engineer with a passion for coding, focusing on both Frontend and Backend web development, as well as CyberSecurity, which I explored in my thesis. 
@@ -389,5 +389,41 @@
   </div>
 </footer>
 </body>
+<script>
 
+  const light_mode_color = 0xffc39e ;
+  const dark_mode_color = 0x333333;
+  const vantaEffect = VANTA.NET({
+    el: "#home",
+    mouseControls: true,
+    touchControls: true,
+    gyroControls: false,
+    minHeight: 200.00,
+    minWidth: 200.00,
+    scale: 1.00,
+    scaleMobile: 1.00,
+    color: light_mode_color,
+    backgroundColor: 0xfeeadb,
+    points: 9.00,
+    maxDistance: 20.00,
+    spacing: 20.00,
+    showDots: false
+  })
+
+  // Function to update the color dynamically
+  function updateVantaColor(newColor, newBackgroundColor) {
+    vantaEffect.setOptions({
+      color: newColor,
+      backgroundColor: newBackgroundColor
+    });
+  }  
+
+  // Example: Change color on button click
+  document.getElementById("darkModeToggle").addEventListener("click", () => {
+    if(document.getElementById("darkModeToggle").checked)
+      updateVantaColor(dark_mode_color, 0x111111); // Red color with black background
+    else
+      updateVantaColor(light_mode_color, 0xfeeadb); // Red color with black background
+  });
+  </script>
 </html>

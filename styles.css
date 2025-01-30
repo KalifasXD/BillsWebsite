@@ -15,7 +15,7 @@
   --Active-Gold: #dfad57;
   --Soft-Black: #111;
   --Soft-White: #fff;
-  --Light-Beige: #FEEADB;
+  --Light-Beige: #feeadb;
   --Dark-Beige: #8B5E3C;
   --GradientHero-Light-Mode:#FEEADB, #F3EBEE, #FEEADB ;
 }
@@ -60,7 +60,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: url('https://www.transparenttextures.com/patterns/cubes.png');
+  /* background: url('https://www.transparenttextures.com/patterns/cubes.png'); */
   background-repeat: repeat;
   mix-blend-mode: multiply;
   background-color: var(--Soft-Black);
@@ -1274,6 +1274,8 @@ p {
   width: 100%; /* Ensures full width on smaller screens */
   height: auto;
   margin: 20px 10px;
+  font-weight: bold;
+  
 }
 
 .skill-image {
@@ -1335,6 +1337,7 @@ p {
   background-color: var(--Soft-White); /* Light gray background */
   position: relative;
   border: 1px solid var(--Soft-Black);
+  border-radius: 5%;
   /* Outer glow effect */
   transition: box-shadow 0.3s ease; /* Smooth transition for glow effect */
 }
@@ -1361,6 +1364,7 @@ p {
   background-size: 200% 100%; /* Makes the gradient twice the width for animation */
   background-position: 100% 0; /* Start with the "empty" side */
   animation: pulse 0.3s ease-in-out forwards;
+  border-radius: 5%;
 }
 
 
@@ -2007,6 +2011,7 @@ body.dark-mode #education-languages .fas {
   width: 50% !important;
   margin-left: auto;
   margin-right: auto;  /* Center the form group */
+  z-index: 5000 !important;
 }
 
 .contact h2 {
