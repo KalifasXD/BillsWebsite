@@ -294,7 +294,6 @@ a {
 
   /* Animation */
   opacity: 0; /* Start hidden */
-  
 }
 
 .what-i-offer-sub-container.visible {
@@ -310,11 +309,6 @@ a {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-.what-i-offer-sub-container:hover {
-  /* transform: translateY(-5px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); */
 }
 
 .what-i-offer-sub-container img {
@@ -396,7 +390,7 @@ a {
 @keyframes fadeInUp {
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(-20px);
   }
 }
 
