@@ -43,11 +43,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     window.addEventListener('deviceorientation', (event) => {
-        const beta = event.beta; // Front-to-back tilt
-        const gamma = event.gamma; // Left-to-right tilt
-  
-        const normalizedBeta = (beta + 90) / 180; // Map to 0-1 range
-        const normalizedGamma = (gamma + 90) / 180; // Map to 0-1 range
+        const beta = event.beta; // Front-to-back tilt (-180 to 180)
+      const gamma = event.gamma; // Left-to-right tilt (-90 to 90)
+
+      // Amplify the tilt input by multiplying by 10
+      const amplifiedBeta = beta * 10;
+      const amplifiedGamma = gamma * 10;
+
+      // Map amplified tilt values to rotation (in radians)
+      const rotationX = (amplifiedBeta / 180) * Math.PI; // Map beta to rotationX
+      const rotationY = (amplifiedGamma / 90) * Math.PI; // Map gamma to rotationY
   
         vantaEffects.forEach(vantaEffect => {
             vantaEffect.setOptions({
