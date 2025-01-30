@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
           el: id,
           mouseControls: true,
           touchControls: true,
-          gyroControls: false,
+          gyroControls: true,
           minHeight: 200.00,
           minWidth: 200.00,
           scale: 1.00,
@@ -41,4 +41,18 @@ document.addEventListener("DOMContentLoaded", () => {
         vantaEffects.push(vEffect);
       })
     }
+
+    window.addEventListener('deviceorientation', (event) => {
+        const beta = event.beta; // Front-to-back tilt
+        const gamma = event.gamma; // Left-to-right tilt
+  
+        const normalizedBeta = (beta + 90) / 180; // Map to 0-1 range
+        const normalizedGamma = (gamma + 90) / 180; // Map to 0-1 range
+  
+        vantaEffect.setOptions({
+          rotationX: normalizedBeta * Math.PI,
+          rotationY: normalizedGamma * Math.PI,
+        });
+      });
+
 });
