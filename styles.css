@@ -385,7 +385,7 @@ a {
 
 .hero .arrow {
   position: absolute;
-  top: 65vh !important; /* Places it dynamically based on viewport height */
+  top: 67.5vh !important; /* Places it dynamically based on viewport height */
   font-size: 2em;
   color: var(--Soft-Black); /* Consistent with paragraph color */
   opacity: 1;
@@ -402,8 +402,8 @@ a {
 
 .arrow span {
   display: block;
-  width: 2.25rem;
-  height: 2.25rem;
+  width: 2rem;
+  height: 2rem;
   border-bottom: 5px solid;
   border-right: 5px solid;
   transform: rotate(45deg);
@@ -417,6 +417,39 @@ a {
 
 .arrow span:nth-child(3) {
   animation-delay: -0.4s;
+}
+
+#home h2{
+  position: absolute;
+  top: 80vh;
+  padding: 20px;
+  font-size: 2.2rem; /* Elegant font size */
+  font-weight: 700;
+  letter-spacing: 2px; /* Slightly increased spacing */
+  text-align: center;
+  text-transform: uppercase;
+  color: black; /* Solid black text */
+  text-shadow: 0 0 5px rgba(129, 129, 129, 0.3); /* Subtle initial glow */
+  transition: text-shadow 0.4s ease, transform 0.4s ease;
+  animation: unfoldEffect 1s cubic-bezier(0.42, 0, 0.58, 1) forwards;
+  cursor: pointer;
+}
+
+/* Advanced subtle glowing outline effect */
+#home h2::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px solid rgba(129, 129, 129, 1); /* Soft border */
+  border-radius: 8px; /* Rounded corners for the outline */
+  z-index: -1;
+  box-shadow: 0 0 20px rgba(129, 129, 129, 1); /* Subtle outer glow */
+  box-shadow: 0 0 20px rgba(129, 129, 129, 1) inset; /* Subtle outer glow */
+  transform: scale(1.05);
+  transition: box-shadow 0.4s ease, transform 0.4s ease;
 }
 
 @keyframes animate {
@@ -457,40 +490,6 @@ a {
     transform: scale(0.0) translateY(0); /* End at full size */
     opacity: 0;
   }
-}
-
-
-#home h2{
-  position: absolute;
-  top: 80vh;
-  padding: 20px;
-  font-size: 2.2rem; /* Elegant font size */
-  font-weight: 700;
-  letter-spacing: 2px; /* Slightly increased spacing */
-  text-align: center;
-  text-transform: uppercase;
-  color: black; /* Solid black text */
-  text-shadow: 0 0 5px rgba(129, 129, 129, 0.3); /* Subtle initial glow */
-  transition: text-shadow 0.4s ease, transform 0.4s ease;
-  animation: unfoldEffect 1s cubic-bezier(0.42, 0, 0.58, 1) forwards;
-  cursor: pointer;
-}
-
-/* Advanced subtle glowing outline effect */
-#home h2::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border: 2px solid rgba(129, 129, 129, 1); /* Soft border */
-  border-radius: 8px; /* Rounded corners for the outline */
-  z-index: -1;
-  box-shadow: 0 0 20px rgba(129, 129, 129, 1); /* Subtle outer glow */
-  box-shadow: 0 0 20px rgba(129, 129, 129, 1) inset; /* Subtle outer glow */
-  transform: scale(1.05);
-  transition: box-shadow 0.4s ease, transform 0.4s ease;
 }
 
 @keyframes unfoldEffect {
