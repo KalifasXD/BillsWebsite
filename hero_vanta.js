@@ -49,10 +49,13 @@ document.addEventListener("DOMContentLoaded", () => {
         const normalizedBeta = (beta + 90) / 180; // Map to 0-1 range
         const normalizedGamma = (gamma + 90) / 180; // Map to 0-1 range
   
-        vantaEffect.setOptions({
-          rotationX: normalizedBeta * Math.PI,
-          rotationY: normalizedGamma * Math.PI,
-        });
+        vantaEffects.forEach(vantaEffect => {
+            vantaEffect.setOptions({
+                rotationX: normalizedBeta * Math.PI,
+                rotationY: normalizedGamma * Math.PI,
+              });
+        })
+        
       });
 
 });
