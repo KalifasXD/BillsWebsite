@@ -56,8 +56,8 @@ document.addEventListener("DOMContentLoaded", () => {
   
         vantaEffects.forEach(vantaEffect => {
             vantaEffect.setOptions({
-                rotationX: normalizedBeta * Math.PI,
-                rotationY: normalizedGamma * Math.PI,
+                rotationX: rotationX,
+                rotationY: rotationY,
               });
         })
         
