@@ -1598,16 +1598,25 @@ p {
 }
 
 /* For screens with max-width of 900px (Three columns per row) */
-@media (max-width: 900px) {
+@media (max-width: 1484px) {
   .skills-column {
-    flex: 1 1 calc(33.33% - 20px); /* 3 columns per row minus gap */
+    flex: 1 1 calc(30.3% - 20px); /* 3 columns per row minus gap */
   }
+
+  .skills-column:first-of-type, .skills-column:last-of-type {
+    margin: 0;
+  }
+
 }
 
-/* For screens with max-width of 768px (Two columns per row) */
-@media (max-width: 768px) {
+/* For screens with max-width of 1024px (Two columns per row) */
+@media (max-width: 1100px) {
   .skills-column {
     flex: 1 1 calc(48% - 20px); /* 2 columns per row minus gap */
+    
+  }
+  .skills-column:first-of-type, .skills-column:last-of-type {
+    margin: 0;
   }
 }
 
@@ -1616,6 +1625,9 @@ p {
   .skills-column {
     flex: 1 1 100%; /* Full width for each column */
     margin: 10px auto; /* Center the columns */
+  }
+  .skills-column:first-of-type, .skills-column:last-of-type {
+    margin: 0;
   }
 }
 
