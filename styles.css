@@ -346,6 +346,7 @@ a {
   flex-direction: column;
   align-items: center; /* Center content vertically */
   text-align: center;
+  position: relative;
 }
 
 /* Hero Text Styling */
@@ -375,11 +376,12 @@ a {
 
 .hero .arrow {
   position: absolute;
-  bottom: 22.5% !important; /* Places it dynamically based on viewport height */
+  bottom: 22.5%; /* Places it dynamically based on viewport height */
   font-size: 1.5em;
   color: var(--Soft-Black); /* Consistent with paragraph color */
   opacity: 1;
   cursor: pointer;
+  z-index: 10 !important;
 }
 
 /* Fade-in and move-up animation */
@@ -423,6 +425,7 @@ a {
   transition: text-shadow 0.4s ease, transform 0.4s ease;
   animation: unfoldEffect 1s cubic-bezier(0.42, 0, 0.58, 1) forwards;
   cursor: pointer;
+  z-index: 5;
 }
 
 /* Advanced subtle glowing outline effect */
@@ -1000,12 +1003,10 @@ a {
   }
 
   .navigation {
-    
     position: absolute !important;
     top: 90% !important; /* Position at the bottom */
     display: flex;
     gap: 10px; /* Space between indicators */
-    border: 2px solid pink;
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -1016,6 +1017,10 @@ a {
    
   .nav-btn::before {
     content: '';
+  }
+
+  body.dark-mode .nav-btn {
+    background-color: var(--Soft-White);
   }
 
   .nav-btn {
@@ -1094,7 +1099,7 @@ a {
     width: 100vw;
 
   }
-  
+
   .content {
     margin: 0;
     padding: 0;
