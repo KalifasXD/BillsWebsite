@@ -1256,8 +1256,8 @@ p {
 }
 
 .skill-images-container div {
-  width: 4.25rem; 
-  height: 15px;
+  width: 2.83rem; 
+  height: 10px;
   background-color: var(--Soft-White); /* Light gray background */
   position: relative;
   border: 1px solid var(--Soft-Black);
