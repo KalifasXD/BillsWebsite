@@ -1694,7 +1694,7 @@ p {
   flex-direction: column; /* Stack items vertically */
   justify-content: flex-start; /* Center items vertically */
   align-items: center; /* Center items horizontally */
-  height: 60dvh;
+  height: 70dvh;
 }
 
 /* Base styles for animation target elements */
