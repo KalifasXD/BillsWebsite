@@ -1179,11 +1179,14 @@ p {
   justify-content: center;
 }
 .skills-column:first-of-type {
-  margin: 20px 10px 20px 0;
+  margin-top: 10px;
+  margin-left: 0px !important;
+  margin-bottom: 20px;
 }
 
 .skills-column:last-of-type {
-  margin: 20px 0 20px 10px;
+  margin-bottom: 20px;
+  margin-right: 10px;
 }
 
 .skills-column {
@@ -1195,9 +1198,8 @@ p {
   align-items: flex-start;
   width: 100%; /* Ensures full width on smaller screens */
   height: auto;
-  margin: 20px 10px;
+  margin: 20px 0 20px 10px !important;
   font-weight: bold;
-  
 }
 
 .skill-image {
@@ -1254,7 +1256,7 @@ p {
 }
 
 .skill-images-container div {
-  width: 70px; /* Circle size */
+  width: 4.25rem; 
   height: 15px;
   background-color: var(--Soft-White); /* Light gray background */
   position: relative;
@@ -1624,10 +1626,10 @@ p {
 @media (max-width: 480px) {
   .skills-column {
     flex: 1 1 100%; /* Full width for each column */
-    margin: 10px auto; /* Center the columns */
+    margin: 10px 0px !important; /* Center the columns */
   }
   .skills-column:first-of-type, .skills-column:last-of-type {
-    margin: 0;
+    margin: 0 !important;
   }
 }
 
@@ -1637,7 +1639,7 @@ p {
   padding: 60px 0px;
   color: var(--Soft-Black);
   margin: 0px auto;
-  width: 100dvw;
+  width: 100%;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
   display: flex;
   flex-direction: column;
@@ -1680,7 +1682,7 @@ p {
 
 .education, .languages, .achievements {
   flex: 1; /* Ensures all sections take up equal space */
-  max-width: 33%; /* Optional: Prevents sections from exceeding one-third */
+  max-width: 100%; /* Optional: Prevents sections from exceeding one-third */
   background-color: rgba(0, 0, 0, 0.8); /* Background styling */
   padding: 20px;
   margin: 0 2rem;
@@ -1869,31 +1871,35 @@ body.dark-mode #education-languages .fas {
   color: var(--Active-Gold);
 }
 
+#education-languages h2 {
+  z-index: 1;
+}
+
 /* Responsive Layout with Media Queries */
-@media (max-width: 1024px) {
+@media (max-width: 1324px) {
   .education-languages-container {
     display: flex;
     flex-wrap: wrap; /* Allows wrapping of items */
-    justify-content: space-between; /* Space out items evenly */
   }
 
   .education, .languages, .achievements {
-    flex: 0 0 50%; /* Each item takes up roughly 48% of the row */
-    box-sizing: border-box; /* Ensures padding and border are included in width */
+    flex: 1 1 calc(45%) !important;
   }
-  
+
   .achievements {
+    flex: 1 1 100% !important; /* Takes up the full width when it drops to the next line */
     border-top: 2px solid var(--Active-Gold);
   }
 }
 
-@media (max-width: 768px) {
-  .education-languages-container {
-    flex-direction: column; /* Stack columns vertically on smaller screens */
+@media (max-width: 960px) {
+
+  .education, .languages, .achievements {
+    border: none;
+    flex: 1 1 100% !important; /* Stack items on smaller screens */
   }
 
   .education, .languages, .achievements {
-    min-width: 100dvw; /* Full width for each section */
     border: none;
   }
 
@@ -1916,18 +1922,6 @@ body.dark-mode #education-languages .fas {
 
   .education ul li h4, .languages ul li strong, .achievements ul li {
     font-size: 1rem; /* Adjust content font size */
-  }
-
-  .education, .languages, .achievements {
-    min-width: 100dvw; /* Full width for each section */
-    border: none;
-  }
-
-  .education-languages-container > div:nth-child(2) {
-    border-bottom: 2px solid var(--Active-Gold);
-    border-top: 2px solid var(--Active-Gold);
-    border-left: none;
-    border-right: none;
   }
 }
 
