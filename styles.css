@@ -992,6 +992,7 @@ a {
     width: fit-content !important;
     font-size: auto; /* Slightly larger for readability */
     margin: 1.3rem !important;
+    margin-bottom: 2rem !important;
   }
 
   .slides {
