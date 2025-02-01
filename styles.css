@@ -375,7 +375,7 @@ a {
 
 .hero .arrow {
   position: absolute;
-  bottom: 32.5% !important; /* Places it dynamically based on viewport height */
+  bottom: 22.5% !important; /* Places it dynamically based on viewport height */
   font-size: 1.5em;
   color: var(--Soft-Black); /* Consistent with paragraph color */
   opacity: 1;
@@ -411,7 +411,7 @@ a {
 
 #home h2{
   position: absolute;
-  bottom: 10% !important;
+  bottom: 0% !important;
   padding: 20px;
   font-size: 2.2rem; /* Elegant font size */
   font-weight: 700;
