@@ -989,8 +989,9 @@ a {
   }
 
   .timeline p {
-    font-size: 1.05em; /* Slightly larger for readability */
-    width: 80% !important;
+    width: fit-content !important;
+    font-size: auto; /* Slightly larger for readability */
+    margin: 1.3rem !important;
   }
 
   .slides {
@@ -1052,11 +1053,6 @@ a {
     margin-bottom: 8px;
   }
 
-  .timeline p {
-    font-size: 1em;
-    width: 80% !important;
-  }
-
   .slides {
     width: 100%;
   }
@@ -1074,10 +1070,6 @@ a {
   .timeline h1 {
     font-size: 1.8em; /* Maintain visual hierarchy */
     margin-bottom: 8px;
-  }
-
-  .timeline p {
-    font-size: 1em;
   }
 
   .slides {
