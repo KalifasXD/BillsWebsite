@@ -980,7 +980,7 @@ a {
 /* Responsive Styles */
 @media (max-width: 1024px) {
   .timeline h1 {
-    font-size: 2.5em;
+    font-size: 2.25em;
     margin-bottom: 0px; /* Maintain a consistent gap */
   }
 
@@ -989,8 +989,8 @@ a {
   }
 
   .timeline p {
-    font-size: 1.2em; /* Slightly larger for readability */
-    width: 100%;
+    font-size: 1.05em; /* Slightly larger for readability */
+    width: 80% !important;
   }
 
   .slides {
@@ -1054,7 +1054,7 @@ a {
 
   .timeline p {
     font-size: 1em;
-    width: 100%; /* Narrower for smaller screens */
+    width: 80% !important;
   }
 
   .slides {
@@ -1078,7 +1078,6 @@ a {
 
   .timeline p {
     font-size: 1em;
-    width: 100%; /* Narrower for smaller screens */
   }
 
   .slides {
