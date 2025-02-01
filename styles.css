@@ -941,7 +941,7 @@ a {
   transform: scale(1);
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1324px) {
   .timeline h1 {
     font-size: 2.2em; /* Maintain visual hierarchy */
     margin-bottom: 8px;
@@ -980,7 +980,7 @@ a {
 }
 
 /* Responsive Styles */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .timeline h1 {
     font-size: 2.5em;
     margin-bottom: 0px; /* Maintain a consistent gap */
@@ -999,26 +999,50 @@ a {
     width: 85vw; /* Maintain proportional scaling */
   }
 
-  /* Horizontal navigation for smaller devices */
   .navigation {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: auto;
+    
+    position: absolute !important;
+    top: 90% !important; /* Position at the bottom */
+    display: flex;
+    gap: 10px; /* Space between indicators */
+    border: 2px solid pink;
     flex-direction: row;
-    justify-content: space-evenly; /* Center navigation buttons evenly */
-    padding: 8px;
-    background-color: rgba(0, 0, 0, 0.6); /* Slightly darker for better contrast */
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+    width: 100% !important;
+    height: 100% !important;
+  }
+   
+  .nav-btn::before {
+    content: '';
+  }
+
+  .nav-btn {
+      width: 1.25vw;
+      height: 1.25vw;
+      border-radius: 50%;
+      background-color: var(--Soft-Black);
+      opacity: 0.3; /* Default opacity for inactive indicators */
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+      font-size: 0; /* Hide the text */
+      line-height: 0; /* Ensure no extra space is taken */
+  }
+
+  .nav-btn.active {
+      opacity: 1; /* Full opacity for the active indicator */
+  }
+
+  /* Hide the text inside the buttons */
+  .nav-btn span {
+      display: none;
   }
 
   .navigation::before {
     display: none; /* Completely hide the vertical line */
-  }
-
-  .nav-btn {
-    font-size: 1rem; /* Consistent and compact */
-    padding: 6px 10px;
   }
 }
 
@@ -1040,11 +1064,6 @@ a {
 
   .slide {
     border: 2px solid white;
-  }
-
-  .nav-btn {
-    font-size: 0.95rem; /* Proportional scaling */
-    padding: 5px 10px;
   }
 
   .content {
@@ -1075,16 +1094,7 @@ a {
     width: 100vw;
 
   }
-
-  .slide {
-
-  }
-
-  .nav-btn {
-    font-size: 0.95rem; /* Proportional scaling */
-    padding: 5px 10px;
-  }
-
+  
   .content {
     margin: 0;
     padding: 0;
