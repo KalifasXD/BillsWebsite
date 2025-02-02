@@ -39,7 +39,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Overview button click logic
   document.querySelector("#home h2").addEventListener("click", (event) => {
-    document.querySelector("#what-i-offer").scrollIntoView({behavior: 'smooth'});
+    const element = document.querySelector("#what-i-offer");
+    const offset = element.offsetTop - 
+                  (window.innerHeight / 2) + 
+                  (element.clientHeight / 2) - 
+                  document.querySelector('.navbar').offsetHeight / 2;
+    window.scrollTo({
+        top: offset,
+        behavior: "smooth"
+    });
   });
 
 
