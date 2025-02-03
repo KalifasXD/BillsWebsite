@@ -4,6 +4,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Faculty+Glyphic&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -337,6 +339,151 @@ a {
   .what-i-offer-sub-container {
     width: 45%; /* Single item per row on very small screens */
   }
+}
+
+.projects {
+  padding: 50px 0;
+  text-align: center;
+  width: 100%;
+}
+
+.projects h2 {
+  margin: 4% 0;
+}
+
+.projects h2::after {
+  content: '';
+  display: block;
+  margin: 10px auto;
+  border-radius: 2px;
+  width: 15%;
+  height: 3px;
+  background-color: var(--Active-Gold);  /* Hex color for the line */
+  background: linear-gradient(to right, 
+    #b35e2c00 0%,        /* Transparent on the left */
+    var(--Active-Gold) 10%,       /* Fully opaque */
+    var(--Active-Gold) 90%,       /* Fully opaque */
+    #b35e2c00 100%);
+}
+
+.projects-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.project-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Keeps text aligned */
+}
+
+.project-card {
+  display: flex;
+  align-items: center;
+  position: relative;
+  gap: 20px;
+  background: linear-gradient(to left, 
+                            rgb(0, 0, 0, 0.4), 
+                            rgb(18, 18, 18, 0.4), 
+                            rgb(51, 51, 51,0.4), 
+                            rgb(26, 26, 26, 0.4));
+  padding: 20px;
+  margin: 0 2rem;
+  border: 2px solid var(--Active-Gold);
+  height: 10%;
+  max-height: 10%;
+  text-align: left;
+  margin-bottom: 1%;
+}
+
+/* Add the texture overlay with opacity */
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://png.pngtree.com/thumb_back/fh260/back_our/20190625/ourmid/pngtree-atmospheric-black-texture-background-image_262264.jpg');
+  object-fit: cover;
+  background-position: center;
+  opacity: 0.3; /* Control the opacity here */
+  z-index: -1; /* Makes sure the texture stays behind the content */
+}
+
+.project-image {
+  width: 500px;
+  height: auto;
+}
+
+.project-content::before {
+  content: '';
+  position: absolute;
+  left: 33.05rem;
+  top: 5%;
+  height: 90%;
+  width: 3px;
+  background: var(--Active-Gold);
+}
+
+.category {
+  color: var(--Active-Gold);
+  font-weight: lighter;
+}
+
+.tags span {
+  display: inline-block;
+  background: var(--Active-Gold);
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin-bottom: 5%;
+}
+
+.project-description {
+  color: var(--Soft-White);
+}
+
+.project-title {
+  color: var(--Soft-White);
+  font-family: "Nunito Sans", serif !important;
+  font-size: 2rem;
+  font-weight: 900 !important;
+}
+
+body.dark-mode .project-learn-more {
+  background-color: var(--Soft-Black);
+}
+
+body.dark-mode .project-learn-more:hover {
+  background-color: var(--Active-Gold);
+  color: var(--Soft-White);
+  box-shadow: var(--Active-Gold) 0px 7px 29px 0px;
+}
+
+.project-learn-more {
+  width: 15%;
+  padding: 17px 40px;
+  border-radius: 50px;
+  cursor: pointer;
+  border: 0;
+  background-color: var(--Soft-White);
+  box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  transition: all 0.5s ease;
+  text-align: center;
+}
+
+.project-learn-more:hover {
+  letter-spacing: 3px;
+  width: 16%;
+  background-color: var(--Active-Gold);
+  color: var(--Soft-White);
+  box-shadow: var(--Active-Gold) 0px 7px 29px 0px;
 }
 
 /* Hero Section Styling */
@@ -1964,7 +2111,7 @@ body.dark-mode #education-languages .fas {
 .contact label {
   display: block;
   font-size: 1.1em;
-  color: var(--Soft-White);  /* Light color to contrast the background */
+  color: var(--Soft-Black);  /* Light color to contrast the background */
   margin-bottom: 5px;
 }
 
@@ -2141,6 +2288,19 @@ body.dark-mode .nav-btn::before{
 body.dark-mode .about-container img {
   box-shadow: 0 0 30px 10px var(--Soft-White),
               0 0 50px 20px var(--Soft-White) inset;
+}
+
+body.dark-mode .project-card::before {
+  background: none;
+  opacity: 0;
+}
+
+body.dark-mode .project-card {
+  background: linear-gradient(to left, 
+                            rgb(0, 0, 0, 0.3), 
+                            rgb(18, 18, 18, 0.3), 
+                            rgb(51, 51, 51,0.3), 
+                            rgb(26, 26, 26, 0.3));
 }
 
 body.dark-mode .skill-images-container div  {
