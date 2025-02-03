@@ -596,6 +596,11 @@ body.dark-mode .project-learn-more:hover {
     align-items: center;  /* Centers vertically */
   }
 
+  .project-description {
+    font-size: 1rem !important;
+    max-width: 80% !important;
+  }
+
   .projects-container {
     flex-direction: column;
     align-items: center;
@@ -631,7 +636,9 @@ body.dark-mode .project-learn-more:hover {
     max-width: 90%;
     padding: 20px;
   }
-  
+  .project-description {
+    font-size: 0.85rem !important;
+  }
   .project-image {
     width: 100% !important;
     max-width: 100% !important;
