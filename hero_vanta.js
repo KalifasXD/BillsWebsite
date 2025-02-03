@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const light_mode_color = 0xF4D1C8;
+    const light_mode_color = 0xF6C7BC;
     const dark_mode_color = 0x292F3A;
     const dark_mode_background_color = 0x161B22;
     const light_mode_background_color = 0xF4E3D7;
   
-    let initializedVantaEffects = ['#home', '#experience', '#education-languages', '#contact']
+    let initializedVantaEffects = ['#home', '#experience', '#education-languages', '#projects', '#contact']
     let vantaEffects = []
     let vEffect;
     spawn_vanta_effects(light_mode_color, light_mode_background_color);
@@ -44,21 +44,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.addEventListener('deviceorientation', (event) => {
         const beta = event.beta; // Front-to-back tilt (-180 to 180)
-      const gamma = event.gamma; // Left-to-right tilt (-90 to 90)
+        const gamma = event.gamma; // Left-to-right tilt (-90 to 90)
 
-      // Amplify the tilt input by multiplying by 10
-      const amplifiedBeta = beta * 10;
-      const amplifiedGamma = gamma * 10;
+        // Amplify the tilt input by multiplying by 10
+        const amplifiedBeta = beta * 10;
+        const amplifiedGamma = gamma * 10;
 
-      // Map amplified tilt values to rotation (in radians)
-      const rotationX = (amplifiedBeta / 180) * Math.PI; // Map beta to rotationX
-      const rotationY = (amplifiedGamma / 90) * Math.PI; // Map gamma to rotationY
+        // Map amplified tilt values to rotation (in radians)
+        const rotationX = (amplifiedBeta / 180) * Math.PI; // Map beta to rotationX
+        const rotationY = (amplifiedGamma / 90) * Math.PI; // Map gamma to rotationY
   
         vantaEffects.forEach(vantaEffect => {
             vantaEffect.setOptions({
                 rotationX: rotationX,
                 rotationY: rotationY,
-              });
+                });
         })
         
       });
