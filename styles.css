@@ -345,6 +345,9 @@ a {
   padding: 8rem 0;
   text-align: center;
   width: 100%;
+  height: auto !important;
+  max-height: auto !important;
+  box-sizing: border-box;
 }
 
 .projects h2::after {
@@ -560,6 +563,7 @@ body.dark-mode .project-learn-more:hover {
 
 .project-learn-more {
   width: 15%;
+  min-width: 15%;
   padding: 17px 40px;
   border-radius: 50px;
   cursor: pointer;
@@ -580,6 +584,95 @@ body.dark-mode .project-learn-more:hover {
   color: var(--Soft-White);
   box-shadow: var(--Active-Gold) 0px 7px 29px 0px;
 }
+
+@media (max-width: 1424px) {
+  .projects {
+    padding: 6rem 0;
+  }
+  
+  .project-content {
+    display: flex;
+    justify-content: center;  /* Centers horizontally */
+    align-items: center;  /* Centers vertically */
+  }
+
+  .projects-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .project-learn-more {
+    width: 35%;
+  }
+
+  .project-learn-more:hover {
+    width: 40%;
+  }
+
+  .project-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px;
+    max-width: 80%;
+  }
+  
+  .project-content::before {
+    display: none;
+  }
+}
+
+/* Mobile Devices (Landscape and smaller tablets) */
+@media (max-width: 768px) {
+  .projects {
+    padding: 4rem 0;
+  }
+  
+  .project-card {
+    max-width: 90%;
+    padding: 20px;
+  }
+  
+  .project-image {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .project-title {
+    font-size: 1.75rem;
+    margin-top: 2.5%;
+  }
+  
+  .project-learn-more:hover {
+    width: 60%;
+  }
+
+  .project-learn-more {
+    width: 55%;
+    padding: 14px 30px;
+  }
+}
+
+/* Small Mobile Devices (Portrait Mode) */
+@media (max-width: 480px) {
+  .projects {
+    padding: 3rem 0;
+  }
+  
+  .project-card {
+    max-width: 95%;
+    padding: 15px;
+  }
+  
+  .project-title {
+    font-size: 1.5rem;
+  }
+
+  .project-learn-more {
+    padding: 12px 25px;
+    font-size: 0.8rem;
+  }
+}
+
 
 /* Hero Section Styling */
 .hero {
