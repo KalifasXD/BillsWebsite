@@ -615,7 +615,7 @@ body.dark-mode .project-learn-more:hover {
   }
 
   .project-learn-more {
-    --learn-more-width: 35%;
+    --learn-more-width: 60%;
   }
 
   .project-learn-more:hover {
