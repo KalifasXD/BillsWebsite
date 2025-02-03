@@ -407,7 +407,13 @@ document.addEventListener("DOMContentLoaded", () => {
           if(entry.target.classList.contains('what-i-offer-sub-container')){
             entry.target.style.animationDelay = `${index * 0.1}s`; // Stagger the delay for 'what-i-offer-sub-container'
           }
-          
+           // Handle staggered animations for tags
+           const tags = entry.target.querySelectorAll(".tags span");
+           tags.forEach((tag, index) => {
+             tag.style.opacity = 0; // Ensure it starts hidden
+             tag.style.animation = `fadeInUp 0.3s ease-in-out forwards`;
+             tag.style.animationDelay = `${index * 0.1}s`; // Staggered delay
+           });
           observer.unobserve(entry.target); // Stop observing once animated
         }
       });
@@ -416,6 +422,6 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   // Target specific elements
-  const targets = document.querySelectorAll(".education, .languages, .achievements, .what-i-offer-sub-container");
+  const targets = document.querySelectorAll(".education, .languages, .achievements, .what-i-offer-sub-container, .project-card");
   targets.forEach(target => observer.observe(target));
 });

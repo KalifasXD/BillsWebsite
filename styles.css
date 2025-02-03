@@ -342,13 +342,9 @@ a {
 }
 
 .projects {
-  padding: 50px 0;
+  padding: 8rem 0;
   text-align: center;
   width: 100%;
-}
-
-.projects h2 {
-  margin: 4% 0;
 }
 
 .projects h2::after {
@@ -371,6 +367,7 @@ a {
   justify-content: center;
   flex-wrap: wrap;
   flex: 1;
+  margin: 0rem 0;
 }
 
 .project-content {
@@ -379,7 +376,11 @@ a {
   justify-content: center; /* Keeps text aligned */
 }
 
+
 .project-card {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
   display: flex;
   align-items: center;
   position: relative;
@@ -389,13 +390,17 @@ a {
                             rgb(18, 18, 18, 0.4), 
                             rgb(51, 51, 51,0.4), 
                             rgb(26, 26, 26, 0.4));
-  padding: 20px;
+  padding: 40px 20px;
   margin: 0 2rem;
   border: 2px solid var(--Active-Gold);
-  height: 10%;
-  max-height: 10%;
+  max-height: 10% !important;
   text-align: left;
   margin-bottom: 1%;
+}
+
+.project-card.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Add the texture overlay with opacity */
@@ -416,6 +421,12 @@ a {
 .project-image {
   width: 500px;
   height: auto;
+  transform: translateX(-100px);
+  transition: transform 0.7s ease-in-out;
+}
+
+.project-card.visible .project-image {
+  transform: translateX(0);
 }
 
 .project-content::before {
@@ -442,6 +453,28 @@ a {
   margin-bottom: 5%;
 }
 
+.tags span,
+.project-learn-more {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.project-learn-more {
+  animation-delay: 0.7s;
+}
+
 .project-description {
   color: var(--Soft-White);
 }
@@ -451,6 +484,68 @@ a {
   font-family: "Nunito Sans", serif !important;
   font-size: 2rem;
   font-weight: 900 !important;
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Apply animations to individual content elements */
+.project-card.visible .project-title {
+  animation: fadeInUp 0.7s ease-out forwards;
+  animation-delay: 0.5s;
+  opacity: 0; /* Hidden before animation */
+}
+
+.project-card.visible .category {
+  animation: slideIn 0.7s ease-out forwards;
+  animation-delay: 0.6s;
+  opacity: 0;
+}
+
+.project-card.visible .project-description {
+  animation: fadeInUp 0.7s ease-out forwards;
+  animation-delay: 0.8s;
+  opacity: 0;
+}
+
+/* Keyframes for 360 flip and color change */
+@keyframes flipAndColor {
+  0% {
+    transform: rotateX(0deg);
+  }
+  50% {
+    transform: rotateX(90deg);
+  }
+  100% {
+    transform: rotateX(0deg); 
+  }
+}
+
+
+.project-card.visible .highlight {
+  display: inline-block; /* Ensure the text can rotate properly */
+  transform-origin: center;
+  color: var(--Active-Gold);
+  animation: flipAndColor 1.5s ease-out forwards 0.075s; /* Control duration and easing */
 }
 
 body.dark-mode .project-learn-more {
