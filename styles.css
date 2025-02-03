@@ -348,6 +348,10 @@ a {
   height: auto !important;
   max-height: auto !important;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .projects h2::after {
@@ -562,8 +566,9 @@ body.dark-mode .project-learn-more:hover {
 }
 
 .project-learn-more {
-  width: 15%;
-  min-width: 15%;
+  --learn-more-width: 30%;
+  width: var(--learn-more-width);
+  min-width: var(--learn-more-width);
   padding: 17px 40px;
   border-radius: 50px;
   cursor: pointer;
@@ -579,7 +584,7 @@ body.dark-mode .project-learn-more:hover {
 
 .project-learn-more:hover {
   letter-spacing: 3px;
-  width: 16%;
+  width: calc(var(--learn-more-width) + 1%);
   background-color: var(--Active-Gold);
   color: var(--Soft-White);
   box-shadow: var(--Active-Gold) 0px 7px 29px 0px;
@@ -602,23 +607,26 @@ body.dark-mode .project-learn-more:hover {
   }
 
   .projects-container {
-    flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
   }
   
+  .project-image {
+    width: 100% !important;
+  }
+
   .project-learn-more {
-    width: 35%;
+    --learn-more-width: 35%;
   }
 
   .project-learn-more:hover {
-    width: 40%;
+    width: calc(var(--learn-more-width) + 1%);
   }
 
   .project-card {
     flex-direction: column;
     text-align: center;
     padding: 30px;
-    max-width: 80%;
+    flex: 1 1 calc(45% - 20px);
   }
   
   .project-content::before {
@@ -633,15 +641,18 @@ body.dark-mode .project-learn-more:hover {
   }
   
   .project-card {
-    max-width: 90%;
-    padding: 20px;
-  }
-  .project-description {
-    font-size: 0.85rem !important;
-  }
-  .project-image {
     width: 100% !important;
     max-width: 100% !important;
+    padding: 20px;
+  }
+
+  .projects-container {
+    flex: 1 !important;
+    align-items: center !important;
+  }
+
+  .project-description {
+    font-size: 0.85rem !important;
   }
 
   .project-title {
@@ -650,11 +661,11 @@ body.dark-mode .project-learn-more:hover {
   }
   
   .project-learn-more:hover {
-    width: 60%;
+    width: calc(var(--learn-more-width) + 1%);
   }
 
   .project-learn-more {
-    width: 55%;
+    --learn-more-width: 55%;
     padding: 14px 30px;
   }
 }
