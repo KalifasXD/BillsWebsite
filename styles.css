@@ -2387,6 +2387,10 @@ body.dark-mode .navbar .nav-link {
   color: var(--Soft-White); /* Light text for navbar */
 }
 
+body.dark-mode .navbar .nav-link:hover {
+  color: var(--Hover-Gold); /* Light text for navbar */
+}
+
 body.dark-mode .navbar .nav-link.active {
   color: var(--Active-Gold);
 }
