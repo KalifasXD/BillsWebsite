@@ -3032,6 +3032,10 @@ body.dark-mode .contact h2 {
   color: var(--Soft-White);
 }
 
+body.dark-mode .contact label {
+  color: var(--Soft-White);  /* Light color to contrast the background */
+}
+
 body.dark-mode .contact-form input,
 body.dark-mode .contact-form textarea {
   background-color: var(--Soft-Black); /* Dark input fields */

@@ -7,9 +7,9 @@ document.addEventListener("DOMContentLoaded", () => {
     let initializedVantaEffects = ['#home', '#experience', '#education-languages', '#projects', '#contact']
     let vantaEffects = []
     let vEffect;
-    spawn_vanta_effects(light_mode_color, light_mode_background_color);
+    spawn_vanta_effects(dark_mode_color, dark_mode_background_color);
   
-    document.getElementById("darkModeToggle").addEventListener("click", () => {
+    document.getElementById("darkModeToggle").addEventListener("change", () => {
       vantaEffects.forEach(vantaEffect => {
           vantaEffect.destroy();
       })
