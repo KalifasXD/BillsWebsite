@@ -30,6 +30,7 @@ function handleRedirection(scrollToTarget, offset) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  document.body.classList.toggle("dark-mode", this.checked);
   const menuIcon = document.querySelector(".menu-icon");
   const menu = document.querySelector(".navbar ul");
   const navLinks = document.querySelectorAll(".navbar .nav-link");
@@ -99,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
           menu.classList.remove("active");
       });
   });
-
+  
   // Dark mode toggle
   darkModeToggle.addEventListener("change", function () {
       document.body.classList.toggle("dark-mode", this.checked);
