@@ -1243,6 +1243,10 @@ body.dark-mode .bio-contact-links a:hover {
   max-height: 100%;
 }
 
+.content a {
+  color: var(--Active-Gold) !important;
+}
+
 .slide {
   width: 100%;
   max-width: 100%;
