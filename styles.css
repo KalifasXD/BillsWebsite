@@ -1655,7 +1655,7 @@ body.dark-mode .skills-container {
 }
 
 .skill {
-  padding: 20px;
+  padding: 20px 0;
   width: 100%; /* Adjusts width for all screen sizes */
   height: auto;
   display: flex;
