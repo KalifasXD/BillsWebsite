@@ -2395,6 +2395,7 @@ body.dark-mode #education-languages .fas {
 
   .achievements {
     margin-top: 0 !important;
+    height: auto !important;
   }
 
   .education-languages-container > div:nth-child(2) {
