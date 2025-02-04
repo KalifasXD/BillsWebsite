@@ -979,8 +979,6 @@ body.dark-mode .about-container {
 .bio-content ul li {
   opacity: 0;
   margin-bottom: 10px;
-  display: flex;
-  align-items: center;
   color: var(--Soft-White);
 }
 
@@ -988,6 +986,7 @@ body.dark-mode .about-container {
   margin-right: 10px;
   color: var(--Dark-Beige);
 }
+
 
 .about-container.visible .bio-contact-links {
   margin: 2% 0 !important;
