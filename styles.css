@@ -428,13 +428,11 @@ a {
 .project-image {
   width: 100%; /* Make the image responsive */
   max-width: 500px; /* Set a maximum width */
-  height: auto;
-  transform: translateX(-100px);
-  transition: transform 0.7s ease-in-out;
+  height: auto;  
 }
 
 .project-card.visible .project-image {
-  transform: translateX(0);
+  animation: slideInAbout 0.7s ease-in-out forwards;
 }
 
 .project-content::before {
@@ -465,7 +463,11 @@ a {
 .project-learn-more {
   opacity: 0;
   transform: translateY(10px);
-  animation: fadeInUp 0.5s ease-in-out forwards;
+}
+
+.project-card.visible .tags span,
+.project-card.visible .project-learn-more {
+  animation: fadeInUp 0.5s ease-in-out forwards 0.7s;
 }
 
 @keyframes fadeInUp {
@@ -477,10 +479,6 @@ a {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-.project-learn-more {
-  animation-delay: 0.7s;
 }
 
 .project-description {
@@ -2166,7 +2164,7 @@ p {
   flex-direction: column; /* Stack items vertically */
   justify-content: flex-start; /* Center items vertically */
   align-items: center; /* Center items horizontally */
-  height: 70dvh;
+  height: 35rem;
 }
 
 /* Base styles for animation target elements */
