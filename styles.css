@@ -857,15 +857,10 @@ body.dark-mode .project-learn-more:hover {
 }
 
 /* Expanded state: Full-size about section */
-.about.full-view {
-  left: unset; /* Reset position */
+.about {
   width: 100%; /* Full width */
   height: 100%;
-  transform: scale(1) translateY(0); /* Final full size and position */
-  opacity: 1; /* Full opacity */
-  padding: 60px 40px;
-  z-index: 2; /* Above the home section */
-  border-radius: 0; /* Remove rounded corners */
+  padding: 9rem 40px;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1), 0 0 60px rgba(255, 255, 255, 0.3); /* Soft shadow */
 }
 
@@ -904,6 +899,7 @@ body.dark-mode .about-container {
   overflow: hidden;
   display: flex;
   flex-wrap: wrap;
+  margin-top: 2.5% !important;
 }
 
 .about-container::before {
@@ -921,6 +917,7 @@ body.dark-mode .about-container {
 }
 
 .profile-pic {
+  opacity: 0;
   flex: 1 1 250px;
   background: url('ColorfulProfile.jpg') no-repeat center/cover;
   border-radius: 12px 0 0 12px;
@@ -933,6 +930,7 @@ body.dark-mode .about-container {
 }
 
 .bio-content h1 {
+  opacity: 0;
   font-size: 28px;
   font-weight: bold;
   margin-bottom: 10px;
@@ -944,20 +942,21 @@ body.dark-mode .about-container {
 }
 
 .bio-content h2 {
-  all: unset; /* Reset all properties */
+  opacity: 0;
+  text-align: left !important;
   font-size: 18px !important;
   color: var(--Soft-White) !important;
   margin-bottom: 2% !important;
 }
 
 .bio-content p {
+  opacity: 0;
   line-height: 1.8;
   margin-bottom: 15px;
   color: var(--Soft-White);
 }
 
 .bio-content p span {
-  font-weight: bold;
   color: var(--Active-Gold);
 }
 
@@ -967,6 +966,7 @@ body.dark-mode .about-container {
 }
 
 .bio-content ul li {
+  opacity: 0;
   margin-bottom: 10px;
   display: flex;
   align-items: center;
@@ -978,7 +978,7 @@ body.dark-mode .about-container {
   color: var(--Dark-Beige);
 }
 
-.bio-contact-links {
+.about-container.visible .bio-contact-links {
   margin: 2% 0 !important;
   display: flex;
   flex-direction: column;
@@ -995,6 +995,7 @@ body.dark-mode .bio-contact-links a:hover {
 }
 
 .bio-contact-links a {
+  opacity: 0;
   --bio-contact-width: 20%;
   width: var(--bio-contact-width);
   min-width: var(--bio-contact-width);
@@ -1021,13 +1022,13 @@ body.dark-mode .bio-contact-links a:hover {
 }
 
 
-.about.full-view  h2 {
+.about h2 {
   text-align: center;
   font-weight: 600;
   font-size: 2rem;
 }
 
-.about.full-view h2::after {
+.about h2::after {
   content: '';
   display: block;
   margin: 10px auto;
@@ -1040,6 +1041,66 @@ body.dark-mode .bio-contact-links a:hover {
     var(--Active-Gold) 10%,       /* Fully opaque */
     var(--Active-Gold) 90%,       /* Fully opaque */
     #b35e2c00 100%);
+}
+
+/* ANIMATIONS */
+
+.about-container.visible .bio-contact-links a {
+  animation: fadeInUpAbout 0.5s ease-in-out forwards 1.5s;
+}
+
+.about-container.visible .profile-pic {
+  animation: slideInAbout 1s ease-out forwards 0.2s;
+  
+}
+
+.about-container.visible .bio-content h1 {
+  animation: fadeInUpAbout 0.7s ease-out forwards 0.4s;
+}
+
+.about-container.visible .bio-content h2 {
+  animation: fadeInUpAbout 0.7s ease-out forwards 0.55s;
+}
+
+.about-container.visible .bio-content p {
+  animation: fadeInUpAbout 0.7s ease-out forwards 0.7s;
+}
+
+/* Fade-in staggered effect for list items */
+.about-container.visible .bio-content ul li {
+  animation: fadeInUpAbout 0.6s ease-in-out forwards 0.5s;
+}
+.about-container.visible .bio-content ul li:nth-child(1) { animation-delay: 0.6s; }
+.about-container.visible .bio-content ul li:nth-child(2) { animation-delay: 0.8s; }
+.about-container.visible .bio-content ul li:nth-child(3) { animation-delay: 1s; }
+.about-container.visible .bio-content ul li:nth-child(4) { animation-delay: 1.2s; }
+
+.about-container.visible span {
+  display: inline-block; /* Ensure the text can rotate properly */
+  transform-origin: center;
+  color: var(--Active-Gold);
+  animation: flipAndColor 1.5s ease-out forwards 0.025s; /* Control duration and easing */
+}
+
+@keyframes fadeInUpAbout {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slideInAbout {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @media (max-width: 1424px) {
