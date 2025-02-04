@@ -639,6 +639,11 @@ body.dark-mode .project-learn-more:hover {
   .project-content::before {
     display: none;
   }
+
+  .category {
+    margin-top: -4%;
+    margin-bottom: 8%;
+  }
 }
 
 /* Mobile Devices (Landscape and smaller tablets) */
@@ -905,7 +910,7 @@ body.dark-mode .about-container {
   overflow: hidden;
   display: flex;
   flex-wrap: wrap;
-  margin-top: 2.5% !important;
+  margin: 2.5% 0 !important;
 }
 
 .about-container::before {
@@ -1142,37 +1147,6 @@ body.dark-mode .bio-contact-links a:hover {
     --bio-contact-width: 100%;
     width: var(--bio-contact-width);
     min-width: var(--bio-contact-width);
-  }
-
-  .about.full-view h2 {
-    font-size: 1.6rem;
-  }
-
-  .about {
-    padding: 15px;
-    height: auto;
-  }
-}
-
-@media (max-width: 600px) {
-  .about.full-view h2 {
-    font-size: 1.4rem;
-  }
-
-  .about {
-    padding: 10px;
-    height: auto;
-  }
-}
-
-@media (max-width: 400px) {
-  .about.full-view h2 {
-    font-size: 1.2rem;
-  }
-
-  .about {
-    padding: 10px;
-    height: auto;
   }
 }
 
@@ -2419,6 +2393,10 @@ body.dark-mode #education-languages .fas {
     border: none;
   }
 
+  .achievements {
+    margin-top: 0 !important;
+  }
+
   .education-languages-container > div:nth-child(2) {
     border-bottom: 2px solid var(--Active-Gold);
     border-top: 2px solid var(--Active-Gold);
@@ -2663,11 +2641,6 @@ body.dark-mode .nav-btn {
 
 body.dark-mode .nav-btn::before{
   color: var(--Soft-White);
-}
-
-body.dark-mode .about-container img {
-  box-shadow: 0 0 30px 10px var(--Soft-White),
-              0 0 50px 20px var(--Soft-White) inset;
 }
 
 body.dark-mode .project-card::before {
