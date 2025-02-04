@@ -627,7 +627,7 @@ body.dark-mode .project-learn-more:hover {
     flex-direction: column;
     text-align: center;
     padding: 30px;
-    flex: 1 1 calc(45% - 20px);
+    flex: 1 1 calc(40% - 20px);
   }
   
   .project-content::before {
@@ -642,14 +642,12 @@ body.dark-mode .project-learn-more:hover {
   }
   
   .project-card {
-    width: 100% !important;
-    max-width: 100% !important;
+    flex: 1 1 100% !important; /* Take full width */
     padding: 20px;
     margin: 0 1rem; /* Reduce horizontal margins */
   }
 
   .projects-container {
-    flex: 1 !important;
     align-items: center !important;
   }
 
@@ -679,7 +677,6 @@ body.dark-mode .project-learn-more:hover {
   }
   
   .project-card {
-    max-width: 95%;
     padding: 15px;
   }
   
