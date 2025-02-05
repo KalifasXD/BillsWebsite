@@ -1564,6 +1564,185 @@ body.dark-mode .bio-contact-links a:hover {
   z-index: 1000; /* Ensure it’s above other content */
 }
 
+/* CTA Section */
+.CTA-HireMe {
+  text-align: center;
+  position: relative;
+}
+
+.CTA-HireMe > h2:first-of-type::after {
+  content: '';
+  display: block;
+  margin: 10px auto;
+  border-radius: 2px;
+  width: 15%;
+  height: 3px;
+  background-color: var(--Active-Gold);
+  background: linear-gradient(to right, #b35e2c00 0%, /* Transparent on the left */ var(--Active-Gold) 10%, /* Fully opaque */ var(--Active-Gold) 90%, /* Fully opaque */ #b35e2c00 100%);
+}
+
+.CTA-HireMe-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100% !important;
+  background: url(https://png.pngtree.com/thumb_back/fh260/back_our/20190625/ourmid/pngtree-atmospheric-black-texture-background-image_262264.jpg);
+  object-fit: cover;
+  background-position: center;
+  opacity: 0.5;
+  z-index: -1;
+}
+
+body.dark-mode .CTA-HireMe-container {
+  box-shadow: 0px 0px 15px rgb(255, 255, 255, 1);
+  background: linear-gradient(to left, rgba(255, 255, 255, 0.36), rgba(237, 237, 237, 0.36), rgb(204, 204, 204, 0.36), rgb(237, 237, 237, 0.36));
+}
+
+.CTA-HireMe-container {
+  font-family: 'Lora' !important;
+  background: linear-gradient(to left, rgb(0, 0, 0, 0.6), rgb(18, 18, 18, 0.6), rgb(51, 51, 51, 0.6), rgb(26, 26, 26, 0.6));
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 1);
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 2.5% !important;
+  padding: 2.5% 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  height: 100%;
+}
+
+.CTA-HireMe-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.CTA-HireMe-content h2 {
+  font-size: 2rem;
+  margin-bottom: 2%;
+  font-weight: bold;
+  color: var(--Soft-White);
+}
+
+.CTA-HireMe-content p {
+  font-size: 1.1rem;
+  margin: 0;
+  color: var(--Soft-White);
+  width: 75%;
+}
+
+.CTA-HireMe-list {
+  text-align: left;
+  font-size: 1.1rem;
+  color: var(--Soft-White);
+  margin-top: 2%;
+  list-style: none;
+  padding-left: 0; /* Remove default padding */
+}
+
+.CTA-HireMe-list li {
+  display: flex; /* Use flexbox to align items */
+  align-items: center; /* Vertically center the icon and text */
+  margin-bottom: 15px; /* Add space between each <li> element */
+}
+
+.CTA-HireMe-list i {
+  color: var(--Soft-Black);
+  margin-right: 10px;
+  font-size: 1.5rem !important;
+  width: 30px;
+}
+
+body.dark-mode .CTA-HireMe-list i {
+  color: var(--Soft-White);
+}
+
+.CTA-Buttons-Box {
+  display: flex;
+  width: 100% !important;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+body.dark-mode .CTA-HireMe-button {
+  background-color: var(--Soft-Black);
+  color: var(--Soft-White);
+}
+
+body.dark-mode .CTA-HireMe-button:hover {
+  background-color: var(--Active-Gold);
+  color: var(--Soft-White);
+  box-shadow: var(--Active-Gold) 0px 7px 29px 0px;
+}
+
+.CTA-HireMe-button .fas {
+  font-size: 1rem;
+}
+
+/* CTA Button */
+.CTA-HireMe-button {
+  --HireMe-width: 20%;
+  width: var(--HireMe-width);
+  min-width: var(--HireMe-width);
+  min-height: 5% !important;
+  padding: 17px 40px;
+  border-radius: 50px;
+  cursor: pointer;
+  border: 0;
+  background-color: var(--Soft-White);
+  color: var(--Soft-Black);
+  box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  transition: all 0.5s ease;
+  text-align: center;
+}
+
+.CTA-HireMe-button:hover {
+  letter-spacing: 3px;
+  width: calc(var(--HireMe-width) + 1%);
+  background-color: var(--Active-Gold);
+  color: var(--Soft-White);
+  box-shadow: var(--Active-Gold) 0px 7px 29px 0px;
+}
+
+.CTA-HireMe-button i {
+  font-size: 1.3rem;
+}
+
+.CTA-HireMe-button:active {
+  transform: scale(1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .CTA-HireMe-content h2 {
+    font-size: 24px;
+  }
+
+  .CTA-HireMe-content p {
+    font-size: 16px;
+  }
+
+  .CTA-HireMe-button {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+}
+
+
 h2 {
   font-size: 2.5em;
   font-weight: 600;
