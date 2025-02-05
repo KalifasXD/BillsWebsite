@@ -132,6 +132,29 @@ document.addEventListener("DOMContentLoaded", () => {
           }
       });
   });
+
+  document.getElementById("CTA-Modal-Open").addEventListener("click", function() {
+    const modal = document.getElementById("CTA-Modal");
+    modal.classList.add("show");
+  });
+  
+  document.getElementById("CTA-Modal-Close").addEventListener("click", function() {
+    const modal = document.getElementById("CTA-Modal");
+    modal.classList.add("hide");
+    setTimeout(() => {
+      modal.classList.remove("show", "hide");
+    }, 500);
+  });
+  
+  window.onclick = function(event) {
+    const modal = document.getElementById("CTA-Modal");
+    if (event.target == modal) {
+      modal.classList.add("hide");
+      setTimeout(() => {
+        modal.classList.remove("show", "hide");
+      }, 500);
+    }
+  }
 });
 
 document.addEventListener("DOMContentLoaded", () => {

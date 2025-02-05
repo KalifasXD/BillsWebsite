@@ -1573,17 +1573,7 @@ body.dark-mode .bio-contact-links a:hover {
 .CTA-HireMe {
   text-align: center;
   position: relative;
-}
-
-.CTA-HireMe > h2:first-of-type::after {
-  content: '';
-  display: block;
-  margin: 10px auto;
-  border-radius: 2px;
-  width: 15%;
-  height: 3px;
-  background-color: var(--Active-Gold);
-  background: linear-gradient(to right, #b35e2c00 0%, /* Transparent on the left */ var(--Active-Gold) 10%, /* Fully opaque */ var(--Active-Gold) 90%, /* Fully opaque */ #b35e2c00 100%);
+  padding: 5% 0;
 }
 
 .CTA-HireMe-container::before {
@@ -1601,7 +1591,7 @@ body.dark-mode .bio-contact-links a:hover {
 }
 
 body.dark-mode .CTA-HireMe-container {
-  box-shadow: 0px 0px 15px rgb(255, 255, 255, 1);
+  box-shadow: 0px 0px 15px rgb(255, 255, 255, 0.8);
   background: linear-gradient(to left, rgba(255, 255, 255, 0.36), rgba(237, 237, 237, 0.36), rgb(204, 204, 204, 0.36), rgb(237, 237, 237, 0.36));
 }
 
@@ -1614,7 +1604,7 @@ body.dark-mode .CTA-HireMe-container {
   overflow: hidden;
   display: flex;
   flex-wrap: wrap;
-  margin: 2.5% !important;
+  margin: 0 2.5% !important;
   padding: 2.5% 0;
   flex-direction: column;
   align-items: center;
@@ -1685,7 +1675,7 @@ body.dark-mode .CTA-HireMe-button:hover {
   box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   transition: all 0.5s ease;
   text-align: center;
   opacity: 0;
@@ -1722,7 +1712,7 @@ body.dark-mode .CTA-HireMe-button:hover {
 }
 
 /* Responsive Design */
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   .CTA-HireMe-content h2 {
     font-size: 24px;
   }
@@ -1732,11 +1722,179 @@ body.dark-mode .CTA-HireMe-button:hover {
   }
 
   .CTA-HireMe-button {
-    font-size: 16px;
-    padding: 10px 20px;
+    --HireMe-width: 50% !important;
   }
 }
 
+@media (max-width: 1220px) {
+  .CTA-Buttons-Box {
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .CTA-HireMe-button {
+    --HireMe-width: 35%;
+  }
+}
+
+/* CTA MODAL */
+
+.CTA-Modal-btn {
+  padding: 10px 20px;
+  background-color: #f1da36;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.CTA-Modal-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease-in-out;
+}
+
+body.dark-mode .CTA-Modal-content {
+  background-color: var(--Soft-White);
+  border: 2px solid var(--Active-Gold);
+}
+
+body.dark-mode .CTA-Modal-content {
+  background-color: rgba(1, 1, 1, 0.9);
+}
+
+.CTA-Modal-content {
+  font-family: 'Lora' !important;
+  flex: 1;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 12px;
+  margin: 0 2rem;
+  border: 2px solid var(--Soft-Black);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 500rem !important;
+  height: auto;
+  max-width: 30% !important;
+  max-height: 60% !important;
+  transform: translateY(-100%);
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  opacity: 0;
+}
+
+body.dark-mode .CTA-Modal-Icons li {
+  color: var(--Soft-White);
+}
+
+.CTA-Modal-Icons i:hover {
+  color: var(--Active-Gold);
+  transition: color 0.3s;
+}
+
+body.dark-mode .CTA-Modal-Icons i {
+  -webkit-text-stroke: 0.5px var(--Soft-White);
+}
+
+.CTA-Modal-Icons i {
+  transition: color 0.3s;
+  width: 3rem;
+  -webkit-text-stroke: 2px var(--Soft-Black);
+  padding-right: 5% !important;
+  /* filter: drop-shadow(0px 0px 3px var(--Soft-Black)); */
+}
+
+.CTA-Modal-Icons li {
+  list-style: none;
+  padding-left: 0;
+  width: 100% !important;
+}
+
+.CTA-Modal-Icons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  justify-content: flex-start;
+  font-size: 1.1rem;
+  color: var(--Soft-Black);
+  margin: 5% 0;
+  text-align: left !important;
+}
+
+.CTA-Modal-overlay.show {
+  opacity: 1;
+  backdrop-filter: blur(6px);
+  visibility: visible;
+}
+
+.CTA-Modal-overlay.show .CTA-Modal-content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.CTA-Modal-overlay.hide .CTA-Modal-content {
+  transform: translateY(-100%);
+  backdrop-filter: blur(0);
+  opacity: 0;
+}
+
+/* CTA Button */
+.CTA-Modal-button {
+  --HireMeModal-width: 50%;
+  width: var(--HireMeModal-width);
+  min-width: var(--HireMeModal-width);
+  min-height: 4% !important;
+  padding: 17px 40px;
+  border-radius: 50px;
+  cursor: pointer;
+  border: 0;
+  background-color: var(--Soft-Black);
+  color: var(--Soft-White);
+  box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  transition: all 0.5s ease;
+  text-align: center;
+}
+body.dark-mode .CTA-Modal-button {
+  background-color: var(--Soft-White);
+  color: var(--Soft-Black);
+}
+
+body.dark-mode .CTA-Modal-button:hover {
+  background-color: var(--Active-Gold);
+  color: var(--Soft-Black);
+}
+
+.CTA-Modal-button:hover {
+  letter-spacing: 3px;
+  width: calc(var(--HireMeModal-width) + 1%);
+  background-color: var(--Active-Gold);
+  color: var(--Soft-White);
+  box-shadow: var(--Active-Gold) 0px 7px 29px 0px;
+}
+
+
+.CTA-Modal-close {
+  float: right;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.CTA-Modal-body {
+  text-align: center;
+}
 
 h2 {
   font-size: 2.5em;
