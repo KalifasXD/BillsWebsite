@@ -506,7 +506,6 @@ a {
   }
 }
 
-
 @keyframes slideInProjects {
   0% {
     opacity: 0;
@@ -560,7 +559,6 @@ a {
     transform: rotateX(0deg); 
   }
 }
-
 
 .project-card.visible .highlight {
   display: inline-block; /* Ensure the text can rotate properly */
@@ -1637,9 +1635,11 @@ body.dark-mode .CTA-HireMe-container {
   margin-bottom: 2%;
   font-weight: bold;
   color: var(--Soft-White);
+  opacity: 0;
 }
 
 .CTA-HireMe-content p {
+  opacity: 0;
   font-size: 1.1rem;
   margin: 0;
   color: var(--Soft-White);
@@ -1688,6 +1688,7 @@ body.dark-mode .CTA-HireMe-button:hover {
   font-size: 0.9rem;
   transition: all 0.5s ease;
   text-align: center;
+  opacity: 0;
 }
 
 .CTA-HireMe-button:hover {
@@ -1705,6 +1706,19 @@ body.dark-mode .CTA-HireMe-button:hover {
 .CTA-HireMe-button:active {
   transform: scale(1);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ANIMATIONS */
+.CTA-HireMe-container.visible .CTA-HireMe-button {
+  animation: fadeInUpProjects 0.7s ease-in-out forwards 0.7s;
+}
+
+.CTA-HireMe-container.visible .CTA-HireMe-content h2 {
+  animation: fadeInUpProjects 0.7s ease-in-out forwards 0.3s;
+}
+
+.CTA-HireMe-container.visible .CTA-HireMe-content p{
+  animation: fadeInUpProjects 0.7s ease-in-out forwards 0.4s;
 }
 
 /* Responsive Design */

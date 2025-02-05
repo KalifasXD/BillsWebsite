@@ -115,7 +115,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
           if (targetId) {
             handleRedirection(targetId, 0);
-            //target.scrollIntoView({ behavior: "smooth" });
           }
       });
   });
@@ -346,58 +345,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// document.addEventListener("DOMContentLoaded", () => {
-//   const homeSection = document.querySelector('#home');
-//   const aboutSection = document.querySelector('.about.extra-padding');
-//   const aboutHeader = document.querySelector('#home h2');
-//   const offset = 200;
-
-//   // Helper function to check if a section is fully visible
-//   function isFullyVisible(el) {
-//     const rect = el.getBoundingClientRect();
-//     return rect.top >= 0 && rect.bottom <= window.innerHeight;
-//   }
-
-//   // Helper function to check if a section is partially visible
-//   function isPartiallyVisible(el, threshold = 0.05) {
-//     const rect = el.getBoundingClientRect();
-//     const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-//     const topVisible = rect.top >= 0 && rect.top < windowHeight * threshold;
-//     const bottomVisible = rect.bottom > windowHeight * (1 - threshold) && rect.bottom <= windowHeight;
-//     return topVisible || bottomVisible;
-//   }
-
-//   let hasScrolledToAbout = false; // Prevents multiple triggers
-//   let isInFullView = false; // Tracks if about section is in full view
-
-//   // Scroll event listener
-//   window.addEventListener('scroll', () => {
-//     const homeVisible = isFullyVisible(homeSection);
-//     const aboutPartiallyVisible = isPartiallyVisible(aboutSection, 0.9);
-
-//     // Scroll down: Expand the about section fully
-//     if (!hasScrolledToAbout && aboutPartiallyVisible) {
-//       // aboutSection.classList.add('full-view');
-//       // aboutHeader.classList.add('full-view');
-//       hasScrolledToAbout = true;
-//       setTimeout(() => {
-//         const targetPosition = aboutSection.getBoundingClientRect().top + window.scrollY - offset;
-//         //window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-//         handleRedirection(aboutSection, offset);
-//         isInFullView = true;
-//       }, 300);           
-//     }
-
-//     // Scroll up: Reset the about section when home is fully visible
-//     if (homeVisible && isInFullView) {
-//       aboutSection.classList.remove('full-view');
-//       aboutHeader.classList.remove('full-view');
-//       hasScrolledToAbout = false;
-//       isInFullView = false;
-//     }
-//   });
-// });
-
 
 document.addEventListener("DOMContentLoaded", () => {
   const observer = new IntersectionObserver(
@@ -423,6 +370,6 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   // Target specific elements
-  const targets = document.querySelectorAll(".education, .languages, .achievements, .about-container ,.what-i-offer-sub-container, .project-card");
+  const targets = document.querySelectorAll(".education, .languages, .achievements, .about-container ,.what-i-offer-sub-container, .project-card, .CTA-HireMe-container");
   targets.forEach(target => observer.observe(target));
 });
