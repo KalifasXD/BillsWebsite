@@ -894,7 +894,7 @@ body.dark-mode .project-learn-more:hover {
 }
 
 body.dark-mode .about-container {
-  box-shadow: 0px 0px 15px rgb(255, 255, 255, 1);
+  box-shadow: 0px 0px 15px rgb(255, 255, 255, 0.8);
   background: linear-gradient(to left, 
                             rgba(255, 255, 255, 0.36), 
                             rgba(237, 237, 237, 0.36), 
@@ -1802,7 +1802,7 @@ p {
 }
 
 body.dark-mode .skills-container {
-  box-shadow: 0px 0px 15px rgb(255, 255, 255, 1)
+  box-shadow: 0px 0px 15px rgb(255, 255, 255, 0.8);
 }
 
 .skill {
