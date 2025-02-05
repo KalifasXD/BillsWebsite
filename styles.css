@@ -2666,6 +2666,11 @@ body.dark-mode #education-languages .fas {
   outline: none;
 }
 
+.contact input::placeholder,
+.contact textarea::placeholder {
+  opacity: 0.5;
+}
+
 /* Apply font family to the placeholder text */
 .contact input::placeholder,
 .contact textarea::placeholder,
