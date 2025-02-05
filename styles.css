@@ -1639,32 +1639,6 @@ body.dark-mode .CTA-HireMe-container {
   width: 75%;
 }
 
-.CTA-HireMe-list {
-  text-align: left;
-  font-size: 1.1rem;
-  color: var(--Soft-White);
-  margin-top: 2%;
-  list-style: none;
-  padding-left: 0; /* Remove default padding */
-}
-
-.CTA-HireMe-list li {
-  display: flex; /* Use flexbox to align items */
-  align-items: center; /* Vertically center the icon and text */
-  margin-bottom: 15px; /* Add space between each <li> element */
-}
-
-.CTA-HireMe-list i {
-  color: var(--Soft-Black);
-  margin-right: 10px;
-  font-size: 1.5rem !important;
-  width: 30px;
-}
-
-body.dark-mode .CTA-HireMe-list i {
-  color: var(--Soft-White);
-}
-
 .CTA-Buttons-Box {
   display: flex;
   width: 100% !important;
