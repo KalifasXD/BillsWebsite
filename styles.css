@@ -238,10 +238,6 @@ a {
   transition: color 0.3s;
 }
 
-.navbar.active .menu .nav-link:hover {
-  color: #007bff;
-}
-
 .what-i-offer {
   display: flex;
   width: 100%;
