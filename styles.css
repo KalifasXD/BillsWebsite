@@ -1761,7 +1761,6 @@ body.dark-mode .CTA-Modal-content {
 
 .CTA-Modal-content {
   font-family: 'Lora' !important;
-  flex: 1;
   background-color: rgba(255, 255, 255, 0.9);
   box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.15);
   padding: 20px;
@@ -1772,10 +1771,11 @@ body.dark-mode .CTA-Modal-content {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  width: 500rem !important;
+  width: 90%;
   height: auto;
-  max-width: 30% !important;
-  max-height: 60% !important;
+  max-width: 500px;
+  height: auto;
+  max-height: 80vh;
   transform: translateY(-100%);
   transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
   opacity: 0;
@@ -1910,6 +1910,34 @@ body.dark-mode .CTA-Modal-button:hover {
 .CTA-Modal-body {
   text-align: center;
 }
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .CTA-Modal-content {
+    width: calc(60% + 10vw) ;
+    max-width: 90vw;
+    padding: 15px;
+  }
+
+  .CTA-Modal-body h1 {
+    font-size: 1.2rem;
+  }
+
+  .CTA-Modal-body h3 {
+    font-size: 0.8rem;
+  }
+
+  .CTA-Modal-Icons i {
+    font-size: 1.5rem;
+  }
+
+  .CTA-Modal-button {
+    --HireMeModal-width: 80%;
+    font-size: 0.8rem;
+    padding: 10px;
+  }
+}
+
 
 h2 {
   font-size: 2.5em;
