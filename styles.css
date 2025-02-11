@@ -119,6 +119,7 @@ body {
 #toTopButton span {
   position: relative;
   z-index: 1;
+  font-size: inherit;
   text-shadow: 0 0 8px rgba(139, 94, 60, 0.3);  /* Subtle text shadow using Dark-Beige */
 }
 
