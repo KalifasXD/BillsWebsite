@@ -162,6 +162,61 @@ a {
   color: inherit;
 }
 
+.tech-conveyor {
+  width: 100%;
+  overflow: hidden;
+  background: var(--Light-Beige);
+  text-align: center;
+  border-top: 2px solid var(--Soft-White);
+  border-bottom: 2px solid var(--Soft-White);
+  box-shadow: 0 0 5px var(--Soft-White) inset;
+}
+
+body.dark-mode .tech-conveyor {
+  background: #161B22;
+  border-top: 2px solid var(--Active-Gold);
+  border-bottom: 2px solid var(--Active-Gold);
+  box-shadow: 0 0 5px var(--Active-Gold) inset;
+}
+
+.conveyor-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.conveyor-wrapper {
+  display: flex;
+  width: max-content;
+}
+
+.conveyor-track {
+  display: flex;
+  gap: 30px;
+  animation: conveyor 25s linear infinite forwards;
+}
+
+.conveyor-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 18%;
+  font-size: 3rem;
+  color: var(--Soft-White);
+  padding: 20px;
+  flex-shrink: 0;
+}
+
+@keyframes conveyor {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+
 /* Navbar Styles (Improvement for Mobile) */
 .navbar {
   position: fixed;
