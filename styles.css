@@ -65,8 +65,9 @@ body {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: var(--Light-Beige);  /* Changed to Light-Beige for light mode */
-  box-shadow: 0 1px 15px rgba(139, 94, 60, 0.3);  /* Using Dark-Beige with opacity */
+  background: var(--Soft-White);  /* Changed to Light-Beige for light mode */
+  box-shadow: 0 0px 7.5px rgb(53, 53, 53, 0.8),
+              0 0px 7.5px rgba(53, 53, 53, 0.3) inset;  /* Using Dark-Beige with opacity */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -83,7 +84,8 @@ body {
 /* Light mode hover */
 #toTopButton:hover {
   background: var(--Soft-White);
-  box-shadow: 0 1px 20px var(--Dark-Beige);
+  box-shadow: 0 0px 10px var(--Dark-Beige),
+              0 0px 7.5px var(--Dark-Beige) inset;
   transform: translateY(-2px);
   color: var(--Hover-Gold);  /* Using Hover-Gold for hover state */
 }
@@ -97,7 +99,7 @@ body {
   right: -2px;
   bottom: -2px;
   border-radius: 50%;
-  border: 2px solid var(--Active-Gold);  /* Changed to Hover-Gold */
+  border: 2px solid var(--Light-Beige);  /* Changed to Hover-Gold */
   clip-path: inset(0 0 0 0);
   transition: clip-path 0.2s linear;
   opacity: 0.8;
@@ -111,7 +113,7 @@ body {
   right: -2px;
   bottom: -2px;
   border-radius: 50%;
-  border: 2px solid var(--Active-Gold);
+  border: 2px solid var(--Dark-Beige);
   opacity: 0.15;  /* Reduced opacity for subtler background circle */
   z-index: -1;
 }
@@ -119,20 +121,20 @@ body {
 #toTopButton span {
   position: relative;
   z-index: 1;
-  font-size: inherit;
-  text-shadow: 0 0 8px rgba(139, 94, 60, 0.3);  /* Subtle text shadow using Dark-Beige */
+  font-size: 1.6rem;
+  bottom: 2px;
 }
 
 /* Dark mode styles */
 body.dark-mode #toTopButton {
   background: var(--Soft-Black);
-  box-shadow: 0 0px 12.5px var(--Light-Beige);
+  box-shadow: 0 0px 7.5px var(--Light-Beige);
   color: var(--Light-Beige);
 }
 
 body.dark-mode #toTopButton:hover {
   background: var(--Light-Mode-Hover);
-  box-shadow: 0 0px 15px var(--Dark-Mode-Hover-Gold);
+  box-shadow: 0 0px 10px var(--Dark-Mode-Hover-Gold);
   color: var(--Light-Beige);
 }
 
@@ -154,10 +156,6 @@ body.dark-mode #toTopButton span {
   opacity: 1;
   visibility: visible;
 }
-
-
-
-
 
 a {
   text-decoration: none;
