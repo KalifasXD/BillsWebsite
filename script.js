@@ -191,8 +191,6 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("Scroll locked");
     document.body.style.overflowY = "hidden";
     document.body.style.overflowX = "hidden";
-    //sectionObserver.disconnect();
-    //experienceSection.addEventListener("wheel", handleScroll);
     ['scroll', 'wheel'].forEach(event => {
       experienceSection.addEventListener(event, handleScroll, { passive: false} );
     });
@@ -229,8 +227,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("Scroll unlocked");
     document.body.style.overflowY = "visible";
     document.body.style.overflowX = "hidden";
-    //sectionObserver.observe(experienceSection);
-    //experienceSection.removeEventListener("wheel", handleScroll);
+    
     ['scroll', 'wheel'].forEach(event => {
       experienceSection.removeEventListener(event, handleScroll);
     });
@@ -343,8 +340,6 @@ document.addEventListener("DOMContentLoaded", () => {
   sectionObserver.observe(experienceSection);
 
   // Attach scroll listener only when section is in view
-  // experienceSection.addEventListener("wheel", handleScroll);
-  // experienceSection.addEventListener("touchmove", handleScroll);
   ['scroll', 'wheel'].forEach(event => {
     experienceSection.addEventListener(event, handleScroll, {passive: false});
   });
@@ -400,20 +395,20 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", function () {
   const toTopButton = document.getElementById("toTopButton");
 
-  window.addEventListener("scroll", function () {
-      let scrollTop = window.scrollY;
-      let docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      let scrollPercent = (scrollTop / docHeight) * 100;
+    window.addEventListener("scroll", function () {
+        let scrollTop = window.scrollY;
+        let docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        let scrollPercent = (scrollTop / docHeight) * 100;
 
-      if (scrollTop > 100) {
-          toTopButton.classList.add("show");
-          toTopButton.style.setProperty("--progress", `${100 - scrollPercent}%`);
-      } else {
-          toTopButton.classList.remove("show");
-      }
-  });
+        if (scrollTop > 100) {
+            toTopButton.classList.add("show");
+            toTopButton.style.setProperty("--progress", `${100 - scrollPercent}%`);
+        } else {
+            toTopButton.classList.remove("show");
+        }
+    });
 
   toTopButton.addEventListener("click", function () {
-    handleRedirection(document.getElementById("home"));
+    handleRedirection(document.getElementById("home"), 0);
   });
 });

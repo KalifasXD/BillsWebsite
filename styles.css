@@ -62,35 +62,91 @@ body {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  background: white;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: var(--Light-Beige);  /* Changed to Light-Beige for light mode */
+  box-shadow: 0 1px 15px rgba(139, 94, 60, 0.3);  /* Using Dark-Beige with opacity */
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
-  font-weight: bold;
+  font-size: 20px;
   cursor: pointer;
-  border: 3px solid transparent;
+  border: 2px solid transparent;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s, visibility 0.3s, border-color 0.2s linear;
+  transition: all 0.3s ease;
   z-index: 24;
+  color: var(--Dark-Beige);  /* Changed to Dark-Beige for better contrast */
 }
 
+/* Light mode hover */
+#toTopButton:hover {
+  background: var(--Soft-White);
+  box-shadow: 0 1px 20px var(--Dark-Beige);
+  transform: translateY(-2px);
+  color: var(--Hover-Gold);  /* Using Hover-Gold for hover state */
+}
+
+/* Light mode progress circle */
 #toTopButton::before {
   content: "";
   position: absolute;
-  top: -3px;
-  left: -3px;
-  width: 66px;
-  height: 66px;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
   border-radius: 50%;
-  border: 3px solid blue;
-  clip-path: inset(0 100% 0 0);
+  border: 2px solid var(--Hover-Gold);  /* Changed to Hover-Gold */
+  clip-path: inset(0 0 0 0);
   transition: clip-path 0.2s linear;
+  opacity: 0.8;
+}
+
+#toTopButton::after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 50%;
+  border: 2px solid var(--Dark-Beige);
+  opacity: 0.15;  /* Reduced opacity for subtler background circle */
+  z-index: -1;
+}
+
+#toTopButton span {
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 0 8px rgba(139, 94, 60, 0.3);  /* Subtle text shadow using Dark-Beige */
+}
+
+/* Dark mode styles */
+body.dark-mode #toTopButton {
+  background: var(--Soft-Black);
+  box-shadow: 0 0px 12.5px var(--Light-Beige);
+  color: var(--Light-Beige);
+}
+
+body.dark-mode #toTopButton:hover {
+  background: var(--Light-Mode-Hover);
+  box-shadow: 0 0px 15px var(--Dark-Mode-Hover-Gold);
+  color: var(--Light-Beige);
+}
+
+body.dark-mode #toTopButton::before {
+  border-color: var(--Active-Gold);
+  opacity: 0.9;
+}
+
+body.dark-mode #toTopButton::after {
+  border-color: var(--Light-Beige);
+  opacity: 0.2;
+}
+
+body.dark-mode #toTopButton span {
+  text-shadow: 0 0 8px var(--Light-Beige);
 }
 
 #toTopButton.show {
@@ -98,9 +154,7 @@ body {
   visibility: visible;
 }
 
-#toTopButton.show::before {
-  clip-path: inset(0 var(--progress, 100%) 0 0);
-}
+
 
 
 
