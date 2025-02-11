@@ -54,7 +54,7 @@ body {
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background-color: #f0f0f0; /* Lighten the handle on hover in dark mode */
+    background-color: #2B2B2B; /* Lighten the handle on hover in dark mode */
   }
 }
 
@@ -1813,7 +1813,7 @@ body.dark-mode .CTA-Modal-Icons i {
 }
 
 .CTA-Modal-body h3 {
-  font-size: 0.875rem;
+  font-size: 0.975rem;
 }
 
 .CTA-Modal-Icons li span {
@@ -1924,7 +1924,7 @@ body.dark-mode .CTA-Modal-button:hover {
   }
 
   .CTA-Modal-body h3 {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
   }
 
   .CTA-Modal-Icons i {
