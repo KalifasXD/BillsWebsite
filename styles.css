@@ -97,7 +97,7 @@ body {
   right: -2px;
   bottom: -2px;
   border-radius: 50%;
-  border: 2px solid var(--Hover-Gold);  /* Changed to Hover-Gold */
+  border: 2px solid var(--Active-Gold);  /* Changed to Hover-Gold */
   clip-path: inset(0 0 0 0);
   transition: clip-path 0.2s linear;
   opacity: 0.8;
@@ -111,7 +111,7 @@ body {
   right: -2px;
   bottom: -2px;
   border-radius: 50%;
-  border: 2px solid var(--Dark-Beige);
+  border: 2px solid var(--Active-Gold);
   opacity: 0.15;  /* Reduced opacity for subtler background circle */
   z-index: -1;
 }
