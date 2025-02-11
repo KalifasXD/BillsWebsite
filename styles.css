@@ -74,7 +74,7 @@ a {
   padding: 20px 10px 20px 50px;  /* barely some padding right */
   z-index: 1000;
   display: flex;
-  justify-content: flex-end;  /* Align items to the right */
+  justify-content: center;  /* Align items to the right */
   align-items: center;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease;
@@ -90,6 +90,8 @@ a {
   display: flex;
   gap: 40px;
   margin: 0;
+  flex: 1;
+  justify-content: center; /* Centers items */
 }
 
 .navbar .nav-link {
@@ -1674,7 +1676,6 @@ body.dark-mode .CTA-HireMe-button:hover {
   transition: all 0.5s ease;
   text-align: center;
   opacity: 1;
-  margin-left: 10px;
 }
 
 .CTA-HireMe-button:hover {
