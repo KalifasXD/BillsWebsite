@@ -3695,6 +3695,6 @@ body.dark-mode .checkbox-label .ball{
     justify-content: center;
     align-items: center;
     gap: 5px;
-    font-size: 0.6rem !important;
+    font-size: 0.75rem !important;
   }
 }
