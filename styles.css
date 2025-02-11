@@ -253,6 +253,9 @@ a {
   color: var(--Soft-Black);
   cursor: pointer;
   margin: 0 auto;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex: 1;
 }
 
 .navbar .menu {
@@ -3610,8 +3613,13 @@ body.dark-mode .checkbox-label .ball{
     display: none; /* Hide desktop navbar links */
   }
 
+  .navbar .logo {
+    margin: 0 !important;
+    flex: 1;
+  }
+
   .navbar .name {
-    font-size: 1.2em;
+    font-size: 1em;
   }
 
   /* Hero section */
@@ -3678,5 +3686,15 @@ body.dark-mode .checkbox-label .ball{
   .contact button.submit-btn {
     font-size: 0.9em;
     padding: 8px 16px;
+  }
+
+  .navbar .CTA-HireMe-button {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.6rem !important;
   }
 }
