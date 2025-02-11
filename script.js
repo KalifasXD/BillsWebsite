@@ -412,3 +412,20 @@ document.addEventListener("DOMContentLoaded", function () {
     handleRedirection(document.getElementById("home"), 0);
   });
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+  let track = document.querySelector(".conveyor-track");
+  let slides = Array.from(track.children);
+  
+  // Duplicate slides for seamless looping
+  slides.forEach(slide => {
+    let clone = slide.cloneNode(true);
+    track.appendChild(clone);
+  });
+  
+  // Pause scrolling on hover
+  track.addEventListener("mouseenter", () => track.style.animationPlayState = "paused");
+  track.addEventListener("touchstart", () => track.style.animationPlayState = "paused");
+  track.addEventListener("mouseleave", () => track.style.animationPlayState = "running");
+  track.addEventListener("touchend", () => track.style.animationPlayState = "running");
+});
