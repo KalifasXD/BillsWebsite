@@ -396,3 +396,24 @@ document.addEventListener("DOMContentLoaded", () => {
   const targets = document.querySelectorAll(".education, .languages, .achievements, .about-container ,.what-i-offer-sub-container, .project-card, .CTA-HireMe-container");
   targets.forEach(target => observer.observe(target));
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const toTopButton = document.getElementById("toTopButton");
+
+  window.addEventListener("scroll", function () {
+      let scrollTop = window.scrollY;
+      let docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      let scrollPercent = (scrollTop / docHeight) * 100;
+
+      if (scrollTop > 100) {
+          toTopButton.classList.add("show");
+          toTopButton.style.setProperty("--progress", `${100 - scrollPercent}%`);
+      } else {
+          toTopButton.classList.remove("show");
+      }
+  });
+
+  toTopButton.addEventListener("click", function () {
+    handleRedirection(document.getElementById("home"));
+  });
+});

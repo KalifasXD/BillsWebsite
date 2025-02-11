@@ -58,6 +58,52 @@ body {
   }
 }
 
+#toTopButton {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  border: 3px solid transparent;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s, border-color 0.2s linear;
+  z-index: 24;
+}
+
+#toTopButton::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  border: 3px solid blue;
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.2s linear;
+}
+
+#toTopButton.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+#toTopButton.show::before {
+  clip-path: inset(0 var(--progress, 100%) 0 0);
+}
+
+
+
 a {
   text-decoration: none;
   color: inherit;
@@ -1654,7 +1700,7 @@ body.dark-mode .CTA-HireMe-button {
 body.dark-mode .CTA-HireMe-button:hover {
   background-color: var(--Active-Gold);
   color: var(--Soft-White);
-  box-shadow: var(--Active-Gold) 0px 7px 29px 0px;
+  box-shadow: var(--Active-Gold) 0px 0px 15px 0px;
 }
 
 .CTA-HireMe-button .fas {
@@ -1667,7 +1713,7 @@ body.dark-mode .CTA-HireMe-button:hover {
   width: var(--HireMe-width);
   min-width: var(--HireMe-width);
   min-height: 20% !important;
-  padding: 8.5px 20px;
+  padding: 10px 15px;
   border-radius: 50px;
   cursor: pointer;
   border: 0;
@@ -1675,10 +1721,11 @@ body.dark-mode .CTA-HireMe-button:hover {
   color: var(--Soft-White);
   box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
   text-transform: uppercase;
-  font-size: 0.8rem;
+  font-size: 1rem;
   transition: all 0.5s ease;
   text-align: center;
   opacity: 1;
+  font-family: 'lora' !important;
 }
 
 .CTA-HireMe-button:hover {
@@ -1686,7 +1733,7 @@ body.dark-mode .CTA-HireMe-button:hover {
   width: calc(var(--HireMe-width) + 1%);
   background-color: var(--Active-Gold);
   color: var(--Soft-White);
-  box-shadow: var(--Active-Gold) 0px 7px 29px 0px;
+  box-shadow: var(--Active-Gold) 0px 0px 15px 0px;
 }
 
 .CTA-HireMe-button i {
