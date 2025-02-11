@@ -1752,11 +1752,11 @@ body.dark-mode .CTA-HireMe-button:hover {
 
 body.dark-mode .CTA-Modal-content {
   background-color: var(--Soft-White);
-  border: 2px solid var(--Active-Gold);
+  border: 1px solid var(--Active-Gold);
 }
 
 body.dark-mode .CTA-Modal-content {
-  background-color: rgba(1, 1, 1, 0.9);
+  background-color: #2b2b2b;
 }
 
 .CTA-Modal-content {
@@ -1766,7 +1766,7 @@ body.dark-mode .CTA-Modal-content {
   padding: 20px;
   border-radius: 1rem;
   margin: 0 2rem;
-  border: 2px solid #e0e0e0 ;
+  border: 1px solid #e0e0e0 ;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
