@@ -416,9 +416,8 @@ document.addEventListener("DOMContentLoaded", function () {
 // CONVEYOR BELT LOGIC
 
 const SETTINGS = {
-  baseSpeed: 5,
-  visibleItems: 6,
-  spacing: 40,
+  baseSpeed: 1,
+  spacing: 250,
   touchSensitivity: 1.5,
   snapDuration: 300
 };
@@ -485,16 +484,33 @@ class TechConveyor {
 
   updateItemWidth() {
     const availableWidth = this.container.offsetWidth;
-  
-    // Each item should take up an equal share of the available space
-    this.itemWidth = (availableWidth / SETTINGS.visibleItems) - (SETTINGS.spacing / SETTINGS.visibleItems);
+
+    // Dynamically adjust SETTINGS.spacing as a percentage of available width
+    const spacingRatio = availableWidth / window.innerWidth; // Proportional to viewport width
+    SETTINGS.spacing = availableWidth * spacingRatio * 0.25; // 10% of available width
+
+    // Ensure a minimum spacing based on viewport constraints
+    SETTINGS.spacing = Math.max(SETTINGS.spacing, SETTINGS.spacing * 0.25);
+
+    // Calculate icon size dynamically based on available width
+    const estimatedIconSize = availableWidth * 0.08; // Proportional to available width
+
+    // Determine how many icons fit within the available space
+    const numItems = Math.floor(availableWidth / (SETTINGS.spacing + estimatedIconSize));
+
+    // Recalculate exact item width to fit evenly
+    if (numItems > 0) {
+        const totalSpacing = (numItems - 1) * SETTINGS.spacing;
+        this.itemWidth = (availableWidth - totalSpacing) / numItems;
+    } else {
+        this.itemWidth = estimatedIconSize; // Fallback to estimated size if necessary
+    }
 
     this.updateItemStyles();
-
-    // Reset position to prevent layout shifts
     this.position = 0;
     this.updateTrackPosition(true);
-  }  
+}
+
 
   getSetWidth() {
     return (this.itemWidth + SETTINGS.spacing) * TECH_STACK.length;
@@ -503,11 +519,11 @@ class TechConveyor {
   updateItemStyles() {
     const items = this.track.children;
     for (let item of items) {
-      item.style.width = `${this.itemWidth}px`;
-      item.style.flexShrink = '0';
+        item.style.width = `${this.itemWidth}px`;
+        item.style.flexShrink = '0';
     }
     this.track.style.gap = `${SETTINGS.spacing}px`;
-  }
+}
 
   renderItems() {
     this.track.innerHTML = this.items.map(tech => `
@@ -542,23 +558,22 @@ class TechConveyor {
         this.handleDragEnd();
       }
     });
-
+    
     // Touch Events
-    document.addEventListener('touchstart', e => {
-      if (!e.target.closest('.conveyor-container')) return; // Ensure interaction happens inside container
+    document.querySelector(".tech-conveyor").addEventListener('touchstart', e => {
       e.preventDefault(); // Prevent any default behavior
       this.isPaused = true;
       this.handleDragStart(e.touches[0].clientX); // Handle drag start on touch
     }, { passive: false });
   
-    document.addEventListener('touchmove', e => {
+    document.querySelector(".tech-conveyor").addEventListener('touchmove', e => {
       if (this.isDragging) {
         e.preventDefault();  // Prevent default scroll behavior
         this.handleDragMove(e.touches[0].clientX);  // Handle drag move on touch
       }
     }, { passive: false });
   
-    document.addEventListener('touchend', () => {
+    document.querySelector(".tech-conveyor").addEventListener('touchend', () => {
       this.isPaused = false;
       this.handleDragEnd();  // Handle drag end on touch
     }, { passive: false });
@@ -655,7 +670,5 @@ class TechConveyor {
 }
 
 window.addEventListener('load', () => {
-  const conveyor = new TechConveyor();
-  window.dispatchEvent(new Event('resize')); // force width update on conveyor belt
-
+  new TechConveyor();
 });
