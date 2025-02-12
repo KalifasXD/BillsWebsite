@@ -651,22 +651,26 @@ class TechConveyor {
 
   startAnimation() {
     let lastTime = performance.now();
-    
+
     const animate = (currentTime) => {
-      const deltaTime = currentTime - lastTime;
-      lastTime = currentTime;
+        const deltaTime = currentTime - lastTime;
+        lastTime = currentTime;
 
-      if (!this.isPaused && !this.isDragging) {
-        this.position -= deltaTime * SETTINGS.baseSpeed * 0.1;
-        this.checkAndUpdatePosition();
-        this.updateTrackPosition();
-      }
+        if (!this.isPaused && !this.isDragging) {
+            // Normalize speed based on container width to keep it consistent
+            const normalizedSpeed = SETTINGS.baseSpeed * (this.container.offsetWidth / window.innerWidth);
+            this.position -= deltaTime * normalizedSpeed * 0.1;
 
-      requestAnimationFrame(animate);
+            this.checkAndUpdatePosition();
+            this.updateTrackPosition();
+        }
+
+        requestAnimationFrame(animate);
     };
 
     requestAnimationFrame(animate);
-  }
+}
+
 }
 
 window.addEventListener('load', () => {
