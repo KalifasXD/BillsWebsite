@@ -657,9 +657,13 @@ class TechConveyor {
         lastTime = currentTime;
 
         if (!this.isPaused && !this.isDragging) {
-            // Normalize speed based on container width to keep it consistent
-            const normalizedSpeed = SETTINGS.baseSpeed * (this.container.offsetWidth / window.innerWidth);
-            this.position -= deltaTime * normalizedSpeed * 0.1;
+            // Normalize speed as a percentage of the container width
+            const speedFactor = this.container.offsetWidth / window.innerWidth; 
+            
+            // Adjust speed proportionally so it stays the same across all screen sizes
+            const normalizedSpeed = SETTINGS.baseSpeed * speedFactor * 0.05;  
+
+            this.position -= deltaTime * normalizedSpeed;
 
             this.checkAndUpdatePosition();
             this.updateTrackPosition();
