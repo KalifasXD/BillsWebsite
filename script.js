@@ -416,10 +416,11 @@ document.addEventListener("DOMContentLoaded", function () {
 // CONVEYOR BELT LOGIC
 
 const SETTINGS = {
-  baseSpeed: 1,
+  baseSpeed: 5,
   visibleItems: 6,
-  spacing: 250,
-  touchSensitivity: 1.5
+  spacing: 40,
+  touchSensitivity: 1.5,
+  snapDuration: 300
 };
 
 const TECH_STACK = [
@@ -437,143 +438,224 @@ const TECH_STACK = [
 
 class TechConveyor {
   constructor() {
-      this.container = document.querySelector('.conveyor-container');
-      this.track = document.querySelector('.conveyor-track');
-      this.position = 0;
-      this.startX = 0;
-      this.isDragging = false;
-      this.isPaused = false;
-      this.itemWidth = 0;
-      this.items = [...TECH_STACK, ...TECH_STACK, ...TECH_STACK]; // Triple for seamless loop
+    this.container = document.querySelector('.conveyor-container');
+    this.track = document.querySelector('.conveyor-track');
+    this.position = 0;
+    this.startX = 0;
+    this.isDragging = false;
+    this.isPaused = false;
+    this.itemWidth = 0;
+    // Create multiple sets for seamless looping
+    this.items = [...TECH_STACK, ...TECH_STACK];
+    this.lastDragTime = 0;
+    this.dragVelocity = 0;
+    this.containerWidth = 0;
 
-      this.init();
+    this.init();
   }
 
   init() {
-      this.updateItemWidth();
-      this.renderItems();
-      this.setupEventListeners();
-      this.startAnimation();
+    this.calculateContainerWidth();
+    this.updateItemWidth();
+    this.renderItems();
+    this.setupEventListeners();
+    this.startAnimation();
 
-      window.addEventListener('resize', () => this.updateItemWidth());
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        this.calculateContainerWidth();
+        this.updateItemWidth();
+      }, 250);
+    });
+  }
+
+  calculateContainerWidth() {
+    // Set container width based on visibleItems
+    const containerStyles = window.getComputedStyle(this.container);
+    const paddingLeft = parseFloat(containerStyles.paddingLeft);
+    const paddingRight = parseFloat(containerStyles.paddingRight);
+    
+    // Calculate the desired container width based on visibleItems
+    this.containerWidth = this.container.parentElement.offsetWidth;
+    const maxWidth = (this.containerWidth - paddingLeft - paddingRight);
+    this.container.style.maxWidth = `${maxWidth}px`;
   }
 
   updateItemWidth() {
-    const containerWidth = this.container.offsetWidth;
-    const totalGapWidth = SETTINGS.spacing * (SETTINGS.visibleItems - 1);
-    this.itemWidth = (containerWidth - totalGapWidth) / SETTINGS.visibleItems;
+    const availableWidth = this.container.offsetWidth;
+  
+    // Each item should take up an equal share of the available space
+    this.itemWidth = (availableWidth / SETTINGS.visibleItems) - (SETTINGS.spacing / SETTINGS.visibleItems);
+
     this.updateItemStyles();
+
+    // Reset position to prevent layout shifts
+    this.position = 0;
+    this.updateTrackPosition(true);
+  }  
+
+  getSetWidth() {
+    return (this.itemWidth + SETTINGS.spacing) * TECH_STACK.length;
   }
 
   updateItemStyles() {
     const items = this.track.children;
-    const containerWidth = this.container.offsetWidth;
-    
-    // Set fixed width for each item
     for (let item of items) {
-        item.style.width = `${this.itemWidth}px`;
-        item.style.flexShrink = '0'; // Prevent items from shrinking
+      item.style.width = `${this.itemWidth}px`;
+      item.style.flexShrink = '0';
     }
-
-    // Set gap between items
     this.track.style.gap = `${SETTINGS.spacing}px`;
-    
-    // Ensure container clips content
-    this.container.style.width = `${containerWidth}px`;
-    this.container.style.overflow = 'hidden';
   }
 
   renderItems() {
-      this.track.innerHTML = this.items.map(tech => `
-          <div class="tech-item">
-              <i class="${tech.icon}" style="color: ${tech.color}"></i>
-              <span>${tech.name}</span>
-          </div>
-      `).join('');
+    this.track.innerHTML = this.items.map(tech => `
+      <div class="tech-item">
+        <i class="${tech.icon}" style="color: ${tech.color || ''}"></i>
+        <span>${tech.name}</span>
+      </div>
+    `).join('');
   }
 
   setupEventListeners() {
-      // Mouse events
-      this.container.addEventListener('mouseenter', () => this.isPaused = true);
-      this.container.addEventListener('mouseleave', () => {
-          this.isPaused = false;
-          this.isDragging = false;
-      });
-      this.container.addEventListener('mousedown', e => this.handleDragStart(e));
-      document.addEventListener('mousemove', e => this.handleDragMove(e));
-      document.addEventListener('mouseup', () => this.handleDragEnd());
-
-      // Touch events
-      this.container.addEventListener('touchstart', e => this.handleDragStart(e));
-      this.container.addEventListener('touchmove', e => this.handleDragMove(e));
-      this.container.addEventListener('touchend', () => this.handleDragEnd());
-  }
-
-  handleDragStart(e) {
-      this.isDragging = true;
-      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-      this.startX = clientX - this.position;
-      this.track.style.transition = 'none';
-  }
-
-  handleDragMove(e) {
-      if (!this.isDragging) return;
+    this.container.addEventListener('mouseenter', () => this.isPaused = true);
+    this.container.addEventListener('mouseleave', () => {
+      this.isPaused = false;
+      this.isDragging = false;
+    });
+    
+    this.container.addEventListener('mousedown', e => {
       e.preventDefault();
-      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-      let newPosition = clientX - this.startX;
-      
-      // Calculate boundaries
-      const trackWidth = this.track.scrollWidth / 3;
-      
-      // Implement wraparound
-      if (newPosition > 0) {
-          newPosition = newPosition - trackWidth;
-          this.startX += trackWidth;
-      } else if (newPosition < -trackWidth) {
-          newPosition = newPosition + trackWidth;
-          this.startX -= trackWidth;
+      this.handleDragStart(e.clientX);
+    });
+    
+    document.addEventListener('mousemove', e => {
+      if (this.isDragging) {
+        e.preventDefault();
+        this.handleDragMove(e.clientX);
       }
-      
-      this.position = newPosition;
-      this.updateTrackPosition();
+    });
+    
+    document.addEventListener('mouseup', () => {
+      if (this.isDragging) {
+        this.handleDragEnd();
+      }
+    });
+
+    // Touch Events
+    document.addEventListener('touchstart', e => {
+      if (!e.target.closest('.conveyor-container')) return; // Ensure interaction happens inside container
+      e.preventDefault(); // Prevent any default behavior
+      this.isPaused = true;
+      this.handleDragStart(e.touches[0].clientX); // Handle drag start on touch
+    }, { passive: false });
+  
+    document.addEventListener('touchmove', e => {
+      if (this.isDragging) {
+        e.preventDefault();  // Prevent default scroll behavior
+        this.handleDragMove(e.touches[0].clientX);  // Handle drag move on touch
+      }
+    }, { passive: false });
+  
+    document.addEventListener('touchend', () => {
+      this.isPaused = false;
+      this.handleDragEnd();  // Handle drag end on touch
+    }, { passive: false });
+  }
+
+  handleDragStart(clientX) {
+    this.isDragging = true;
+    this.startX = clientX - this.position;
+    this.lastDragTime = performance.now();
+    this.lastDragX = clientX;
+    this.dragVelocity = 0;
+    this.track.style.transition = 'none';
+  }
+
+  handleDragMove(clientX) {
+    const currentTime = performance.now();
+    const timeDelta = currentTime - this.lastDragTime;
+    const dragDelta = clientX - this.lastDragX;
+    
+    if (timeDelta > 0) {
+      this.dragVelocity = dragDelta / timeDelta;
+    }
+    
+    this.lastDragTime = currentTime;
+    this.lastDragX = clientX;
+
+    this.position = clientX - this.startX;
+    this.checkAndUpdatePosition();
+    this.updateTrackPosition(true);
   }
 
   handleDragEnd() {
-      this.isDragging = false;
-      this.track.style.transition = 'transform 0.1s';
+    this.isDragging = false;
+    this.track.style.transition = `transform ${SETTINGS.snapDuration}ms ease-out`;
+    
+    if (Math.abs(this.dragVelocity) > 0.1) {
+      const momentum = this.dragVelocity * 100;
+      this.position += momentum;
+      this.checkAndUpdatePosition();
+    }
   }
 
-  updateTrackPosition() {
-      this.track.style.transform = `translateX(${this.position}px)`;
+  checkAndUpdatePosition() {
+    const setWidth = this.getSetWidth();
+  
+    // Reset position when the first set reaches the end
+    if (this.position <= -setWidth) {
+      this.position += setWidth;  // Move to the start of the second set
+      this.track.style.transition = 'none'; // No transition during reset
+      this.updateTrackPosition(true);  // Update position instantly
+    }
+  
+    // When the position is reset, just scroll the second set.
+    if (this.position >= 0) {
+      this.position -= setWidth;  // Move to the start of the first set
+      this.track.style.transition = 'none'; // No transition during reset
+      this.updateTrackPosition(true);  // Update position instantly
+    }
   }
+  
+  
+
+  updateTrackPosition(immediate = false) {
+    if (immediate) {
+      this.track.style.transition = 'none'; // No transition on reset
+    }
+    this.track.style.transform = `translateX(${this.position}px)`; // Update position
+  
+    if (immediate) {
+      this.track.offsetHeight; // Force browser to apply styles
+      this.track.style.transition = `transform ${SETTINGS.snapDuration}ms ease-out`; // Add transition back
+    }
+  }  
+  
 
   startAnimation() {
-      let lastTime = performance.now();
-      
-      const animate = (currentTime) => {
-          const deltaTime = currentTime - lastTime;
-          lastTime = currentTime;
+    let lastTime = performance.now();
+    
+    const animate = (currentTime) => {
+      const deltaTime = currentTime - lastTime;
+      lastTime = currentTime;
 
-          if (!this.isPaused && !this.isDragging) {
-              const trackWidth = this.track.scrollWidth / 3;
-              this.position -= deltaTime * SETTINGS.baseSpeed * 0.1;
-
-              // Seamless loop
-              if (this.position < -trackWidth) {
-                  this.position += trackWidth;
-              }
-
-              this.updateTrackPosition();
-          }
-
-          requestAnimationFrame(animate);
-      };
+      if (!this.isPaused && !this.isDragging) {
+        this.position -= deltaTime * SETTINGS.baseSpeed * 0.1;
+        this.checkAndUpdatePosition();
+        this.updateTrackPosition();
+      }
 
       requestAnimationFrame(animate);
+    };
+
+    requestAnimationFrame(animate);
   }
 }
 
-// Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-  new TechConveyor();
+window.addEventListener('load', () => {
+  const conveyor = new TechConveyor();
+  window.dispatchEvent(new Event('resize')); // force width update on conveyor belt
+
 });
