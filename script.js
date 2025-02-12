@@ -413,19 +413,167 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-document.addEventListener("DOMContentLoaded", function() {
-  let track = document.querySelector(".conveyor-track");
-  let slides = Array.from(track.children);
-  
-  // Duplicate slides for seamless looping
-  slides.forEach(slide => {
-    let clone = slide.cloneNode(true);
-    track.appendChild(clone);
-  });
-  
-  // Pause scrolling on hover
-  track.addEventListener("mouseenter", () => track.style.animationPlayState = "paused");
-  track.addEventListener("touchstart", () => track.style.animationPlayState = "paused");
-  track.addEventListener("mouseleave", () => track.style.animationPlayState = "running");
-  track.addEventListener("touchend", () => track.style.animationPlayState = "running");
+// CONVEYOR BELT LOGIC
+
+const SETTINGS = {
+  baseSpeed: 1,
+  visibleItems: 6,
+  spacing: 250,
+  touchSensitivity: 1.5
+};
+
+const TECH_STACK = [
+  { name: 'Python', icon: 'devicon-python-plain colored'},
+  { name: 'Django', icon: 'devicon-django-plain', color: '#092E20' },
+  { name: 'Java', icon: 'fab fa-java', color: '#FF0000' },
+  { name: 'C++', icon: 'devicon-cplusplus-plain colored'},
+  { name: 'JavaScript', icon: 'fab fa-js', color: '#F7DF1E' },
+  { name: 'PHP', icon: 'fab fa-php', color: '#777BB4' },
+  { name: 'MongoDB', icon: 'devicon-mongodb-plain', color: '#47A248' },
+  { name: 'WordPress', icon: 'fab fa-wordpress', color: '#21759B' },
+  { name: 'Unreal Engine', icon: 'devicon-unrealengine-original'},
+  { name: 'VS Code', icon: 'devicon-vscode-plain colored'}
+];
+
+class TechConveyor {
+  constructor() {
+      this.container = document.querySelector('.conveyor-container');
+      this.track = document.querySelector('.conveyor-track');
+      this.position = 0;
+      this.startX = 0;
+      this.isDragging = false;
+      this.isPaused = false;
+      this.itemWidth = 0;
+      this.items = [...TECH_STACK, ...TECH_STACK, ...TECH_STACK]; // Triple for seamless loop
+
+      this.init();
+  }
+
+  init() {
+      this.updateItemWidth();
+      this.renderItems();
+      this.setupEventListeners();
+      this.startAnimation();
+
+      window.addEventListener('resize', () => this.updateItemWidth());
+  }
+
+  updateItemWidth() {
+    const containerWidth = this.container.offsetWidth;
+    const totalGapWidth = SETTINGS.spacing * (SETTINGS.visibleItems - 1);
+    this.itemWidth = (containerWidth - totalGapWidth) / SETTINGS.visibleItems;
+    this.updateItemStyles();
+  }
+
+  updateItemStyles() {
+    const items = this.track.children;
+    const containerWidth = this.container.offsetWidth;
+    
+    // Set fixed width for each item
+    for (let item of items) {
+        item.style.width = `${this.itemWidth}px`;
+        item.style.flexShrink = '0'; // Prevent items from shrinking
+    }
+
+    // Set gap between items
+    this.track.style.gap = `${SETTINGS.spacing}px`;
+    
+    // Ensure container clips content
+    this.container.style.width = `${containerWidth}px`;
+    this.container.style.overflow = 'hidden';
+  }
+
+  renderItems() {
+      this.track.innerHTML = this.items.map(tech => `
+          <div class="tech-item">
+              <i class="${tech.icon}" style="color: ${tech.color}"></i>
+              <span>${tech.name}</span>
+          </div>
+      `).join('');
+  }
+
+  setupEventListeners() {
+      // Mouse events
+      this.container.addEventListener('mouseenter', () => this.isPaused = true);
+      this.container.addEventListener('mouseleave', () => {
+          this.isPaused = false;
+          this.isDragging = false;
+      });
+      this.container.addEventListener('mousedown', e => this.handleDragStart(e));
+      document.addEventListener('mousemove', e => this.handleDragMove(e));
+      document.addEventListener('mouseup', () => this.handleDragEnd());
+
+      // Touch events
+      this.container.addEventListener('touchstart', e => this.handleDragStart(e));
+      this.container.addEventListener('touchmove', e => this.handleDragMove(e));
+      this.container.addEventListener('touchend', () => this.handleDragEnd());
+  }
+
+  handleDragStart(e) {
+      this.isDragging = true;
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      this.startX = clientX - this.position;
+      this.track.style.transition = 'none';
+  }
+
+  handleDragMove(e) {
+      if (!this.isDragging) return;
+      e.preventDefault();
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      let newPosition = clientX - this.startX;
+      
+      // Calculate boundaries
+      const trackWidth = this.track.scrollWidth / 3;
+      
+      // Implement wraparound
+      if (newPosition > 0) {
+          newPosition = newPosition - trackWidth;
+          this.startX += trackWidth;
+      } else if (newPosition < -trackWidth) {
+          newPosition = newPosition + trackWidth;
+          this.startX -= trackWidth;
+      }
+      
+      this.position = newPosition;
+      this.updateTrackPosition();
+  }
+
+  handleDragEnd() {
+      this.isDragging = false;
+      this.track.style.transition = 'transform 0.1s';
+  }
+
+  updateTrackPosition() {
+      this.track.style.transform = `translateX(${this.position}px)`;
+  }
+
+  startAnimation() {
+      let lastTime = performance.now();
+      
+      const animate = (currentTime) => {
+          const deltaTime = currentTime - lastTime;
+          lastTime = currentTime;
+
+          if (!this.isPaused && !this.isDragging) {
+              const trackWidth = this.track.scrollWidth / 3;
+              this.position -= deltaTime * SETTINGS.baseSpeed * 0.1;
+
+              // Seamless loop
+              if (this.position < -trackWidth) {
+                  this.position += trackWidth;
+              }
+
+              this.updateTrackPosition();
+          }
+
+          requestAnimationFrame(animate);
+      };
+
+      requestAnimationFrame(animate);
+  }
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  new TechConveyor();
 });
