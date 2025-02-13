@@ -252,24 +252,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    
-
-    function updateScrolling() {
-      containers.forEach(container => {
-        if (container.scrollHeight > container.clientHeight) {
-          container.style.overflow = "auto"; // Enable scrolling
-        } else {
-          container.style.overflow = "hidden"; // Disable scrolling
-        }
-      });
-    }
-
-    // Run initially
-    updateScrolling();
-
-    // Update on window resize (in case of dynamic content changes)
-    window.addEventListener("resize", updateScrolling);
-
     navButtons.forEach((button, idx) => {
       button.classList.remove("active");
       if (idx === newIndex) {

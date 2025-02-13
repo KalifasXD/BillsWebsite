@@ -167,7 +167,7 @@ a {
   position: relative;
   overflow: hidden;
   background: linear-gradient(to right, #f5dfd0 0%, #F4E3D7 95%, #f5dfd0 100%);
-  z-index: 50;/* Z-Index to make sure the element is always on top */
+  z-index: 20;/* Z-Index to make sure the element is always on top */
   animation: glowPulseLight 2s infinite alternate ease-in-out;
 }
 
@@ -1449,8 +1449,6 @@ body.dark-mode .bio-contact-links a:hover {
 
 .scrollable-container {
   padding: 10px 0;
-  max-height: 50vh !important; /* Adjust as needed */
-  overflow-y: auto; /* Enables scrolling ONLY if content overflows */
   scrollbar-width: none; /* Hides scrollbar in Firefox */
   -ms-overflow-style: none; /* Hides scrollbar in IE/Edge */
   display: flex;
