@@ -3159,7 +3159,7 @@ body.dark-mode .about.full-view h2::before {
 }
 
 body.dark-mode #education-languages{
-  background-color: var(--Soft-White) !important;
+  background-color: #161B22;
 }
 
 body.dark-mode #education-languages .fas {
