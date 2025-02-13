@@ -1459,7 +1459,6 @@ body.dark-mode .bio-contact-links a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid white;
 }
 
 .scrollable-container::-webkit-scrollbar {
