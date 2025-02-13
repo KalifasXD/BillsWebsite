@@ -1447,9 +1447,15 @@ body.dark-mode .bio-contact-links a:hover {
   color: var(--Active-Gold) !important;
 }
 
+.scrollable-container p {
+  font-size: clamp(0.1rem, 5vw, 1rem) !important;
+}
+
 .scrollable-container {
   padding: 10px 0;
   scrollbar-width: none; /* Hides scrollbar in Firefox */
+  max-height: 35rem !important;
+  
   -ms-overflow-style: none; /* Hides scrollbar in IE/Edge */
   display: flex;
   align-items: center;
