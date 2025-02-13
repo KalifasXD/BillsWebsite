@@ -1453,7 +1453,8 @@ body.dark-mode .bio-contact-links a:hover {
 
 .scrollable-container {
   scrollbar-width: none; /* Hides scrollbar in Firefox */
-  max-height: 25rem !important;
+  height: 30rem !important;
+  max-height: 30rem !important;
   -ms-overflow-style: none; /* Hides scrollbar in IE/Edge */
   display: flex;
   align-items: center;
