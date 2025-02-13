@@ -1452,10 +1452,8 @@ body.dark-mode .bio-contact-links a:hover {
 }
 
 .scrollable-container {
-  padding: 10px 0;
   scrollbar-width: none; /* Hides scrollbar in Firefox */
-  max-height: 35rem !important;
-  
+  max-height: 25rem !important;
   -ms-overflow-style: none; /* Hides scrollbar in IE/Edge */
   display: flex;
   align-items: center;
@@ -1677,7 +1675,7 @@ body.dark-mode .bio-contact-links a:hover {
 
   .timeline p {
     width: fit-content !important;
-    margin: 1.3rem !important;
+    margin: 1rem !important;
     margin-bottom: 2rem !important;
   }
 
