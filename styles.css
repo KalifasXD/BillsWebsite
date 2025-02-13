@@ -168,6 +168,7 @@ a {
   overflow: hidden;
   background: linear-gradient(to right, #f5dfd0 0%, #F4E3D7 95%, #f5dfd0 100%);
   z-index: 50;/* Z-Index to make sure the element is always on top */
+  box-shadow: 0px 0px 10px var(--Soft-White);
 }
 
 .conveyor-container {
@@ -215,6 +216,7 @@ a {
 
 body.dark-mode .tech-conveyor {
   background: linear-gradient(to right, #161b22, #161B22);
+  box-shadow: 0px 0px 10px var(--Soft-Black);
 }
 
 body.dark-mode .tech-item span {
@@ -1916,16 +1918,11 @@ body.dark-mode .CTA-HireMe-button:hover {
   transition: opacity 0.5s ease-in-out;
 }
 
-body.dark-mode .CTA-Modal-content {
-  background-color: #141414;
-}
-
 .CTA-Modal-content {
   font-family: 'Lora' !important;
   background-color: var(--Soft-White);
   box-shadow: 0px 8px 24px rgba(53, 53, 53, 0.3);
-  padding: 10px;
-  border-radius: 0.5rem;
+  padding: 20px;
   margin: 0 2rem;
   border: 1px solid var(--Dark-Beige);
   display: flex;
@@ -1943,10 +1940,10 @@ body.dark-mode .CTA-Modal-content {
 }
 
 body.dark-mode .CTA-Modal-content {
-  background-color: var(--Soft-Black);
-  border: 1px solid var(--Active-Gold);
-  box-shadow: 0 5px 5px var(--Soft-Black);
-  color: #c3a289;
+  background-color: #181818;
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border: 1px solid #333;
 }
 
 body.dark-mode .CTA-Modal-Icons li {
