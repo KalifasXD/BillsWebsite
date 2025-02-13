@@ -1917,8 +1917,10 @@ body.dark-mode .CTA-HireMe-button:hover {
 }
 
 body.dark-mode .CTA-Modal-content {
-  background-color: var(--Soft-White);
+  background-color: var(--Soft-Black);
   border: 1px solid var(--Active-Gold);
+  box-shadow: 0 0px 7.5px var(--Light-Beige);
+  color: var(--Light-Beige);
 }
 
 body.dark-mode .CTA-Modal-content {
@@ -1927,12 +1929,12 @@ body.dark-mode .CTA-Modal-content {
 
 .CTA-Modal-content {
   font-family: 'Lora' !important;
-  background-color: rgba(255, 255, 255, 0.9);
-  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.15);
+  background-color: var(--Soft-White);
+  box-shadow: 0px 8px 24px rgba(53, 53, 53, 0.3);
   padding: 20px;
   border-radius: 1rem;
   margin: 0 2rem;
-  border: 1px solid #e0e0e0 ;
+  border: 1px solid var(--Dark-Beige);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -1952,12 +1954,8 @@ body.dark-mode .CTA-Modal-Icons li {
 }
 
 .CTA-Modal-Icons i:hover {
-  color: var(--Active-Gold);
+  color: var(--Hover-Gold);
   transition: color 0.3s;
-}
-
-body.dark-mode .CTA-Modal-Icons i {
-
 }
 
 .CTA-Modal-Icons i {
@@ -2039,18 +2037,20 @@ body.dark-mode .CTA-Modal-overlay.show {
   border-radius: 50px;
   cursor: pointer;
   border: 0;
-  background-color: var(--Soft-Black);
-  color: var(--Soft-White);
-  box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+  background-color: var(--Soft-White);
+  color: var(--Dark-Beige);
+  box-shadow: 0 0px 7.5px rgba(53, 53, 53, 0.8),
+              0 0px 7.5px rgba(53, 53, 53, 0.3) inset;
   letter-spacing: 1.5px;
   text-transform: uppercase;
   font-size: 0.9rem;
   transition: all 0.5s ease;
   text-align: center;
 }
+
 body.dark-mode .CTA-Modal-button {
-  background-color: var(--Soft-White);
-  color: var(--Soft-Black);
+  background-color: var(--Soft-Black);
+  color: var(--Light-Beige);
 }
 
 body.dark-mode .CTA-Modal-button:hover {
