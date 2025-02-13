@@ -1681,6 +1681,10 @@ body.dark-mode .bio-contact-links a:hover {
     margin-bottom: 2rem !important;
   }
 
+  .scrollable-container p {
+    font-size: clamp(0.1rem, 5vw, 0.8rem) !important;
+  }
+
   .slides {
     width: 85%; /* Maintain proportional scaling */
   }
