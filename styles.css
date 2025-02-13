@@ -173,21 +173,21 @@ a {
 
 @keyframes glowPulseLight {
   0% {
-    box-shadow: 0px 0px 3px 1px rgba(255, 165, 0, 0.05), 
-                0px 0px 6px 2px rgba(255, 165, 0, 0.07);
+    box-shadow: 0px 0px 3px 1px rgba(255, 175, 105, 0.05), 
+                0px 0px 6px 2px rgba(255, 175, 105, 0.07);
   }
   50% {
-    box-shadow: 0px 0px 4px 1.5px rgba(255, 105, 180, 0.07), 
-                0px 0px 8px 2.5px rgba(255, 105, 180, 0.1);
+    box-shadow: 0px 0px 4px 1.5px rgba(202, 153, 0, 0.07), 
+                0px 0px 8px 2.5px rgba(202, 153, 0, 0.1);
   }
   100% {
-    box-shadow: 0px 0px 3px 1px rgba(255, 165, 0, 0.05), 
-                0px 0px 6px 2px rgba(255, 165, 0, 0.07);
+    box-shadow: 0px 0px 3px 1px rgba(255, 175, 105, 0.05), 
+                0px 0px 6px 2px rgba(255, 175, 105, 0.07);
   }
 }
 
 .conveyor-container {
-  padding: 2rem 1rem;
+  padding: 0.4rem 1rem;
   position: relative;
   width: 100%;
   height: 100% !important;
@@ -219,34 +219,34 @@ a {
 }
 
 .tech-item i {
-  font-size: 2rem;
+  font-size: 2.5rem;
   margin-bottom: 0.5rem;
 }
 
 .tech-item span {
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 500;
   color: var(--Soft-Black);
 }
 
 @keyframes glowPulseDark {
   0% {
-    box-shadow: 0px 0px 3px 1px rgba(0, 191, 255, 0.05), 
-                0px 0px 6px 2px rgba(0, 191, 255, 0.07);
+    box-shadow: 0px 0px 3px 1px rgb(0, 48, 210, 0.05), 
+                0px 0px 6px 2px rgba(0, 48, 210, 0.07);
   }
   50% {
-    box-shadow: 0px 0px 4px 1.5px rgba(138, 43, 226, 0.07), 
-                0px 0px 8px 2.5px rgba(138, 43, 226, 0.1);
+    box-shadow: 0px 0px 4px 1.5px rgb(0, 137, 217, 0.07), 
+                0px 0px 8px 2.5px rgba(0, 137, 217, 0.1);
   }
   100% {
-    box-shadow: 0px 0px 3px 1px rgba(0, 191, 255, 0.05), 
-                0px 0px 6px 2px rgba(0, 191, 255, 0.07);
+    box-shadow: 0px 0px 3px 1px rgb(0, 48, 210, 0.05), 
+                0px 0px 6px 2px rgba(0, 48, 210, 0.07);
   }
 }
 
 body.dark-mode .tech-conveyor {
-  background: linear-gradient(to right, rgb(22, 27, 34), #161B22);
-  animation: glowPulseDark 2s infinite alternate ease-in-out;
+  background: linear-gradient(to right, #161b22, #161B22);
+  animation: glowPulseDark 2.5s infinite alternate ease-in-out;
 }
 
 
@@ -1951,11 +1951,13 @@ body.dark-mode .CTA-HireMe-button:hover {
 
 .CTA-Modal-content {
   font-family: 'Lora' !important;
-  background-color: var(--Soft-White);
-  box-shadow: 0px 8px 24px rgba(53, 53, 53, 0.3);
+  background: linear-gradient(to left, rgba(252, 252, 252, 0.8),
+                                       rgba(214, 214, 214, 0.8), 
+                                        rgba(189, 189, 189, 0.8), 
+                                        rgba(235, 235, 235, 0.8));
+  color: var(--Soft-Black);
   padding: 20px;
   margin: 0 2rem;
-  border: 1px solid var(--Dark-Beige);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -1968,13 +1970,50 @@ body.dark-mode .CTA-HireMe-button:hover {
   transform: translateY(-100%);
   transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
   opacity: 0;
+  animation: glowPulseLightModal 2s infinite alternate ease-in-out;
+}
+
+@keyframes glowPulseLightModal {
+  0% {
+    box-shadow: 0px 0px 0px 1px rgba(255, 175, 105, 0.5), 
+                0px 0px 1px 2px rgba(255, 175, 105, 0.7);
+  }
+  50% {
+    box-shadow: 0px 0px 2px 1.5px rgba(177, 133, 0, 0.7), 
+                0px 0px 4px 2.5px rgba(158, 129, 40, 1);
+  }
+  100% {
+    box-shadow: 0px 0px 0px 1px rgba(255, 175, 105, 0.5), 
+                0px 0px 1px 2px rgba(255, 175, 105, 0.7);
+  }
+}
+
+.CTA-Modal-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url(modal_light_background.png);
+  object-fit: cover;
+  background-position: center center;
+  opacity: 1;
+  filter: blur(0px);
+  z-index: -1;
+  transition: background 0.5s;
+}
+
+body.dark-mode .CTA-Modal-content::before {
+  /* Modal Dark Background */
+  background: url(https://i.pinimg.com/736x/92/70/c1/9270c19eb7d37366c20da05e28844248.jpg);
+  transition: background 0.5s;
 }
 
 body.dark-mode .CTA-Modal-content {
-  background-color: #181818;
-  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.5);
   padding: 20px;
-  border: 1px solid #333;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0.36), rgba(237, 237, 237, 0.36), rgba(204, 204, 204, 0.36), rgba(237, 237, 237, 0.36));
+  color: var(--Soft-White);
 }
 
 body.dark-mode .CTA-Modal-Icons li {
@@ -2057,7 +2096,7 @@ body.dark-mode .CTA-Modal-overlay.show {
 
 /* CTA Button */
 .CTA-Modal-button {
-  --HireMeModal-width: 50%;
+  --HireMeModal-width: 60%;
   width: var(--HireMeModal-width);
   min-width: var(--HireMeModal-width);
   min-height: 4% !important;
@@ -2065,8 +2104,8 @@ body.dark-mode .CTA-Modal-overlay.show {
   border-radius: 50px;
   cursor: pointer;
   border: 0;
-  background-color: var(--Soft-White);
-  color: var(--Dark-Beige);
+  background-color: transparent;
+  color: var(--Soft-Black);
   box-shadow: 0 0px 7.5px rgba(53, 53, 53, 0.8),
               0 0px 7.5px rgba(53, 53, 53, 0.3) inset;
   letter-spacing: 1.5px;
@@ -2077,21 +2116,23 @@ body.dark-mode .CTA-Modal-overlay.show {
 }
 
 body.dark-mode .CTA-Modal-button {
-  background-color: var(--Soft-Black);
+  background-color: transparent;
   color: var(--Light-Beige);
 }
 
 body.dark-mode .CTA-Modal-button:hover {
-  background-color: var(--Active-Gold);
+  background-color: var(--Soft-White);
   color: var(--Soft-Black);
+  box-shadow: var(--Soft-White) 0px 0px 15px 0px;
 }
+
 
 .CTA-Modal-button:hover {
   letter-spacing: 3px;
   width: calc(var(--HireMeModal-width) + 1%);
-  background-color: var(--Active-Gold);
+  background-color: var(--Soft-Black);
   color: var(--Soft-White);
-  box-shadow: var(--Active-Gold) 0px 7px 29px 0px;
+  box-shadow: var(--Soft-Black) 0px 7px 29px 0px;
 }
 
 
