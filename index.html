@@ -46,7 +46,7 @@
       <li><a href="#skills" class="nav-link">Skills</a></li>
       <li><a href="#contact" class="nav-link">Contact</a></li>
     </ul>
-    <button class="CTA-HireMe-button" id="CTA-Modal-Open">
+    <button class="CTA-HireMe-button" data-modal-open="CTA-Modal">
       <i class="fas fa-briefcase"></i> Hire Me
     </button>
     <input type="checkbox" class="checkbox" id="darkModeToggle" checked>
@@ -245,7 +245,7 @@
         <h3>Thank you for your interest</h3> 
         <br>
         <div class="CTA-Modal-Box">
-          <button class="CTA-Modal-button" id="CTA-Modal-Close">Close
+          <button class="CTA-Modal-button" data-modal-close="CTA-Modal">Close
           </button>
         </div>
       </div>
@@ -489,8 +489,8 @@
 
     
             <div class="bio-contact-links">
-                <a href="#contact">Connect with me!</a>
-                <a href="#">Connect on LinkedIn</a>
+                <a data-modal-open="CTA-Modal">Connect with me!</a>
+                <a href="https://www.linkedin.com/in/vasileios-dounavis-488a832b5" target="_blank">Connect on LinkedIn</a>
             </div>
         </div>
     </div>

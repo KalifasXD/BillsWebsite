@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   // Smooth scroll for links
-  document.querySelectorAll(".nav-link, .quick-links, .bio-contact-links").forEach((link) => {
+  document.querySelectorAll(".nav-link, .quick-links").forEach((link) => {
       link.addEventListener("click", (e) => {
           e.preventDefault();
           const targetId = document.querySelector(link.getAttribute("href"));
@@ -133,28 +133,37 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   });
 
-  document.getElementById("CTA-Modal-Open").addEventListener("click", function() {
-    const modal = document.getElementById("CTA-Modal");
-    modal.classList.add("show");
+  document.querySelectorAll("[data-modal-open]").forEach(button => {
+    button.addEventListener("click", function() {
+      const modalId = this.getAttribute("data-modal-open");
+      const modal = document.getElementById(modalId);
+      if (modal) modal.classList.add("show");
+    });
   });
   
-  document.getElementById("CTA-Modal-Close").addEventListener("click", function() {
-    const modal = document.getElementById("CTA-Modal");
-    modal.classList.add("hide");
-    setTimeout(() => {
-      modal.classList.remove("show", "hide");
-    }, 500);
+  document.querySelectorAll("[data-modal-close]").forEach(button => {
+    button.addEventListener("click", function() {
+      const modalId = this.getAttribute("data-modal-close");
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.add("hide");
+        setTimeout(() => {
+          modal.classList.remove("show", "hide");
+        }, 500);
+      }
+    });
   });
   
-  window.onclick = function(event) {
-    const modal = document.getElementById("CTA-Modal");
-    if (event.target == modal) {
-      modal.classList.add("hide");
-      setTimeout(() => {
-        modal.classList.remove("show", "hide");
-      }, 500);
-    }
-  }
+  window.addEventListener("click", function(event) {
+    document.querySelectorAll("#CTA-Modal").forEach(modal => {
+      if (event.target === modal) {
+        modal.classList.add("hide");
+        setTimeout(() => {
+          modal.classList.remove("show", "hide");
+        }, 500);
+      }
+    });
+  });
 });
 
 document.addEventListener("DOMContentLoaded", () => {
