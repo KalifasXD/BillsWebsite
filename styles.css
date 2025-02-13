@@ -1447,6 +1447,22 @@ body.dark-mode .bio-contact-links a:hover {
   color: var(--Active-Gold) !important;
 }
 
+.scrollable-container {
+  padding: 10px 0;
+  max-height: 50vh !important; /* Adjust as needed */
+  overflow-y: auto; /* Enables scrolling ONLY if content overflows */
+  scrollbar-width: none; /* Hides scrollbar in Firefox */
+  -ms-overflow-style: none; /* Hides scrollbar in IE/Edge */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+}
+
+.scrollable-container::-webkit-scrollbar {
+  display: none; /* Hides scrollbar in Chrome, Safari */
+}
+
 .slide {
   width: 100%;
   max-width: 100%;
