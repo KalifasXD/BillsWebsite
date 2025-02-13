@@ -168,7 +168,22 @@ a {
   overflow: hidden;
   background: linear-gradient(to right, #f5dfd0 0%, #F4E3D7 95%, #f5dfd0 100%);
   z-index: 50;/* Z-Index to make sure the element is always on top */
-  box-shadow: 0px 0px 10px var(--Soft-White);
+  animation: glowPulseLight 2s infinite alternate ease-in-out;
+}
+
+@keyframes glowPulseLight {
+  0% {
+    box-shadow: 0px 0px 6px 2px rgba(255, 165, 0, 0.1), 
+                0px 0px 12px 4px rgba(255, 165, 0, 0.15);
+  }
+  50% {
+    box-shadow: 0px 0px 10px 3px rgba(255, 165, 0, 0.2), 
+                0px 0px 18px 6px rgba(255, 165, 0, 0.25);
+  }
+  100% {
+    box-shadow: 0px 0px 6px 2px rgba(255, 165, 0, 0.1), 
+                0px 0px 12px 4px rgba(255, 165, 0, 0.15);
+  }
 }
 
 .conveyor-container {
@@ -214,10 +229,26 @@ a {
   color: var(--Soft-Black);
 }
 
-body.dark-mode .tech-conveyor {
-  background: linear-gradient(to right, #161b22, #161B22);
-  box-shadow: 0px 0px 10px var(--Soft-Black);
+@keyframes glowPulseDark {
+  0% {
+    box-shadow: 0px 0px 6px 2px rgba(36, 45, 56, 0.1), 
+                0px 0px 12px 4px rgba(36, 45, 56, 0.15);
+  }
+  50% {
+    box-shadow: 0px 0px 10px 3px rgba(36, 45, 56, 0.2), 
+                0px 0px 18px 6px rgba(36, 45, 56, 0.25);
+  }
+  100% {
+    box-shadow: 0px 0px 6px 2px rgba(36, 45, 56 , 0.1), 
+                0px 0px 12px 4px rgba(36, 45, 56, 0.15);
+  }
 }
+
+body.dark-mode .tech-conveyor {
+  background: linear-gradient(to right, rgb(22, 27, 34), #161B22);
+  animation: glowPulseDark 2s infinite alternate ease-in-out;
+}
+
 
 body.dark-mode .tech-item span {
   color: var(--Soft-White);
