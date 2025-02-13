@@ -3664,6 +3664,7 @@ body.dark-mode .contact-form textarea {
 body.dark-mode .footer {
   background-color: var(--Soft-Black); /* Dark footer background */
   color: var(--Soft-White) !important;
+  border-top: 1px solid var(--Soft-White);
 }
 
 /* Footer dark mode styling */
@@ -3732,8 +3733,10 @@ body.dark-mode .checkbox-label .ball{
   background-color: var(--Soft-White);
   color: var(--text-color);
   --text-color: var(--Soft-Black);
-  padding: 50px 0;
+  padding: 0px 0;
+  padding-top: 20px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-top: 1px solid var(--Soft-Black);
 }
 
 .footer-container {
@@ -3787,8 +3790,11 @@ body.dark-mode .checkbox-label .ball{
 
 .footer-bottom {
   text-align: center;
-  padding-top: 20px;
   border-top: 1px solid var(--Soft-Black);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
 }
 
 .footer-bottom p {
