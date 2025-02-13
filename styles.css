@@ -1682,7 +1682,7 @@ body.dark-mode .bio-contact-links a:hover {
   }
 
   .scrollable-container p {
-    font-size: clamp(0.1rem, 5vw, 0.8rem) !important;
+    font-size: clamp(0.1rem, 5vw, 1rem) !important;
   }
 
   .slides {
