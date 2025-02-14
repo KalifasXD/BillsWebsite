@@ -1130,7 +1130,7 @@ body.dark-mode .about-container {
 .profile-pic {
   opacity: 0;
   flex: 1 1 250px;
-  background: url('ColorfulProfile.jpg') no-repeat center/cover;
+  background: url('ColorfulProfileBio.png') no-repeat top center / cover;
   border-radius: 12px 0 0 12px;
   min-height: 300px;
 }
@@ -1322,6 +1322,10 @@ body.dark-mode .bio-contact-links a:hover {
 
   .profile-pic {
     border-radius: 12px 12px 0 0;
+    background: url('ColorfulProfileBio.png') no-repeat center / cover;
+    background-position: 50% 10%; 
+    width: 50% !important;
+    margin: auto;
   }
 
   .bio-contact-links a {
@@ -1342,6 +1346,11 @@ body.dark-mode .bio-contact-links a:hover {
     gap: 20px;
   }
 
+  .profile-pic {
+    width: 90% !important;
+    margin: auto;
+  }
+  
   .bio-contact-links a {
     --bio-contact-width: 100%;
     width: var(--bio-contact-width);
