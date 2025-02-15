@@ -25,15 +25,13 @@ document.addEventListener("DOMContentLoaded", () => {
         let cleanId = id.startsWith("#") ? id.substring(1) : id; // Remove '#' if present
         let section = document.getElementById(cleanId);
         let sectionHeight = section ? section.getBoundingClientRect().height : 200; // Get height
-    
-        console.log(`Section ID: ${cleanId}, Height: ${sectionHeight}`); // Debugging
         
         vEffect = VANTA.NET({
           el: id,
           mouseControls: true,
           touchControls: true,
           gyroControls: true,
-          minHeight: sectionHeight,
+          minHeight: 200,
           minWidth: 200.00,
           scale: 1.00,
           scaleMobile: 1.00,
