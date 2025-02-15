@@ -1326,6 +1326,7 @@ body.dark-mode .bio-contact-links a:hover {
     border-radius: 12px 12px 0 0;
     background: url('ColorfulProfileBio.png') no-repeat center / cover;
     background-position: 50% 10%; 
+    margin-top: 10px !important;
     width: 50% !important;
     margin: auto;
   }
