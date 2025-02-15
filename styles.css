@@ -629,10 +629,12 @@ body.dark-mode .tech-item span {
   z-index: -1; /* Makes sure the texture stays behind the content */
 }
 
+
+
 .project-image {
   width: 100%; /* Make the image responsive */
   max-width: 500px; /* Set a maximum width */
-  height: auto;  
+  height: auto;
 }
 
 .project-card.visible .project-image {

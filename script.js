@@ -103,7 +103,12 @@ document.addEventListener("DOMContentLoaded", () => {
   
   // Dark mode toggle
   darkModeToggle.addEventListener("change", function () {
-      document.body.classList.toggle("dark-mode", this.checked);
+    if(this.checked == false) // Toggle hasn't taken place yet
+      document.querySelectorAll('.project-image')[3].src = 'Project4_LightMode.jpg'
+    else
+      document.querySelectorAll('.project-image')[3].src = 'Project4_DarkMode.jpg'
+    document.body.classList.toggle("dark-mode", this.checked);
+      
   });
 
 
